@@ -51,8 +51,9 @@ function SignupPage() {
   };
 
   return (
-    <div className="signup">
-      <form onSubmit={handleSignupSubmit}>
+    <div>
+      <h2>Login</h2>
+      <form className="signup" onSubmit={handleSignupSubmit}>
         <label>
           Username:
           <input
@@ -103,7 +104,7 @@ function SignupPage() {
           Pet Sitter
         </label>
 
-        <button type="submit" className="submit-button">
+        <button type="submit" className="signup-button">
           Sign Up
         </button>
       </form>
