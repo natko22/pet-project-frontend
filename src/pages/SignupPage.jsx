@@ -51,8 +51,8 @@ function SignupPage() {
   };
 
   return (
-    <div>
-      <h2>Login</h2>
+    <div className="signup-container">
+      <h2>Sign Up</h2>
       <form className="signup" onSubmit={handleSignupSubmit}>
         <label>
           Username:
@@ -86,7 +86,7 @@ function SignupPage() {
 
         <label>
           <input
-            className="signup-input"
+            className="signup-checkbox"
             type="checkbox"
             checked={isPetOwner}
             onChange={handlePetOwnerChange}
@@ -96,7 +96,7 @@ function SignupPage() {
 
         <label>
           <input
-            className="signup-input"
+            className="signup-checkbox"
             type="checkbox"
             checked={isSitter}
             onChange={handleSitterChange}
