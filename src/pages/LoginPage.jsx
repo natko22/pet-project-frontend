@@ -33,7 +33,7 @@ const LoginPage = () => {
 
         storeToken(response.data.authToken);
         authenticateUser();
-        navigate("/");
+        navigate("/profile");
       })
       .catch((error) => {
         const errorDescription = error.response.data.message;
