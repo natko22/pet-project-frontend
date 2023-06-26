@@ -22,24 +22,21 @@ const LoginPage = () => {
   const handlePasswordChange = (e) => {
     setPassword(e.target.value);
   };
-
-  const handleLogin = (e) => {
+  const handleLogin = async (e) => {
     e.preventDefault();
     const requestBody = { email, password };
 
-    axios
-      .post(`${API_URL}/auth/login`, requestBody)
-      .then((response) => {
-        console.log("JWT token", response.data.authToken);
+    try {
+      const response = await axios.post(`${API_URL}/auth/login`, requestBody);
+      console.log("JWT token", response.data.authToken);
 
-        storeToken(response.data.authToken);
-        authenticateUser();
-        navigate("/profile");
-      })
-      .catch((error) => {
-        const errorDescription = error.response.data.message;
-        setErrorMessage(errorDescription);
-      });
+      storeToken(response.data.authToken);
+      authenticateUser();
+      navigate("/profile");
+    } catch (error) {
+      const errorDescription = error.response.data.message;
+      setErrorMessage(errorDescription);
+    }
   };
 
   return (

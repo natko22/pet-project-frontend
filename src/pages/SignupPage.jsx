@@ -34,20 +34,18 @@ function SignupPage() {
     setIsSitter(e.target.checked);
   };
 
-  const handleSignupSubmit = (e) => {
+  const handleSignupSubmit = async (e) => {
     e.preventDefault();
     // Create an object representing the request body
     const requestBody = { username, email, password, isPetOwner, isSitter };
 
-    axios
-      .post(`${API_URL}/auth/signup`, requestBody)
-      .then((_response) => {
-        navigate("/login");
-      })
-      .catch((error) => {
-        const errorDescription = error.response.data.message;
-        setErrorMessage(errorDescription);
-      });
+    try {
+      await axios.post(`${API_URL}/auth/signup`, requestBody);
+      navigate("/login");
+    } catch (error) {
+      const errorDescription = error.response.data.message;
+      setErrorMessage(errorDescription);
+    }
   };
 
   return (
