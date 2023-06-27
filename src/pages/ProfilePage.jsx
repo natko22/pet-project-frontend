@@ -1,10 +1,14 @@
-import { useState, useEffect } from "react";
-import React from "react";
+import React, { useContext, useEffect, useState } from "react";
+import { AuthContext } from "../context/auth.context";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 
-const ProfilePage = () => {
+function ProfilePage() {
+  const { user } = useContext(AuthContext);
+  const [currentUser, setCurrentUser] = useState(null);
+  
+  
   const [profileImage, setProfileImage] = useState(null);
   const [imagePreview, setImagePreview] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
@@ -49,7 +53,22 @@ const ProfilePage = () => {
     }
   };
 
-  return (
+  useEffect(() => {
+    const fetchUserData = async () => {
+      try {
+        const { data } = await axios.get(`http://localhost:5005/api/users/${user._id}`);
+        console.log("fetched data", data);
+        setCurrentUser(data);
+      } catch (err) {
+        console.log("fetch user data error", err);
+      }
+    };
+    fetchUserData();
+  }, [user]);
+  if(!currentUser){return("loading")}
+
+  return <div>{currentUser.username}
+   
     <div>
       <h1>Welcome to your profile </h1>
       <Link to="/edit">Edit Profile</Link>
@@ -76,7 +95,16 @@ const ProfilePage = () => {
         </div>
       </div>
     </div>
-  );
+ 
 };
+  
+  </div>;
+}
+
+
+
+
+
+
 
 export default ProfilePage;

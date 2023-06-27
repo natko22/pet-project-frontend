@@ -1,3 +1,4 @@
+
 /* Signup page styling */
 
 .signup-container {
@@ -123,6 +124,198 @@
   font-family: "Times New Roman", Times, serif;
 }
 
+
+/* for nav bar */
+.nav {
+  height: 50px;
+  background-color: #fffcfc;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.343);
+  padding: 20px;
+}
+
+.nav > .nav-header {
+  display: inline;
+}
+.nav > .nav-header  > a {
+  display: inline-block;
+  padding: 13px 10px 13px 10px;
+  text-decoration: none;
+  color: #797878;
+}
+
+.nav > .nav-header > .nav-title {
+  display: inline-block;
+  font-size: 22px;
+  color: #797878;
+  padding: 10px 10px 10px 10px;
+}
+
+.nav > .nav-btn {
+  display: none;
+}
+
+.nav > .nav-links {
+  display: inline;
+  float: right;
+  font-size: 18px;
+}
+
+.nav > .nav-links > a {
+  display: inline-block;
+  padding: 13px 20px 13px 20px;
+  text-decoration: none;
+  color: #797878;
+}
+
+.nav > .nav-links > a:hover {
+  background-color: rgba(210, 210, 210, 0.443);
+}
+
+.nav > #nav-check {
+  display: none;
+}
+
+@media (max-width:600px) {
+  .nav > .nav-btn {
+    display: inline-block;
+    position: absolute;
+    right: 0px;
+    top: 0px;
+  }
+  .nav > .nav-btn > label {
+    display: inline-block;
+    width: 50px;
+    height: 50px;
+    padding: 13px;
+  }
+
+  .nav > .nav-btn > label > span {
+    display: block;
+    width: 25px;
+    height: 10px;
+    border-top: 2px solid #797878;
+  }
+  .nav > .nav-links {
+    position: absolute;
+    display: block;
+    width: 100%;
+    background-color: #fffcfc;
+    height: 0px;
+    transition: all 0.3s ease-in;
+    overflow-y: hidden;
+    top: 50px;
+    left: 0px;
+  }
+  .nav > .nav-links > a {
+    display: block;
+    width: 100%;
+  }
+  .nav > #nav-check:not(:checked) ~ .nav-links {
+    height: 0px;
+  }
+  .nav > #nav-check:checked ~ .nav-links {
+    height: calc(100vh - 50px);
+    overflow-y: auto;
+  }
+}
+
+
+/* for footer */
+.icon{
+  width: 30px;
+}
+
+.footer-basic {
+  padding:40px 0;
+  background-color:#fffcfc;
+  color:#4b4c4d;
+  box-shadow: 0 3px 8px rgba(4, 15, 10, 0.601);
+
+}
+
+.footer-basic ul {
+  padding:0;
+  list-style:none;
+  text-align:center;
+  font-size:18px;
+  line-height:1.6;
+  margin-bottom:0;
+  display: flex;
+  justify-content: center;
+}
+
+.footer-basic li {
+  padding:0 10px;
+}
+
+.footer-basic ul a {
+  color:inherit;
+  text-decoration:none;
+  opacity:0.8;
+}
+
+.footer-basic ul a:hover {
+  opacity:1;
+}
+
+.footer-basic .social {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 15px;
+}
+
+.footer-basic .social > a {
+  width:40px;
+  height:40px;
+  line-height:40px;
+  border-radius:50%;
+  border:1px solid #ccc;
+  margin:0 8px;
+  opacity:0.6;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.footer-basic .social > a:hover {
+  opacity:0.9;
+}
+
+.footer-basic .copyright {
+  margin-top:15px;
+  text-align:center;
+  font-size:13px;
+  color:#aaa;
+  margin-bottom:0;
+}
+
+
+/* for homepage */
+.header{
+  margin: 50px;
+  height: 500px;
+  display: flex;
+  justify-content: space-between;
+  background-color: #F3F3F5;
+  border-radius: 5px;
+  box-shadow: 0 3px 8px rgba(4, 15, 10, 0.601);
+}
+.header h2{
+width: 80%;
+text-align: center;
+}
+.header-left{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 500px;
+  padding: 0 0 0 20%;
+  margin-right: 0px;
+}
+.button {
+
 /* edit -profile -form */
 
 .photo-edit-btn {
@@ -188,9 +381,32 @@ textarea {
   font-family: "Times New Roman", Times, serif;
   border: none;
   border-radius: 10px;
+
+  cursor: pointer;}
+  
+  @media (max-width:1142px){
+    .header{
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      background-image: url("assets/dog.jpg");
+      background-size: 40%;
+      background-repeat: no-repeat;
+      background-position-x: right;
+      background-position-y: bottom;
+    }
+    .header img{
+      display: none;
+    }
+    .header-left{
+    padding: 0;
+    }
+  }
+
   cursor: pointer;
 }
 
 .edit-profile-form button:hover {
   background-color: #3a4d3c;
 }
+
