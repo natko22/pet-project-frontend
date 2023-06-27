@@ -124,12 +124,12 @@
   font-family: "Times New Roman", Times, serif;
 }
 
-/* start - css for nav bar */
+/* for nav bar */
 .nav {
   height: 50px;
-  width: 100%;
   background-color: #fffcfc;
-  position: relative;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.343);
+  padding: 20px;
 }
 
 .nav > .nav-header {
@@ -218,9 +218,8 @@
   }
 }
 
-/* end - css for nav bar */
 
-/* start - css for footer */
+/* for footer */
 .icon{
   width: 30px;
 }
@@ -229,6 +228,8 @@
   padding:40px 0;
   background-color:#fffcfc;
   color:#4b4c4d;
+  box-shadow: 0 3px 8px rgba(4, 15, 10, 0.601);
+
 }
 
 .footer-basic ul {
@@ -288,4 +289,57 @@
   margin-bottom:0;
 }
 
-/* end - css for footer */
+
+/* for homepage */
+.header{
+  margin: 50px;
+  height: 500px;
+  display: flex;
+  justify-content: space-between;
+  background-color: #F3F3F5;
+  border-radius: 5px;
+  box-shadow: 0 3px 8px rgba(4, 15, 10, 0.601);
+}
+.header h2{
+width: 80%;
+text-align: center;
+}
+.header-left{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 500px;
+  padding: 0 0 0 20%;
+  margin-right: 0px;
+}
+.button {
+  width: 100%;
+  padding: 15px;
+  margin: 20px;
+  background-color: #8ca38e;
+  color: #000000;
+  font-size: 20px;
+  font-family: "Times New Roman", Times, serif;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;}
+  
+  @media (max-width:1142px){
+    .header{
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      background-image: url("assets/dog.jpg");
+      background-size: 40%;
+      background-repeat: no-repeat;
+      background-position-x: right;
+      background-position-y: bottom;
+    }
+    .header img{
+      display: none;
+    }
+    .header-left{
+    padding: 0;
+    }
+  }
