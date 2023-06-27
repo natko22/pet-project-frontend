@@ -7,8 +7,7 @@ import { Link } from "react-router-dom";
 function ProfilePage() {
   const { user } = useContext(AuthContext);
   const [currentUser, setCurrentUser] = useState(null);
-  
-  
+
   const [profileImage, setProfileImage] = useState(null);
   const [imagePreview, setImagePreview] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
@@ -56,7 +55,9 @@ function ProfilePage() {
   useEffect(() => {
     const fetchUserData = async () => {
       try {
-        const { data } = await axios.get(`http://localhost:5005/api/users/${user._id}`);
+        const { data } = await axios.get(
+          `http://localhost:5005/api/users/${user._id}`
+        );
         console.log("fetched data", data);
         setCurrentUser(data);
       } catch (err) {
@@ -65,46 +66,40 @@ function ProfilePage() {
     };
     fetchUserData();
   }, [user]);
-  if(!currentUser){return("loading")}
+  if (!currentUser) {
+    return "loading";
+  }
 
-  return <div>{currentUser.username}
-   
+  return (
     <div>
-      <h1>Welcome to your profile </h1>
-      <Link to="/edit">Edit Profile</Link>
+      <div>
+        <h1>Welcome to your profile {currentUser.username} </h1>
+        <Link to="/edit">Edit Profile</Link>
 
-      <h2>Add image</h2>
-      <div className="card">
-        <form onSubmit={uploadImage}>
-          <label>
-            <input
-              type="file"
-              accept="image/png, image/jpeg, image/jpg"
-              name="image"
-              onChange={handleImageChange}
-            />
-          </label>
-          {isLoading ? (
-            <p>Uploading...</p>
-          ) : (
-            <button type="submit">Upload</button>
-          )}
-        </form>
-        <div className="profile-photo">
-          {imagePreview && <img src={imagePreview} alt="" />}
+        <h2>Add image</h2>
+        <div className="card">
+          <form onSubmit={uploadImage}>
+            <label>
+              <input
+                type="file"
+                accept="image/png, image/jpeg, image/jpg"
+                name="image"
+                onChange={handleImageChange}
+              />
+            </label>
+            {isLoading ? (
+              <p>Uploading...</p>
+            ) : (
+              <button type="submit">Upload</button>
+            )}
+          </form>
+          <div className="profile-photo">
+            {imagePreview && <img src={imagePreview} alt="" />}
+          </div>
         </div>
       </div>
     </div>
- 
-};
-  
-  </div>;
+  );
 }
-
-
-
-
-
-
 
 export default ProfilePage;
