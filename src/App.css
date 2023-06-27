@@ -1,3 +1,4 @@
+
 /* Signup page styling */
 
 .signup-container {
@@ -127,7 +128,7 @@
 .nav {
   height: 50px;
   width: 100%;
-  background-color: #fffcfceb;
+  background-color: #fffcfc;
   position: relative;
 }
 
@@ -138,13 +139,13 @@
   display: inline-block;
   padding: 13px 10px 13px 10px;
   text-decoration: none;
-  color: #373737;
+  color: #797878;
 }
 
 .nav > .nav-header > .nav-title {
   display: inline-block;
   font-size: 22px;
-  color: #373737;
+  color: #797878;
   padding: 10px 10px 10px 10px;
 }
 
@@ -162,7 +163,7 @@
   display: inline-block;
   padding: 13px 20px 13px 20px;
   text-decoration: none;
-  color: #373737;
+  color: #797878;
 }
 
 .nav > .nav-links > a:hover {
@@ -191,13 +192,13 @@
     display: block;
     width: 25px;
     height: 10px;
-    border-top: 2px solid #373737;
+    border-top: 2px solid #797878;
   }
   .nav > .nav-links {
     position: absolute;
     display: block;
     width: 100%;
-    background-color: #fffcfceb;
+    background-color: #fffcfc;
     height: 0px;
     transition: all 0.3s ease-in;
     overflow-y: hidden;
@@ -218,3 +219,73 @@
 }
 
 /* end - css for nav bar */
+
+/* start - css for footer */
+.icon{
+  width: 30px;
+}
+
+.footer-basic {
+  padding:40px 0;
+  background-color:#fffcfc;
+  color:#4b4c4d;
+}
+
+.footer-basic ul {
+  padding:0;
+  list-style:none;
+  text-align:center;
+  font-size:18px;
+  line-height:1.6;
+  margin-bottom:0;
+  display: flex;
+  justify-content: center;
+}
+
+.footer-basic li {
+  padding:0 10px;
+}
+
+.footer-basic ul a {
+  color:inherit;
+  text-decoration:none;
+  opacity:0.8;
+}
+
+.footer-basic ul a:hover {
+  opacity:1;
+}
+
+.footer-basic .social {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 15px;
+}
+
+.footer-basic .social > a {
+  width:40px;
+  height:40px;
+  line-height:40px;
+  border-radius:50%;
+  border:1px solid #ccc;
+  margin:0 8px;
+  opacity:0.6;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.footer-basic .social > a:hover {
+  opacity:0.9;
+}
+
+.footer-basic .copyright {
+  margin-top:15px;
+  text-align:center;
+  font-size:13px;
+  color:#aaa;
+  margin-bottom:0;
+}
+
+/* end - css for footer */
