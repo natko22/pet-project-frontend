@@ -413,3 +413,58 @@ textarea {
 .edit-profile-form button:hover {
   background-color: #3a4d3c;
 }
+
+
+/* profilepage */
+
+.profileImg{
+  border-radius: 50%;
+  width: 100px;
+}
+.profilepage{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px 100px;
+  
+}
+.coloredHeart{
+  width: 30px;
+  filter: grayscale(0%);
+}
+
+.blackHeart{
+  width: 30px;
+  filter: grayscale(100%);
+}
+
+.aboutme-box{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.commenterImg{
+  width: 40px;
+}
+
+.each-review-box{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 150px;
+}
+
+.review-box{
+  display: flex;
+  background-color: #fffcfc;
+  width: 800px;
+  padding: 20px;
+  justify-content: space-evenly;
+  border-radius: 5px;
+  box-shadow: 0 3px 8px rgba(4, 15, 10, 0.601);
+}
+.review-box-h2{
+  text-align: center;
+}

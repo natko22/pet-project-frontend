@@ -13,7 +13,7 @@ const LoginPage = () => {
 
   const navigate = useNavigate();
 
-  const { storeToken, authenticateUser } = useContext(AuthContext);
+  const { storeToken, authenticateUser,user } = useContext(AuthContext);
 
   const handleEmailChange = (e) => {
     setEmail(e.target.value);
@@ -32,7 +32,7 @@ const LoginPage = () => {
 
       storeToken(response.data.authToken);
       authenticateUser();
-      navigate("/profile");
+      navigate(`/profile/${user._id}`);
     } catch (error) {
       const errorDescription = error.response.data.message;
       setErrorMessage(errorDescription);

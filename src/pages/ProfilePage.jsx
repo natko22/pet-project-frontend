@@ -3,14 +3,20 @@ import { AuthContext } from "../context/auth.context";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
-
+import imgPlaceholder from "../assets/placeholder.png";
+import { useParams } from "react-router-dom";
+import heart from "../assets/heart.png";
+import ReviewBox from "../components/ReviewBox";
 function ProfilePage() {
+  const { userId } = useParams();
   const { user } = useContext(AuthContext);
   const [currentUser, setCurrentUser] = useState(null);
+  const [reviews, setReviews] = useState([]);
 
   const [profileImage, setProfileImage] = useState(null);
   const [imagePreview, setImagePreview] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
+  const [favorite, setFavorite] = useState(false);
   const upload_preset = process.env.UPLOAD_PRESET;
 
   const navigate = useNavigate();
@@ -51,32 +57,56 @@ function ProfilePage() {
       setIsLoading(false);
     }
   };
+  console.log("heart state", favorite);
 
   useEffect(() => {
     const fetchUserData = async () => {
       try {
         const { data } = await axios.get(
-          `http://localhost:5005/api/users/${user._id}`
+          `http://localhost:5005/api/users/${userId}`
         );
         console.log("fetched data", data);
         setCurrentUser(data);
+        setReviews(data.reviews)
       } catch (err) {
         console.log("fetch user data error", err);
       }
     };
     fetchUserData();
-  }, [user]);
+  }, [userId]);
   if (!currentUser) {
     return "loading";
   }
 
   return (
-    <div>
+    <div className="profilepage">
+      <img
+        className="profileImg"
+        src={!currentUser.img ? imgPlaceholder : currentUser.img}
+        alt={currentUser.username}
+      />
+      <h1>{currentUser.username} </h1>
+      {currentUser.postalCode && <p>{currentUser.postalCode}</p>}
+      <img
+        className={favorite ? "coloredHeart" : "blackHeart"}
+        src={heart}
+        alt="heart"
+        onClick={() => {
+          setFavorite(!favorite);
+        }}
+      />
+      {userId === user._id && <Link to="/edit">Edit Profile</Link>}
+      <div className="aboutme-box">
+        <h2>About me</h2>
+        {!currentUser.description?<p>This user prefers mystery over biography, thus the description is on a permanent coffee break!</p>:user.description}
+      </div>
       <div>
-        <h1>Welcome to your profile {currentUser.username} </h1>
-        <Link to="/edit">Edit Profile</Link>
-
-        <h2>Add image</h2>
+        <ReviewBox reviews={currentUser.reviews}/>
+      </div>
+      <div>
+        <h2>My pets</h2>
+      </div>
+      {/* <h2>Add image</h2>
         <div className="card">
           <form onSubmit={uploadImage}>
             <label>
@@ -96,8 +126,7 @@ function ProfilePage() {
           <div className="profile-photo">
             {imagePreview && <img src={imagePreview} alt="" />}
           </div>
-        </div>
-      </div>
+        </div> */}
     </div>
   );
 }
