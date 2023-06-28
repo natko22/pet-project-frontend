@@ -10,10 +10,10 @@ const LoginPage = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [errorMessage, setErrorMessage] = useState(undefined);
-
+  const [isLoading, setIsLoading] = useState(false)
   const navigate = useNavigate();
 
-  const { storeToken, authenticateUser } = useContext(AuthContext);
+  const { storeToken, authenticateUser, user } = useContext(AuthContext);
 
   const handleEmailChange = (e) => {
     setEmail(e.target.value);
@@ -32,12 +32,15 @@ const LoginPage = () => {
 
       storeToken(response.data.authToken);
       authenticateUser();
-      navigate("/profile");
+      setIsLoading(false)
+      ;
     } catch (error) {
       const errorDescription = error.response.data.message;
       setErrorMessage(errorDescription);
     }
   };
+  if(isLoading){return("laoding")}
+  if(!isLoading && user){navigate(`/profile/${user._id}`)}
 
   return (
     <div className="login-container">
