@@ -9,19 +9,18 @@ import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import EditProfile from "./components/EditProfile";
 
-
 function App() {
   return (
     <div className="App">
-          <Navbar/>
+      <Navbar />
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/signup" element={<SignupPage />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/profile/:userId" element={<ProfilePage />} />
-        <Route path="/edit" element={<EditProfile />} />
+        <Route path="/edit/:userId" element={<EditProfile />} />
       </Routes>
-      <Footer/>
+      <Footer />
     </div>
   );
 }

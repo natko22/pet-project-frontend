@@ -10,7 +10,7 @@ const LoginPage = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [errorMessage, setErrorMessage] = useState(undefined);
-  const [isLoading, setIsLoading] = useState(false)
+  const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
 
   const { storeToken, authenticateUser, user } = useContext(AuthContext);
@@ -32,15 +32,18 @@ const LoginPage = () => {
 
       storeToken(response.data.authToken);
       authenticateUser();
-      setIsLoading(false)
-      ;
+      setIsLoading(false);
     } catch (error) {
       const errorDescription = error.response.data.message;
       setErrorMessage(errorDescription);
     }
   };
-  if(isLoading){return("laoding")}
-  if(!isLoading && user){navigate(`/profile/${user._id}`)}
+  if (isLoading) {
+    return "laoding";
+  }
+  if (!isLoading && user) {
+    navigate(`/profile/${user._id}`);
+  }
 
   return (
     <div className="login-container">
