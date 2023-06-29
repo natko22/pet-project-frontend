@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
+import { useParams } from "react-router-dom";
 
 function AddPet() {
   const [name, setName] = useState("");
@@ -12,9 +13,17 @@ function AddPet() {
   const [diet, setDiet] = useState("");
   const [instruction, setInstruction] = useState("");
   const [img, setImg] = useState("");
+  const [error, setError] = useState(null);
+  const [success, setSuccess] = useState(false);
+
+  const { petId } = useParams();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    if (!name || !race || !age || !gender || !type) {
+      setError("Please fill in all required fields.");
+      return;
+    }
 
     const newPet = {
       name,
@@ -30,7 +39,10 @@ function AddPet() {
     };
 
     try {
-      const response = await axios.post("/api/pets", newPet);
+      const response = await axios.post(
+        "http://localhost:5005/api/add-pet/",
+        newPet
+      );
       console.log(response.data);
       // navigate to pet profile
     } catch (error) {
@@ -127,6 +139,9 @@ function AddPet() {
           Add Pet
         </button>
       </form>
+
+      {error && <p className="error-message">{error}</p>}
+      {success && <p className="success-message">Pet added successfully!</p>}
     </div>
   );
 }
