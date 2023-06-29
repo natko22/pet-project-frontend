@@ -19,7 +19,7 @@ function MyPetsBox({ pets }) {
             type={pet.type}
           /></Link>
         ))}</div>
-        <Link to="addPet">+ Add a new Pet</Link>
+        <Link to="/add-pet">+ Add a new Pet</Link>
       </div>
     </>
   );
