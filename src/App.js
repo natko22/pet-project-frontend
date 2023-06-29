@@ -8,6 +8,7 @@ import HomePage from "./pages/HomePage";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import EditProfile from "./components/EditProfile";
+import PetProfilePage from "./pages/PetProfilePage";
 
 
 function App() {
@@ -20,6 +21,8 @@ function App() {
         <Route path="/login" element={<LoginPage />} />
         <Route path="/profile/:userId" element={<ProfilePage />} />
         <Route path="/edit" element={<EditProfile />} />
+        <Route path="/petProfile/:petId" element={<PetProfilePage/>} />
+
       </Routes>
       <Footer/>
     </div>

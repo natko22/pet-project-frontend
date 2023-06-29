@@ -7,6 +7,7 @@ import imgPlaceholder from "../assets/placeholder.png";
 import { useParams } from "react-router-dom";
 import heart from "../assets/heart.png";
 import ReviewBox from "../components/ReviewBox";
+import MyPetsBox from "../components/MyPetsBox";
 function ProfilePage() {
   const { userId } = useParams();
   const { user } = useContext(AuthContext);
@@ -104,7 +105,14 @@ function ProfilePage() {
         <ReviewBox reviews={currentUser.reviews}/>
       </div>
       <div>
-        <h2>My pets</h2>
+      <MyPetsBox pets={currentUser.pets}/>
+      </div>
+      <div className="contact-box">
+        <div className="calender">calender</div>
+        <div className="contact-btns">
+        <Link>Chat with me</Link>
+        <Link>Book</Link>
+        </div>
       </div>
       {/* <h2>Add image</h2>
         <div className="card">
