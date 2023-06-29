@@ -8,6 +8,7 @@ function MyPetsBox({ pets }) {
     <>
       <h2 className="pet-box-h2">My Pets</h2>
       <div className="pet-box">
+      <div className="all-pets">
         {pets.map((pet) => (
           <Link className="pet-link"to={`/petProfile/${pet._id}`}>
           <MyPet
@@ -17,7 +18,8 @@ function MyPetsBox({ pets }) {
             name={pet.name}
             type={pet.type}
           /></Link>
-        ))}
+        ))}</div>
+        <Link to="addPet">+ Add a new Pet</Link>
       </div>
     </>
   );
