@@ -1,5 +1,8 @@
-import React, { useState } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import axios from "axios";
+import { AuthContext } from "../context/auth.context";
+import { useParams } from "react-router-dom";
 
 const EditProfile = () => {
   const [username, setUsername] = useState("");
@@ -7,8 +10,37 @@ const EditProfile = () => {
   const [password, setPassword] = useState("");
   const [postalCode, setPostalCode] = useState("");
   const [aboutMe, setAboutMe] = useState("");
+  const [availability, setAvailability] = useState("");
   const [isPetOwner, setIsPetOwner] = useState(false);
   const [isSitter, setIsSitter] = useState(false);
+
+  const { user } = useContext(AuthContext);
+  const { userId } = useParams();
+
+  const [userProfile, setUserProfile] = useState(null);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchUserProfile = async () => {
+      try {
+        const response = await axios.get(
+          `http://localhost:5005/auth/edit/${userId}`
+        );
+
+        setUserProfile(response.data);
+        setLoading(false);
+      } catch (error) {
+        console.error("Error fetching user profile:", error);
+        setLoading(false);
+      }
+    };
+
+    fetchUserProfile();
+  }, []);
+
+  if (loading) {
+    return <div>Loading...</div>;
+  }
 
   const handleUsernameChange = (e) => {
     setUsername(e.target.value);
@@ -30,6 +62,10 @@ const EditProfile = () => {
     setAboutMe(e.target.value);
   };
 
+  const handleAvailabilityChange = (e) => {
+    setAvailability(e.target.value);
+  };
+
   const handlePetOwnerChange = (e) => {
     setIsPetOwner(e.target.checked);
   };
@@ -38,14 +74,40 @@ const EditProfile = () => {
     setIsSitter(e.target.checked);
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+
+    const updatedProfile = {
+      username,
+      email,
+      password,
+      postalCode,
+      aboutMe,
+      availability,
+      isPetOwner,
+      isSitter,
+    };
+
+    try {
+      // Make a POST request to save the updated profile
+      const response = await axios.put(
+        `http://localhost:5005/auth/edit/${userId}`,
+        updatedProfile,
+        {
+          headers: {
+            Authorization: `Bearer ${user.storedToken}`,
+          },
+        }
+      );
+      console.log("Profile updated successfully:", response.data);
+    } catch (error) {
+      console.error("Error updating profile:", error);
+    }
   };
-  console.log(handleSubmit);
 
   return (
     <div>
-      <Link to="/profile">Back to Profile</Link>
+      <Link to={`/profile/${userId}`}>Back to Profile</Link>
 
       <h2>Edit Profile</h2>
 
@@ -55,12 +117,12 @@ const EditProfile = () => {
           Username:
           <input type="text" value={username} onChange={handleUsernameChange} />
         </label>
-        <br />
+
         <label>
           Email:
           <input type="email" value={email} onChange={handleEmailChange} />
         </label>
-        <br />
+
         <label>
           Password:
           <input
@@ -69,7 +131,7 @@ const EditProfile = () => {
             onChange={handlePasswordChange}
           />
         </label>
-        <br />
+
         <label>
           Postal Code:
           <input
@@ -78,14 +140,18 @@ const EditProfile = () => {
             onChange={handlePostalCodeChange}
           />
         </label>
-        <br />
+
         <label>
           About Me:
           <textarea value={aboutMe} onChange={handleAboutMeChange} />
         </label>
         <label>
           Availability:
-          <input />
+          <input
+            type="text"
+            value={availability}
+            onChange={handleAvailabilityChange}
+          />
         </label>
         <label>
           Pet Owner:
@@ -96,7 +162,7 @@ const EditProfile = () => {
             className="edit-form-checkbox"
           />
         </label>
-        <br />
+
         <label>
           Sitter:
           <input
@@ -106,7 +172,7 @@ const EditProfile = () => {
             className="edit-form-checkbox"
           />
         </label>
-        <br />
+
         <button type="submit">Save</button>
       </form>
     </div>

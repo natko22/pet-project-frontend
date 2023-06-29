@@ -8,6 +8,8 @@ import { useParams } from "react-router-dom";
 import heart from "../assets/heart.png";
 import ReviewBox from "../components/ReviewBox";
 import MyPetsBox from "../components/MyPetsBox";
+
+
 function ProfilePage() {
   const { userId } = useParams();
   const { user } = useContext(AuthContext);
@@ -68,7 +70,7 @@ function ProfilePage() {
         );
         console.log("fetched data", data);
         setCurrentUser(data);
-        setReviews(data.reviews)
+        setReviews(data.reviews);
       } catch (err) {
         console.log("fetch user data error", err);
       }
@@ -96,13 +98,20 @@ function ProfilePage() {
           setFavorite(!favorite);
         }}
       />
-      {userId === user._id && <Link to="/edit">Edit Profile</Link>}
+      {userId === user._id && <Link to={`/edit/${userId}`}>Edit Profile</Link>}
       <div className="aboutme-box">
         <h2>About me</h2>
-        {!currentUser.description?<p>This user prefers mystery over biography, thus the description is on a permanent coffee break!</p>:user.description}
+        {!currentUser.description ? (
+          <p>
+            This user prefers mystery over biography, thus the description is on
+            a permanent coffee break!
+          </p>
+        ) : (
+          user.description
+        )}
       </div>
       <div>
-        <ReviewBox reviews={currentUser.reviews}/>
+        <ReviewBox reviews={currentUser.reviews} />
       </div>
       <div>
       <MyPetsBox pets={currentUser.pets}/>
