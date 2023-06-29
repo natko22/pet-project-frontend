@@ -22,7 +22,7 @@ function App() {
         <Route path="/profile/:userId" element={<ProfilePage />} />
         <Route path="/edit/:userId" element={<EditProfile />} />
         <Route path="/petProfile/:petId" element={<PetProfilePage />} />
-        <Route path="/addPet" element={<AddPet />} />
+        <Route path="/add-pet" element={<AddPet />} />
       </Routes>
       <Footer />
     </div>
