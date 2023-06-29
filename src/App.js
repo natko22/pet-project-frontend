@@ -9,6 +9,7 @@ import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import EditProfile from "./components/EditProfile";
 import PetProfilePage from "./pages/PetProfilePage";
+import AddPet from "./pages/AddNewPetPage";
 
 function App() {
   return (
@@ -19,8 +20,9 @@ function App() {
         <Route path="/signup" element={<SignupPage />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/profile/:userId" element={<ProfilePage />} />
-        <Route path="/petProfile/:petId" element={<PetProfilePage/>} />
         <Route path="/edit/:userId" element={<EditProfile />} />
+        <Route path="/petProfile/:petId" element={<PetProfilePage />} />
+        <Route path="/add-pet" element={<AddPet />} />
       </Routes>
       <Footer />
     </div>
