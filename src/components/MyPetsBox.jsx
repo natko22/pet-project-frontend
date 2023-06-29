@@ -1,0 +1,26 @@
+import React from "react";
+import MyPet from "./MyPet";
+import { Link } from "react-router-dom";
+
+function MyPetsBox({ pets }) {
+  console.log("mypet",pets);
+  return (
+    <>
+      <h2 className="pet-box-h2">My Pets</h2>
+      <div className="pet-box">
+        {pets.map((pet) => (
+          <Link className="pet-link"to={`/petProfile/${pet._id}`}>
+          <MyPet
+            key={pet._id}
+            id={pet._id}
+            img={pet.img}
+            name={pet.name}
+            type={pet.type}
+          /></Link>
+        ))}
+      </div>
+    </>
+  );
+}
+
+export default MyPetsBox;
