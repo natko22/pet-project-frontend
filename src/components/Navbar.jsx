@@ -4,7 +4,7 @@ import { useContext } from "react";
 import { AuthContext } from "../context/auth.context";
 
 function Navbar() {
-    const{ isLoggedIn, logOutUser} = useContext(AuthContext)
+    const{ isLoggedIn, logOutUser,user} = useContext(AuthContext)
   return (
     <div className="nav">
       <input type="checkbox" id="nav-check" />
@@ -22,7 +22,10 @@ function Navbar() {
       </div>
 
       {console.log("logedin check",isLoggedIn)}
-      {isLoggedIn? (<div className="nav-links"><Link to="/login" onClick={logOutUser}>Logout</Link></div>):
+      {isLoggedIn? (<div className="nav-links">
+      <Link to="/" onClick={logOutUser}>Logout</Link>
+      <Link to={`/profile/${user._id}`}>Profile</Link>
+      </div>):
       (<div className="nav-links"><Link to="/login">Login</Link>
         <Link to="/signup">Singup</Link></div>)}
         

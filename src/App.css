@@ -499,14 +499,20 @@ textarea {
 .pet-box {
   display: flex;
   background-color: #fffcfc;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   width: 800px;
   padding: 20px;
-  justify-content: space-evenly;
   border-radius: 5px;
   box-shadow: 0 3px 8px rgba(4, 15, 10, 0.601);
 }
 .pet-box-h2 {
   text-align: center;
+}
+.all-pets{
+  display: flex;
+  justify-content: space-around;
 }
 
 .each-pet-box {
@@ -561,6 +567,31 @@ textarea {
   background-color: #ccc;
   width: 500px;
   height: 500px;
+}
+
+
+/* pet profile page */
+
+.gender-img{
+  width: 25px;
+}
+
+.profilepage p{
+  margin:3px
+}
+
+.aboutme-box{
+    display: flex;
+    background-color: #fffcfc;
+    width: 800px;
+    padding: 20px;
+    justify-content: space-evenly;
+    border-radius: 5px;
+    box-shadow: 0 3px 8px rgba(4, 15, 10, 0.601);
+    margin: 20px;
+}
+.aboutme-box h2{
+  margin: 0;
 }
 
 /* add new pet */

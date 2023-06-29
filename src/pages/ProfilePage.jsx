@@ -14,7 +14,6 @@ function ProfilePage() {
   const { userId } = useParams();
   const { user } = useContext(AuthContext);
   const [currentUser, setCurrentUser] = useState(null);
-  const [reviews, setReviews] = useState([]);
 
   const [profileImage, setProfileImage] = useState(null);
   const [imagePreview, setImagePreview] = useState(null);
@@ -70,7 +69,6 @@ function ProfilePage() {
         );
         console.log("fetched data", data);
         setCurrentUser(data);
-        setReviews(data.reviews);
       } catch (err) {
         console.log("fetch user data error", err);
       }
