@@ -26,6 +26,8 @@ const EditProfile = () => {
         const response = await axios.get(
           `http://localhost:5005/auth/edit/${userId}`
         );
+          setUsername(response.data.user.username)
+          setEmail(response.data.user.email)
 
         setUserProfile(response.data);
         setLoading(false);
