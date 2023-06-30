@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { useNavigate, useParams } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 function AddPet() {
   const [name, setName] = useState("");
@@ -16,7 +17,7 @@ function AddPet() {
   const [error, setError] = useState(null);
   const [success, setSuccess] = useState(false);
 
-  const { userId } = useParams();
+  const { petId } = useParams();
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
@@ -45,7 +46,7 @@ function AddPet() {
         newPet
       );
       console.log(response.data);
-      navigate(`/profile/${userId}`);
+      // navigate(`/profile/${petId}`);
     } catch (error) {
       console.error(error);
     }
@@ -53,6 +54,8 @@ function AddPet() {
 
   return (
     <div>
+      <Link to={`/petProfile/${petId}`}>Back to Pet Profile</Link>
+
       <h1>Add a New Pet</h1>
       <form onSubmit={handleSubmit} className="add-new-pet">
         <label>

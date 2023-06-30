@@ -7,7 +7,7 @@ import ProfilePage from "./pages/ProfilePage";
 import HomePage from "./pages/HomePage";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
-import EditProfile from "./components/EditProfile";
+import EditProfile from "./pages/EditProfile";
 import PetProfilePage from "./pages/PetProfilePage";
 import AddPet from "./pages/AddNewPetPage";
 
