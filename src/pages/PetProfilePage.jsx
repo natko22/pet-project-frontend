@@ -34,6 +34,8 @@ function PetProfilePage() {
 
   return (
     <div>
+      {petId === pet._id && <Link to={`/edit/${petId}`}>Edit Profile</Link>}
+
       <div className="profilepage">
         <img
           className="profileImg"
@@ -50,7 +52,7 @@ function PetProfilePage() {
         </p>
         <p>{pet.type}</p>
         <p>{pet.race}</p>
-        
+
         <p>Age: {pet.age} years old</p>
         <p>Castrated: {pet.castrated ? "⭕" : "❌"}</p>
         <div className="aboutme-box">

@@ -10,6 +10,7 @@ import Footer from "./components/Footer";
 import EditProfile from "./pages/EditProfile";
 import PetProfilePage from "./pages/PetProfilePage";
 import AddPet from "./pages/AddNewPetPage";
+import EditPetProfilePage from "./pages/EditPetProfilePage.jsx";
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
         <Route path="/edit/:userId" element={<EditProfile />} />
         <Route path="/petProfile/:petId" element={<PetProfilePage />} />
         <Route path="/add-pet" element={<AddPet />} />
+        <Route path="/edit-pet/:petId" element={<EditPetProfilePage />} />
       </Routes>
       <Footer />
     </div>
