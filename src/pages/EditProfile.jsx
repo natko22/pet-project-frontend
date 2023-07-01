@@ -14,12 +14,46 @@ const EditProfile = () => {
   const [availability, setAvailability] = useState("");
   const [isPetOwner, setIsPetOwner] = useState(false);
   const [isSitter, setIsSitter] = useState(false);
+  const [profileImage, setProfileImage] = useState(null);
+  const [imagePreview, setImagePreview] = useState(null);
+  const [isLoading, setIsLoading] = useState(false);
 
   const { user } = useContext(AuthContext);
   const { userId } = useParams();
   const navigate = useNavigate();
 
   const [loading, setLoading] = useState(true);
+
+  const handleImageChange = (e) => {
+    const file = e.target.files[0];
+    setProfileImage(file);
+    setImagePreview(URL.createObjectURL(file));
+  };
+
+  const uploadImage = async (e) => {
+    e.preventDefault();
+    setIsLoading(true);
+
+    try {
+      if (profileImage && profileImage.type.includes("image")) {
+        const formData = new FormData();
+        formData.append("imageUrl", e.target.image.files[0]);
+
+        const response = await axios.post(
+          `http://localhost:5005/auth/upload/${userId}`,
+          formData
+        );
+        console.log(response);
+
+        setIsLoading(false);
+      } else {
+        throw new Error("Please select a valid image file.");
+      }
+    } catch (error) {
+      console.error(error);
+      setIsLoading(false);
+    }
+  };
 
   useEffect(() => {
     const fetchUserProfile = async () => {
@@ -121,6 +155,27 @@ const EditProfile = () => {
       <h2>Edit Profile</h2>
 
       <button className="photo-edit-btn">Edit Photo</button>
+      <h2>Add image</h2>
+      <div className="card">
+        <form onSubmit={uploadImage}>
+          <label>
+            <input
+              type="file"
+              accept="image/png, image/jpeg, image/jpg"
+              name="image"
+              onChange={handleImageChange}
+            />
+          </label>
+          {isLoading ? (
+            <p>Uploading...</p>
+          ) : (
+            <button type="submit">Upload</button>
+          )}
+        </form>
+        <div className="profile-photo">
+          {imagePreview && <img src={imagePreview} alt="" />}
+        </div>
+      </div>
       <form onSubmit={handleSubmit} className="edit-profile-form">
         <label>
           Username:
