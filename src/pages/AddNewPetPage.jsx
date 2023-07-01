@@ -17,7 +17,7 @@ function AddPet() {
   const [error, setError] = useState(null);
   const [success, setSuccess] = useState(false);
 
-  const { petId } = useParams();
+  const { petId, userId } = useParams();
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
@@ -46,7 +46,7 @@ function AddPet() {
         newPet
       );
       console.log(response.data);
-      // navigate(`/profile/${petId}`);
+      // navigate(`/profile/${userId}`);
     } catch (error) {
       console.error(error);
     }
