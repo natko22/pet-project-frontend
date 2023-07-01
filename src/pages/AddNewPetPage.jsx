@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import axios from "axios";
 import { useNavigate, useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
+import { useContext } from "react";
+import { AuthContext } from "../context/auth.context";
 
 function AddPet() {
   const [name, setName] = useState("");
@@ -17,8 +19,9 @@ function AddPet() {
   const [error, setError] = useState(null);
   const [success, setSuccess] = useState(false);
 
-  const { petId, userId } = useParams();
+  const { petId } = useParams();
   const navigate = useNavigate();
+  const { user } = useContext(AuthContext);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -46,7 +49,7 @@ function AddPet() {
         newPet
       );
       console.log(response.data);
-      // navigate(`/profile/${userId}`);
+      navigate(`/profile/${user._id}`);
     } catch (error) {
       console.error(error);
     }
