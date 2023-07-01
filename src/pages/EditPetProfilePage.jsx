@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
 import axios from "axios";
-import { useContext } from "react";
-import { AuthContext } from "../context/auth.context";
+import { useNavigate } from "react-router-dom";
 
 const EditPet = () => {
   const [name, setName] = useState("");
@@ -18,7 +17,7 @@ const EditPet = () => {
   const [loading, setLoading] = useState(true);
 
   const { petId } = useParams();
-  const { user } = useContext(AuthContext);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchPetProfile = async () => {
@@ -28,16 +27,16 @@ const EditPet = () => {
         );
         const petData = response.data;
 
-        setName(petData.name || "");
-        setRace(petData.race || "");
-        setAge(petData.age || "");
-        setGender(petData.gender || "");
-        setType(petData.type || "");
-        setCastrated(petData.castrated || false);
-        setMedicalCondition(petData.medicalCondition || "");
-        setDiet(petData.diet || "");
-        setInstruction(petData.instruction || "");
-        setImg(petData.img || "");
+        setName(petData.pet.name || "");
+        setRace(petData.pet.race || "");
+        setAge(petData.pet.age || "");
+        setGender(petData.pet.gender || "");
+        setType(petData.pet.type || "");
+        setCastrated(petData.pet.castrated || false);
+        setMedicalCondition(petData.pet.medicalCondition || "");
+        setDiet(petData.pet.diet || "");
+        setInstruction(petData.pet.instruction || "");
+        setImg(petData.pet.img || "");
 
         setLoading(false);
       } catch (error) {
@@ -112,14 +111,10 @@ const EditPet = () => {
     try {
       const response = await axios.put(
         `http://localhost:5005/api/edit-pet/${petId}`,
-        updatedPetProfile,
-        {
-          headers: {
-            Authorization: `Bearer ${user.storedToken}`,
-          },
-        }
+        updatedPetProfile
       );
       console.log("Pet profile updated successfully:", response.data);
+      navigate(`/petProfile/${petId}`);
     } catch (error) {
       console.error("Error updating pet profile:", error);
     }
