@@ -10,7 +10,7 @@ const EditProfile = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [postalCode, setPostalCode] = useState("");
-  const [aboutMe, setAboutMe] = useState("");
+  const [description, setDescription] = useState("");
   const [availability, setAvailability] = useState("");
   const [isPetOwner, setIsPetOwner] = useState(false);
   const [isSitter, setIsSitter] = useState(false);
@@ -31,7 +31,7 @@ const EditProfile = () => {
         setEmail(response.data.user.email || "");
         setPassword(response.data.user.password || "");
         setPostalCode(response.data.user.postalCode || "");
-        setAboutMe(response.data.user.aboutMe || "");
+        setDescription(response.data.user.description || "");
         setAvailability(response.data.user.availability || "");
         setIsPetOwner(response.data.user.isPetOwner || "");
         setIsSitter(response.data.user.isSitter || "");
@@ -67,7 +67,7 @@ const EditProfile = () => {
   };
 
   const handleAboutMeChange = (e) => {
-    setAboutMe(e.target.value);
+    setDescription(e.target.value);
   };
 
   const handleAvailabilityChange = (e) => {
@@ -90,7 +90,7 @@ const EditProfile = () => {
       email,
       password,
       postalCode,
-      aboutMe,
+      description,
       availability,
       isPetOwner,
       isSitter,
@@ -166,7 +166,7 @@ const EditProfile = () => {
         <label>
           About Me:
           <textarea
-            value={aboutMe}
+            value={description}
             onChange={handleAboutMeChange}
             placeholder="Share your pet journey... Whether you're a pet owner or sitter, tell us your story!"
           />

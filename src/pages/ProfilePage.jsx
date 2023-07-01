@@ -104,7 +104,7 @@ function ProfilePage() {
             a permanent coffee break!
           </p>
         ) : (
-          user.description
+          currentUser.description
         )}
       </div>
       <div>
