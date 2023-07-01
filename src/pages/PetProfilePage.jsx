@@ -34,7 +34,9 @@ function PetProfilePage() {
 
   return (
     <div>
-      {petId === pet._id && <Link to={`/edit/${petId}`}>Edit Profile</Link>}
+      {petId === pet._id && (
+        <Link to={`/edit-pet/${petId}`}>Edit Pet Profile</Link>
+      )}
 
       <div className="profilepage">
         <img

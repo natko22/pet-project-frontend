@@ -127,7 +127,7 @@ const EditPet = () => {
 
   return (
     <div>
-      <Link to={`/pets/${petId}`}>Back to Pet Profile</Link>
+      <Link to={`/petProfile/${petId}`}>Back to Pet Profile</Link>
 
       <h2>Edit Pet Profile</h2>
 
