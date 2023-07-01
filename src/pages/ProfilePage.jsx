@@ -15,7 +15,27 @@ function ProfilePage() {
   const [favorite, setFavorite] = useState(false);
 
   useEffect(() => {
-    const fetchUserData = async () => {
+    if(user){const fetchUserData = async () => {
+      try {
+        const { data } = await axios.get(
+          `http://localhost:5005/api/users/${user._id}`
+        );
+        console.log("fetched data for user ", data);
+  
+        // Check if currentUser's ID is in the favorites array
+        if (data.favorites.includes(userId)) {
+          setFavorite(true);
+        }else{setFavorite(false);
+        }
+      } catch (err) {
+        console.log("fetch user data error", err);
+      }
+    };
+    fetchUserData();}
+  }, [user,userId]);
+
+  useEffect(() => {
+    const fetchCurrentUserData = async () => {
       try {
         const { data } = await axios.get(
           `http://localhost:5005/api/users/${userId}`
@@ -26,8 +46,34 @@ function ProfilePage() {
         console.log("fetch user data error", err);
       }
     };
-    fetchUserData();
+    fetchCurrentUserData();
   }, [userId]);
+  const handleFavoriteClick = async () => {
+    try {
+      if (favorite) {
+        const response = await axios.put(
+          `http://localhost:5005/api/favorites/${currentUser._id}`,
+          {
+            userIdToRemove: user._id,
+          }
+        );
+        console.log("favorite removed", response.data);
+      } else {
+        const response = await axios.put(
+          `http://localhost:5005/api/favorites/${currentUser._id}`,
+          {
+            userIdToAdd: user._id,
+          }
+        );
+        console.log("favorite added", response.data);
+      }
+      setFavorite(!favorite);
+    } catch (err) {
+      console.log("update favorites error", err);
+    }
+  };
+  
+
   if (!currentUser) {
     return "loading";
   }
@@ -45,9 +91,7 @@ function ProfilePage() {
         className={favorite ? "coloredHeart" : "blackHeart"}
         src={heart}
         alt="heart"
-        onClick={() => {
-          setFavorite(!favorite);
-        }}
+        onClick={handleFavoriteClick}
       />
       {userId === user._id && <Link to={`/edit/${userId}`}>Edit Profile</Link>}
       <div className="aboutme-box">
