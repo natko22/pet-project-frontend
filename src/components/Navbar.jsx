@@ -29,6 +29,7 @@ function Navbar() {
           </Link>
           <Link to={`/profile/${user._id}`}>Profile</Link>
           <Link to={"pet-profiles"}>Search Pets</Link>
+          <Link to={"/favorites"}>Favorites</Link>
         </div>
       ) : (
         <div className="nav-links">
