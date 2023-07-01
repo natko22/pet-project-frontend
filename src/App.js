@@ -7,9 +7,11 @@ import ProfilePage from "./pages/ProfilePage";
 import HomePage from "./pages/HomePage";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
-import EditProfile from "./components/EditProfile";
+import EditProfile from "./pages/EditProfile";
 import PetProfilePage from "./pages/PetProfilePage";
 import AddPet from "./pages/AddNewPetPage";
+import EditPetProfilePage from "./pages/EditPetProfilePage.jsx";
+import SearchPetProfiles from "./pages/SearchPetProfiles";
 
 function App() {
   return (
@@ -23,6 +25,8 @@ function App() {
         <Route path="/edit/:userId" element={<EditProfile />} />
         <Route path="/petProfile/:petId" element={<PetProfilePage />} />
         <Route path="/add-pet" element={<AddPet />} />
+        <Route path="/edit-pet/:petId" element={<EditPetProfilePage />} />
+        <Route path="/pet-profiles" element={<SearchPetProfiles />} />
       </Routes>
       <Footer />
     </div>

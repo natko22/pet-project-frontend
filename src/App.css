@@ -510,7 +510,7 @@ textarea {
 .pet-box-h2 {
   text-align: center;
 }
-.all-pets{
+.all-pets {
   display: flex;
   justify-content: space-around;
 }
@@ -569,28 +569,27 @@ textarea {
   height: 500px;
 }
 
-
 /* pet profile page */
 
-.gender-img{
+.gender-img {
   width: 25px;
 }
 
-.profilepage p{
-  margin:3px
+.profilepage p {
+  margin: 3px;
 }
 
-.aboutme-box{
-    display: flex;
-    background-color: #fffcfc;
-    width: 800px;
-    padding: 20px;
-    justify-content: space-evenly;
-    border-radius: 5px;
-    box-shadow: 0 3px 8px rgba(4, 15, 10, 0.601);
-    margin: 20px;
+.aboutme-box {
+  display: flex;
+  background-color: #fffcfc;
+  width: 800px;
+  padding: 20px;
+  justify-content: space-evenly;
+  border-radius: 5px;
+  box-shadow: 0 3px 8px rgba(4, 15, 10, 0.601);
+  margin: 20px;
 }
-.aboutme-box h2{
+.aboutme-box h2 {
   margin: 0;
 }
 
@@ -641,4 +640,32 @@ label {
   border: none;
   border-radius: 10px;
   cursor: pointer;
+}
+
+/* search pet profiles */
+
+.card {
+  border: 2px solid black;
+  border-radius: 4px;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+.card-img {
+  width: 100%;
+  height: auto;
+  margin-bottom: 10px;
+}
+
+.card-content {
+  font-family: "Times New Roman", Times, serif;
+}
+
+.card-content h3 {
+  font-size: 18px;
+  margin-bottom: 5px;
+}
+
+.card-content p {
+  margin: 5px 0;
 }

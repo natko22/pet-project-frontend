@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 import { AuthContext } from "../context/auth.context";
 import { useParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const EditProfile = () => {
   const [username, setUsername] = useState("");
@@ -16,8 +17,8 @@ const EditProfile = () => {
 
   const { user } = useContext(AuthContext);
   const { userId } = useParams();
+  const navigate = useNavigate();
 
-  const [userProfile, setUserProfile] = useState(null);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -26,10 +27,15 @@ const EditProfile = () => {
         const response = await axios.get(
           `http://localhost:5005/auth/edit/${userId}`
         );
-          setUsername(response.data.user.username)
-          setEmail(response.data.user.email)
+        setUsername(response.data.user.username || "");
+        setEmail(response.data.user.email || "");
+        setPassword(response.data.user.password || "");
+        setPostalCode(response.data.user.postalCode || "");
+        setAboutMe(response.data.user.aboutMe || "");
+        setAvailability(response.data.user.availability || "");
+        setIsPetOwner(response.data.user.isPetOwner || "");
+        setIsSitter(response.data.user.isSitter || "");
 
-        setUserProfile(response.data);
         setLoading(false);
       } catch (error) {
         console.error("Error fetching user profile:", error);
@@ -102,6 +108,7 @@ const EditProfile = () => {
         }
       );
       console.log("Profile updated successfully:", response.data);
+      navigate(`/profile/${userId}`);
     } catch (error) {
       console.error("Error updating profile:", error);
     }
@@ -117,12 +124,22 @@ const EditProfile = () => {
       <form onSubmit={handleSubmit} className="edit-profile-form">
         <label>
           Username:
-          <input type="text" value={username} onChange={handleUsernameChange} />
+          <input
+            type="text"
+            value={username}
+            onChange={handleUsernameChange}
+            placeholder="Username"
+          />
         </label>
 
         <label>
           Email:
-          <input type="email" value={email} onChange={handleEmailChange} />
+          <input
+            type="email"
+            value={email}
+            onChange={handleEmailChange}
+            placeholder="example@gmail.com"
+          />
         </label>
 
         <label>
@@ -131,6 +148,8 @@ const EditProfile = () => {
             type="password"
             value={password}
             onChange={handlePasswordChange}
+            placeholder="*****"
+            autoComplete="current-password"
           />
         </label>
 
@@ -140,12 +159,17 @@ const EditProfile = () => {
             type="text"
             value={postalCode}
             onChange={handlePostalCodeChange}
+            placeholder="10324"
           />
         </label>
 
         <label>
           About Me:
-          <textarea value={aboutMe} onChange={handleAboutMeChange} />
+          <textarea
+            value={aboutMe}
+            onChange={handleAboutMeChange}
+            placeholder="Share your pet journey... Whether you're a pet owner or sitter, tell us your story!"
+          />
         </label>
         <label>
           Availability:
@@ -153,6 +177,7 @@ const EditProfile = () => {
             type="text"
             value={availability}
             onChange={handleAvailabilityChange}
+            placeholder="Enter your availability for pet sitting "
           />
         </label>
         <label>

@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 function AddPet() {
   const [name, setName] = useState("");
@@ -16,7 +17,8 @@ function AddPet() {
   const [error, setError] = useState(null);
   const [success, setSuccess] = useState(false);
 
-  const { petId } = useParams();
+  const { petId, userId } = useParams();
+  const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -44,7 +46,7 @@ function AddPet() {
         newPet
       );
       console.log(response.data);
-      // navigate to pet profile
+      // navigate(`/profile/${userId}`);
     } catch (error) {
       console.error(error);
     }
@@ -52,6 +54,8 @@ function AddPet() {
 
   return (
     <div>
+      <Link to={`/petProfile/${petId}`}>Back to Pet Profile</Link>
+
       <h1>Add a New Pet</h1>
       <form onSubmit={handleSubmit} className="add-new-pet">
         <label>
@@ -60,6 +64,7 @@ function AddPet() {
             type="text"
             value={name}
             onChange={(e) => setName(e.target.value)}
+            placeholder="Enter a cute name"
           />
         </label>
         <label>
@@ -68,6 +73,7 @@ function AddPet() {
             type="text"
             value={race}
             onChange={(e) => setRace(e.target.value)}
+            placeholder="E.g., Mixed,Pomeranian, Siamese"
           />
         </label>
         <label>
@@ -76,24 +82,30 @@ function AddPet() {
             type="number"
             value={age}
             onChange={(e) => setAge(e.target.value)}
+            placeholder="In months or years"
           />
         </label>
         <label>
           Gender:
-          <input
-            type="text"
-            value={gender}
-            onChange={(e) => setGender(e.target.value)}
-          />
+          <select value={gender} onChange={(e) => setGender(e.target.value)}>
+            <option value="">Select gender</option>
+            <option value="Male">Male</option>
+            <option value="Female">Female</option>
+          </select>
         </label>
         <label>
-          Type:
-          <input
-            type="text"
-            value={type}
-            onChange={(e) => setType(e.target.value)}
-          />
+          Type of Animal:
+          <select value={type} onChange={(e) => setType(e.target.value)}>
+            <option value="">Select Type</option>
+            <option value="Dog">Dog</option>
+            <option value="Cat">Cat</option>
+            <option value="Rabbit">Rabbit</option>
+            <option value="Snake">Snake</option>
+            <option value="Hamster">Hamster</option>
+            <option value="Bird">Bird</option>
+          </select>
         </label>
+
         <label>
           Castrated:
           <input
@@ -109,6 +121,7 @@ function AddPet() {
             type="text"
             value={medicalCondition}
             onChange={(e) => setMedicalCondition(e.target.value)}
+            placeholder="E.g., Playful and healthy"
           />
         </label>
         <label>
@@ -117,6 +130,7 @@ function AddPet() {
             type="text"
             value={diet}
             onChange={(e) => setDiet(e.target.value)}
+            placeholder="E.g., Premium dog food"
           />
         </label>
         <label>
@@ -125,6 +139,7 @@ function AddPet() {
             type="text"
             value={instruction}
             onChange={(e) => setInstruction(e.target.value)}
+            placeholder="E.g., Walk twice a day"
           />
         </label>
         <label>
@@ -133,6 +148,7 @@ function AddPet() {
             type="text"
             value={img}
             onChange={(e) => setImg(e.target.value)}
+            placeholder="E.g., https://example.com/pet-image.jpg"
           />
         </label>
         <button type="submit" className="add-new-pet-btn">
