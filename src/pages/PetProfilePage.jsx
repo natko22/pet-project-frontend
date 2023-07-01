@@ -72,11 +72,7 @@ function PetProfilePage() {
             pet.medicalCondition
           )}
           <h3>Diet</h3>
-          {!pet.medicalCondition ? (
-            <p>There's no medical condition yet.</p>
-          ) : (
-            pet.medicalCondition
-          )}
+          {!pet.diet ? <p>There's no medical condition yet.</p> : pet.diet}
         </div>
       </div>
     </div>
