@@ -4,6 +4,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { useContext } from "react";
 import { AuthContext } from "../context/auth.context";
+import { useEffect } from "react";
 
 function AddPet() {
   const [name, setName] = useState("");
@@ -18,10 +19,28 @@ function AddPet() {
   const [img, setImg] = useState("");
   const [error, setError] = useState(null);
   const [success, setSuccess] = useState(false);
-
+  const [pet, setPet] = useState([]);
+  const [userData, setUserData] = useState(null);
   const { petId } = useParams();
   const navigate = useNavigate();
   const { user } = useContext(AuthContext);
+
+  useEffect(() => {
+    const fetchUserData = async () => {
+      try {
+        if (user) {
+          const { data } = await axios.get(
+            `http://localhost:5005/api/users/${user._id}`
+          );
+          console.log("fetched data", data);
+          setUserData(data);
+        }
+      } catch (err) {
+        console.log("fetch user data error", err);
+      }
+    };
+    fetchUserData();
+  }, [user]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -29,6 +48,11 @@ function AddPet() {
       setError("Please fill in all required fields.");
       return;
     }
+    const updatedProfile = {
+      ...userData,
+      pets: [...userData.pets, { _id: pet._id }],
+    };
+    console.log("uploadprofile", updatedProfile);
 
     const newPet = {
       name,
@@ -41,6 +65,7 @@ function AddPet() {
       diet,
       instruction,
       img,
+      owner:user._id
     };
 
     try {
@@ -48,7 +73,12 @@ function AddPet() {
         "http://localhost:5005/api/add-pet/",
         newPet
       );
-      console.log(response.data);
+      setPet(response.data);
+      // const responseUser = await axios.put(
+      //   `http://localhost:5005/auth/edit/${userData._id}`,
+      //   updatedProfile
+      // );
+      // console.log("user updated", responseUser);
       navigate(`/profile/${user._id}`);
     } catch (error) {
       console.error(error);
