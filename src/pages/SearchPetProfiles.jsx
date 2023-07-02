@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import { Link } from "react-router-dom";
 
 const SearchPetProfiles = () => {
   const [petProfiles, setPetProfiles] = useState([]);
@@ -64,16 +65,18 @@ const SearchPetProfiles = () => {
       ) : (
         filteredPetProfiles.map((pet) => (
           <div key={pet._id} className="card">
-            <img src={pet.img} alt={pet.name} className="card-img" />
-            <div className="card-content">
-              <h3>{pet.name}</h3>
-              <p>Race: {pet.race}</p>
-              <p>Age: {pet.age}</p>
-              <p>Gender: {pet.gender}</p>
-              <p>Castrated: {pet.castrated}</p>
-              <p>Medical Condition: {pet.medicalCondition}</p>
-              <p>Diet: {pet.diet}</p>
-            </div>
+            <Link to={`/petProfile/${pet._id}`} className="link-to-pet-profile">
+              <img src={pet.img} alt={pet.name} className="card-img" />
+              <div className="card-content">
+                <h3>{pet.name}</h3>
+                <p>Race: {pet.race}</p>
+                <p>Age: {pet.age}</p>
+                <p>Gender: {pet.gender}</p>
+                <p>Castrated: {pet.castrated}</p>
+                <p>Medical Condition: {pet.medicalCondition}</p>
+                <p>Diet: {pet.diet}</p>
+              </div>
+            </Link>
           </div>
         ))
       )}
