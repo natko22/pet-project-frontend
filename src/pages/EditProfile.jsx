@@ -4,6 +4,7 @@ import axios from "axios";
 import { AuthContext } from "../context/auth.context";
 import { useParams } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
+import imgPlaceholder from "../assets/placeholder.png";
 
 const EditProfile = () => {
   const [username, setUsername] = useState("");
@@ -21,15 +22,18 @@ const EditProfile = () => {
   const { user } = useContext(AuthContext);
   const { userId } = useParams();
   const navigate = useNavigate();
+  const [showUploadForm, setShowUploadForm] = useState(false);
 
   const [loading, setLoading] = useState(true);
 
+  // Handle image change
   const handleImageChange = (e) => {
     const file = e.target.files[0];
     setProfileImage(file);
     setImagePreview(URL.createObjectURL(file));
   };
 
+  // Upload image
   const uploadImage = async (e) => {
     e.preventDefault();
     setIsLoading(true);
@@ -69,6 +73,7 @@ const EditProfile = () => {
         setAvailability(response.data.user.availability || "");
         setIsPetOwner(response.data.user.isPetOwner || "");
         setIsSitter(response.data.user.isSitter || "");
+        setProfileImage(response.data.user.profileImage || null);
 
         setLoading(false);
       } catch (error) {
@@ -115,6 +120,9 @@ const EditProfile = () => {
   const handleSitterChange = (e) => {
     setIsSitter(e.target.checked);
   };
+  const handleEditPhoto = () => {
+    setShowUploadForm(true);
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -152,30 +160,38 @@ const EditProfile = () => {
     <div>
       <Link to={`/profile/${userId}`}>Back to Profile</Link>
 
-      <h2>Edit Profile</h2>
+      {!showUploadForm && (
+        <button className="photo-edit-btn" onClick={handleEditPhoto}>
+          <span>Edit Photo</span>
+        </button>
+      )}
 
-      <button className="photo-edit-btn">Edit Photo</button>
-      <h2>Add image</h2>
-      <div className="card">
-        <form onSubmit={uploadImage}>
-          <label>
-            <input
-              type="file"
-              accept="image/png, image/jpeg, image/jpg"
-              name="image"
-              onChange={handleImageChange}
-            />
-          </label>
-          {isLoading ? (
-            <p>Uploading...</p>
-          ) : (
-            <button type="submit">Upload</button>
-          )}
-        </form>
-        <div className="profile-photo">
-          {imagePreview && <img src={imagePreview} alt="" />}
+      {showUploadForm && (
+        <div>
+          <h2>Add image</h2>
+          <div className="card">
+            <form onSubmit={uploadImage}>
+              <label>
+                <input
+                  type="file"
+                  accept="image/png, image/jpeg, image/jpg"
+                  name="image"
+                  onChange={handleImageChange}
+                />
+              </label>
+              {isLoading ? (
+                <p>Uploading...</p>
+              ) : (
+                <button type="submit">Upload</button>
+              )}
+            </form>
+            <div className="profile-photo">
+              {imagePreview && <img src={imagePreview} alt="" />}
+            </div>
+          </div>
         </div>
-      </div>
+      )}
+
       <form onSubmit={handleSubmit} className="edit-profile-form">
         <label>
           Username:

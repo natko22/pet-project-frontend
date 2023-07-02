@@ -13,8 +13,11 @@ const EditPet = () => {
   const [medicalCondition, setMedicalCondition] = useState("");
   const [diet, setDiet] = useState("");
   const [instruction, setInstruction] = useState("");
-  const [img, setImg] = useState("");
   const [loading, setLoading] = useState(true);
+
+  const [img, setImg] = useState("");
+  const [imagePreview, setImagePreview] = useState(null);
+  const [isLoading, setIsLoading] = useState(false);
 
   const { petId } = useParams();
   const navigate = useNavigate();
@@ -88,8 +91,38 @@ const EditPet = () => {
     setInstruction(e.target.value);
   };
 
+  // Handle image change
   const handleImgChange = (e) => {
-    setImg(e.target.value);
+    const file = e.target.files[0];
+    setImg(file);
+    setImagePreview(URL.createObjectURL(file));
+  };
+
+  // Upload image
+  const handleImgUpload = async (e) => {
+    e.preventDefault();
+    setIsLoading(true);
+
+    try {
+      if (img && img.type.includes("image")) {
+        const formData = new FormData();
+        formData.append("imageUrl", e.target.image.files[0]);
+        console.log(formData, "FORMDATA");
+
+        const response = await axios.post(
+          `http://localhost:5005/auth/upload/${petId}`,
+          formData
+        );
+        console.log(response);
+
+        setIsLoading(false);
+      } else {
+        throw new Error("Please select a valid image file.");
+      }
+    } catch (error) {
+      console.error(error);
+      setIsLoading(false);
+    }
   };
 
   const handleSubmit = async (e) => {
@@ -221,13 +254,23 @@ const EditPet = () => {
         <label>
           Image URL:
           <input
-            type="text"
-            value={img}
+            name="image"
+            type="file"
+            accept="image/png, image/jpeg, image/jpg"
             onChange={handleImgChange}
             placeholder="Image URL"
           />
         </label>
-
+        {isLoading ? (
+          <p>Uploading...</p>
+        ) : (
+          <button type="submit" onClick={handleImgUpload}>
+            Upload
+          </button>
+        )}
+        <div className="pet-photo">
+          {imagePreview && <img src={imagePreview} alt="" />}
+        </div>
         <button type="submit">Save</button>
       </form>
     </div>
