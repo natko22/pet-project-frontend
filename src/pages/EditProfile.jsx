@@ -4,7 +4,7 @@ import axios from "axios";
 import { AuthContext } from "../context/auth.context";
 import { useParams } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
-import imgPlaceholder from "../assets/placeholder.png";
+import AvatarEditor from "react-avatar-editor";
 
 const EditProfile = () => {
   const [username, setUsername] = useState("");
@@ -23,6 +23,8 @@ const EditProfile = () => {
   const { userId } = useParams();
   const navigate = useNavigate();
   const [showUploadForm, setShowUploadForm] = useState(false);
+  const [scale, setScale] = useState(1);
+  const [uploadSuccess, setUploadSuccess] = useState(false);
 
   const [loading, setLoading] = useState(true);
 
@@ -48,7 +50,8 @@ const EditProfile = () => {
           formData
         );
         console.log(response);
-
+        // setProfileImage(response.data.imageUrl);
+        setUploadSuccess(true);
         setIsLoading(false);
       } else {
         throw new Error("Please select a valid image file.");
@@ -155,7 +158,7 @@ const EditProfile = () => {
       console.error("Error updating profile:", error);
     }
   };
-
+  console.log(uploadSuccess, "upload success");
   return (
     <div>
       <Link to={`/profile/${userId}`}>Back to Profile</Link>
@@ -169,24 +172,54 @@ const EditProfile = () => {
       {showUploadForm && (
         <div>
           <h2>Add image</h2>
-          <div className="card">
-            <form onSubmit={uploadImage}>
-              <label>
-                <input
-                  type="file"
-                  accept="image/png, image/jpeg, image/jpg"
-                  name="image"
-                  onChange={handleImageChange}
-                />
-              </label>
-              {isLoading ? (
-                <p>Uploading...</p>
-              ) : (
-                <button type="submit">Upload</button>
-              )}
-            </form>
-            <div className="profile-photo">
-              {imagePreview && <img src={imagePreview} alt="" />}
+          <div className="upload-form-container">
+            <div className="upload-form">
+              <form onSubmit={uploadImage}>
+                <label>
+                  <input
+                    className="upload-input"
+                    type="file"
+                    accept="image/png, image/jpeg, image/jpg"
+                    name="image"
+                    onChange={handleImageChange}
+                  />
+                </label>
+                <div className="profile-photo">
+                  {imagePreview && (
+                    <div className="avatar-editor">
+                      <AvatarEditor
+                        image={imagePreview}
+                        width={250}
+                        height={250}
+                        border={50}
+                        borderRadius={125}
+                        color={[255, 255, 255, 0.6]}
+                        scale={scale}
+                      />
+                      <input
+                        type="range"
+                        min={0.1}
+                        max={2}
+                        step={0.1}
+                        value={scale}
+                        onChange={(e) => setScale(parseFloat(e.target.value))}
+                      />
+                    </div>
+                  )}
+                </div>
+                {isLoading ? (
+                  <p>Uploading...</p>
+                ) : (
+                  <>
+                    {!uploadSuccess && (
+                      <button className="upload-btn" type="submit">
+                        Upload
+                      </button>
+                    )}
+                    {uploadSuccess && <p>Photo uploaded successfully!</p>}
+                  </>
+                )}
+              </form>
             </div>
           </div>
         </div>

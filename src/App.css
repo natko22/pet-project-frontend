@@ -387,8 +387,40 @@ textarea {
   font-family: "Times New Roman", Times, serif;
   border: none;
   border-radius: 10px;
-
   cursor: pointer;
+}
+
+.upload-form-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.upload-form {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.upload-btn {
+  width: 100px;
+  height: 30px;
+  border-radius: 10%;
+  color: #000000;
+  cursor: pointer;
+  margin: 10px;
+}
+.upload-input {
+  width: 100px;
+  height: 30px;
+  border-radius: 10%;
+  color: #000000;
+  cursor: pointer;
+}
+
+.upload-photo-p {
+  color: black;
 }
 
 @media (max-width: 1142px) {
