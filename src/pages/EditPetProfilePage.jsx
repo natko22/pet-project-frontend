@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import AvatarEditor from "react-avatar-editor";
 
 const EditPet = () => {
   const [name, setName] = useState("");
@@ -18,6 +19,8 @@ const EditPet = () => {
   const [img, setImg] = useState("");
   const [imagePreview, setImagePreview] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
+  const [scale, setScale] = useState(1);
+  const [uploadSuccess, setUploadSuccess] = useState(false);
 
   const { petId } = useParams();
   const navigate = useNavigate();
@@ -114,7 +117,7 @@ const EditPet = () => {
           formData
         );
         console.log(response);
-
+        setUploadSuccess(true);
         setIsLoading(false);
       } else {
         throw new Error("Please select a valid image file.");
@@ -261,17 +264,45 @@ const EditPet = () => {
             placeholder="Image URL"
           />
         </label>
-        {isLoading ? (
-          <p>Uploading...</p>
-        ) : (
-          <button type="submit" onClick={handleImgUpload}>
-            Upload
-          </button>
-        )}
+
         <div className="pet-photo">
-          {imagePreview && <img src={imagePreview} alt="" />}
+          {imagePreview && (
+            <div className="avatar-editor">
+              <AvatarEditor
+                image={imagePreview}
+                width={250}
+                height={250}
+                border={50}
+                borderRadius={125}
+                color={[255, 255, 255, 0.6]}
+                scale={scale}
+              />
+              <input
+                type="range"
+                min={0.1}
+                max={2}
+                step={0.1}
+                value={scale}
+                onChange={(e) => setScale(parseFloat(e.target.value))}
+              />
+            </div>
+          )}
+          {isLoading ? (
+            <p>Uploading...</p>
+          ) : (
+            <>
+              {!uploadSuccess && (
+                <button className="upload-btn" type="submit">
+                  Upload
+                </button>
+              )}
+              {uploadSuccess && <p>Photo uploaded successfully!</p>}
+            </>
+          )}
         </div>
-        <button type="submit">Save</button>
+        <button className="save-pet-btn" type="submit">
+          Save
+        </button>
       </form>
     </div>
   );

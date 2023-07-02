@@ -423,6 +423,18 @@ textarea {
   color: black;
 }
 
+.pet-photo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.save-pet-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #3a4d3c;
+}
+
 @media (max-width: 1142px) {
   .header {
     flex-direction: column;
