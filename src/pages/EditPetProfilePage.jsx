@@ -142,7 +142,7 @@ const EditPet = () => {
       medicalCondition,
       diet,
       instruction,
-      img,
+      img: img ? img.img : "",
     };
 
     try {

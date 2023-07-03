@@ -460,10 +460,9 @@ textarea {
 
 /* profilepage */
 
-.pet-profile-img {
+.profileImg {
   border-radius: 50%;
   width: 100px;
-  height: 100px;
 }
 .profilepage {
   display: flex;
@@ -615,6 +614,12 @@ textarea {
 }
 
 /* pet profile page */
+
+.pet-profile-img {
+  border-radius: 50%;
+  width: 100px;
+  height: 100px;
+}
 
 .gender-img {
   width: 25px;
