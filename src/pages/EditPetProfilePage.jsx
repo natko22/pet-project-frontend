@@ -109,16 +109,17 @@ const EditPet = () => {
     try {
       if (img && img.type.includes("image")) {
         const formData = new FormData();
-        formData.append("imageUrl", e.target.image.files[0]);
+        formData.append("imageUrl", img);
         console.log(formData, "FORMDATA");
 
         const response = await axios.post(
-          `http://localhost:5005/auth/upload/${petId}`,
+          `http://localhost:5005/api/upload/${petId}`,
           formData
         );
         console.log(response);
         setUploadSuccess(true);
         setIsLoading(false);
+        console.log(setUploadSuccess, "upload success");
       } else {
         throw new Error("Please select a valid image file.");
       }
@@ -257,7 +258,7 @@ const EditPet = () => {
         <label>
           Image URL:
           <input
-            name="image"
+            name="imageUrl"
             type="file"
             accept="image/png, image/jpeg, image/jpg"
             onChange={handleImgChange}
@@ -292,7 +293,11 @@ const EditPet = () => {
           ) : (
             <>
               {!uploadSuccess && (
-                <button className="upload-btn" type="submit">
+                <button
+                  className="upload-btn"
+                  type="submit"
+                  onClick={handleImgUpload}
+                >
                   Upload
                 </button>
               )}
