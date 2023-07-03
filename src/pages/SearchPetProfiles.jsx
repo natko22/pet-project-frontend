@@ -66,7 +66,7 @@ const SearchPetProfiles = () => {
         filteredPetProfiles.map((pet) => (
           <div key={pet._id} className="card">
             <Link to={`/petProfile/${pet._id}`} className="link-to-pet-profile">
-              <img src={pet.img} alt={pet.name} className="card-img" />
+              <img src={pet.img} alt={pet.name} className="pet-card-img" />
               <div className="card-content">
                 <h3>{pet.name}</h3>
                 <p>Race: {pet.race}</p>

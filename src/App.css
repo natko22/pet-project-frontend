@@ -700,6 +700,9 @@ label {
   height: auto;
   margin-bottom: 10px;
 }
+.pet-card-img {
+  width: 80px;
+}
 
 .card-content {
   font-family: "Times New Roman", Times, serif;
