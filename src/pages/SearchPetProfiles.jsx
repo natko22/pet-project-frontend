@@ -14,7 +14,11 @@ const SearchPetProfiles = () => {
 
   const fetchPetProfiles = async () => {
     try {
-      const response = await axios.get("http://localhost:5005/api/pets/");
+      const response = await axios.get("http://localhost:5005/api/pets/", {
+        populate: "user",
+        select:
+          "name race age gender castrated medicalCondition diet user.postalCode",
+      });
       setPetProfiles(response.data);
       setLoading(false);
     } catch (error) {
@@ -28,7 +32,8 @@ const SearchPetProfiles = () => {
 
     return (
       (!searchQuery ||
-        (petName && petName.includes(searchQuery.toLowerCase()))) &&
+        (petName && petName.includes(searchQuery.toLowerCase())) ||
+        (userPostalCode && userPostalCode.toString().includes(searchQuery))) &&
       (!animalType || pet.type.toLowerCase() === animalType.toLowerCase())
     );
   });

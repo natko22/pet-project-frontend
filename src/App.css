@@ -732,3 +732,24 @@ label {
 .link-to-pet-profile :hover {
   color: #176b21;
 }
+/* search sitters */
+.sitter-card {
+  border: 2px solid black;
+  border-radius: 4px;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+.sitter-card-img {
+  width: 80px;
+  border-radius: 10px;
+}
+
+.link-to-sitter-profile {
+  text-decoration: none;
+  color: black;
+  font-size: 20px;
+}
+.link-to-sitter-profile :hover {
+  color: #176b21;
+}
