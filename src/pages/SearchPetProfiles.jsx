@@ -14,11 +14,14 @@ const SearchPetProfiles = () => {
 
   const fetchPetProfiles = async () => {
     try {
-      const response = await axios.get("http://localhost:5005/api/pets/", {
-        populate: "user",
-        select:
-          "name race age gender castrated medicalCondition diet user.postalCode",
-      });
+      const response = await axios.get(
+        "http://localhost:5005/api/pet-profiles/",
+        {
+          populate: "user",
+          select:
+            "name race age gender castrated medicalCondition diet user.postalCode",
+        }
+      );
       setPetProfiles(response.data);
       setLoading(false);
     } catch (error) {

@@ -13,7 +13,9 @@ function SearchSittersPage() {
   }, []);
   const fetchSitters = async () => {
     try {
-      const response = await axios.get("http://localhost:5005/api/sitters");
+      const response = await axios.get(
+        "http://localhost:5005/api/sitters-profiles"
+      );
       setSitters(response.data);
       setLoading(false);
     } catch (error) {
