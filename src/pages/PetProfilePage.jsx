@@ -1,7 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../context/auth.context";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import imgPlaceholder from "../assets/pawprint.png";
 import { useParams } from "react-router-dom";
@@ -10,9 +9,7 @@ import female from "../assets/female.png";
 
 function PetProfilePage() {
   const { petId } = useParams();
-  const { user } = useContext(AuthContext);
   const [pet, setPet] = useState(null);
-  const [petImage, setPetImage] = useState(null);
 
   useEffect(() => {
     const fetchPetData = async () => {
@@ -40,7 +37,7 @@ function PetProfilePage() {
 
       <div className="profilepage">
         <img
-          className="profileImg"
+          className="pet-profile-img"
           src={!pet.img ? imgPlaceholder : pet.img}
           alt={pet.name}
         />

@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import { Link } from "react-router-dom";
 
 const SearchPetProfiles = () => {
   const [petProfiles, setPetProfiles] = useState([]);
   const [searchQuery, setSearchQuery] = useState("");
+  const [animalType, setAnimalType] = useState("");
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -12,8 +14,14 @@ const SearchPetProfiles = () => {
 
   const fetchPetProfiles = async () => {
     try {
-      const response = await axios.get("http://localhost:5005/api/pets/");
-
+      const response = await axios.get(
+        "http://localhost:5005/api/pet-profiles/",
+        {
+          populate: "user",
+          select:
+            "name race age gender castrated medicalCondition diet user.postalCode",
+        }
+      );
       setPetProfiles(response.data);
       setLoading(false);
     } catch (error) {
@@ -21,9 +29,18 @@ const SearchPetProfiles = () => {
     }
   };
 
-  const filteredPetProfiles = petProfiles.filter((pet) =>
-    pet.name.toLowerCase().includes(searchQuery.toLowerCase())
-  );
+  const filteredPetProfiles = petProfiles.filter((pet) => {
+    const petName = pet.name && pet.name.toLowerCase();
+    const userPostalCode = pet.user && pet.user.postalCode;
+
+    return (
+      (!searchQuery ||
+        (petName && petName.includes(searchQuery.toLowerCase())) ||
+        (userPostalCode && userPostalCode.toString().includes(searchQuery))) &&
+      (!animalType || pet.type.toLowerCase() === animalType.toLowerCase())
+    );
+  });
+
   if (loading) {
     return <div>Loading pet profiles...</div>;
   }
@@ -38,15 +55,26 @@ const SearchPetProfiles = () => {
         placeholder="Search pet profiles..."
       />
 
-      {loading ? (
-        <div>Loading pet profiles...</div>
-      ) : (
-        <>
-          {filteredPetProfiles.length > 0}
+      <select
+        value={animalType}
+        onChange={(e) => setAnimalType(e.target.value)}
+      >
+        <option value="">All Animals</option>
+        <option value="dog">Dog</option>
+        <option value="cat">Cat</option>
+        <option value="rabbit">Rabbit</option>
+        <option value="snake">Snake</option>
+        <option value="hamster">Hamster</option>
+        <option value="bird">Bird</option>
+      </select>
 
-          {filteredPetProfiles.map((pet) => (
-            <div key={pet._id} className="card">
-              <img src={pet.img} alt={pet.name} className="card-img" />
+      {filteredPetProfiles.length === 0 ? (
+        <div>No matching pet profiles found.</div>
+      ) : (
+        filteredPetProfiles.map((pet) => (
+          <div key={pet._id} className="card">
+            <Link to={`/petProfile/${pet._id}`} className="link-to-pet-profile">
+              <img src={pet.img} alt={pet.name} className="pet-card-img" />
               <div className="card-content">
                 <h3>{pet.name}</h3>
                 <p>Race: {pet.race}</p>
@@ -56,9 +84,9 @@ const SearchPetProfiles = () => {
                 <p>Medical Condition: {pet.medicalCondition}</p>
                 <p>Diet: {pet.diet}</p>
               </div>
-            </div>
-          ))}
-        </>
+            </Link>
+          </div>
+        ))
       )}
     </div>
   );

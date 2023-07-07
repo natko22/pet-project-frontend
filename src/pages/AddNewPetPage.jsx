@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import { useContext } from "react";
 import { AuthContext } from "../context/auth.context";
 import { useEffect } from "react";
+import AvatarEditor from "react-avatar-editor";
 
 function AddPet() {
   const [name, setName] = useState("");
@@ -24,6 +25,46 @@ function AddPet() {
   const { petId } = useParams();
   const navigate = useNavigate();
   const { user } = useContext(AuthContext);
+
+  const [imagePreview, setImagePreview] = useState(null);
+  const [isLoading, setIsLoading] = useState(false);
+  const [scale, setScale] = useState(1);
+  const [uploadSuccess, setUploadSuccess] = useState(false);
+
+  // Handle image change
+  const handleImgChange = (e) => {
+    const file = e.target.files[0];
+    setImg(file);
+    setImagePreview(URL.createObjectURL(file));
+  };
+
+  // Upload image
+  const handleImgUpload = async (e) => {
+    e.preventDefault();
+    setIsLoading(true);
+
+    try {
+      if (img && img.type.includes("image")) {
+        const formData = new FormData();
+        formData.append("imageUrl", img);
+        console.log(formData, "FORMDATA");
+
+        const response = await axios.post(
+          `http://localhost:5005/api/upload/${petId}`,
+          formData
+        );
+        console.log(response);
+        setUploadSuccess(true);
+        setIsLoading(false);
+        console.log(setUploadSuccess, "upload success");
+      } else {
+        throw new Error("Please select a valid image file.");
+      }
+    } catch (error) {
+      console.error(error);
+      setIsLoading(false);
+    }
+  };
 
   useEffect(() => {
     const fetchUserData = async () => {
@@ -65,7 +106,7 @@ function AddPet() {
       diet,
       instruction,
       img,
-      owner:user._id
+      owner: user._id,
     };
 
     try {
@@ -178,11 +219,50 @@ function AddPet() {
         <label>
           Image URL:
           <input
-            type="text"
-            value={img}
-            onChange={(e) => setImg(e.target.value)}
+            type="file"
+            name="imageUrl"
+            onChange={handleImgChange}
             placeholder="E.g., https://example.com/pet-image.jpg"
           />
+          <div className="pet-photo">
+            {imagePreview && (
+              <div className="avatar-editor">
+                <AvatarEditor
+                  image={imagePreview}
+                  width={250}
+                  height={250}
+                  border={50}
+                  borderRadius={125}
+                  color={[255, 255, 255, 0.6]}
+                  scale={scale}
+                />
+                <input
+                  type="range"
+                  min={0.1}
+                  max={2}
+                  step={0.1}
+                  value={scale}
+                  onChange={(e) => setScale(parseFloat(e.target.value))}
+                />
+              </div>
+            )}
+            {isLoading ? (
+              <p>Uploading...</p>
+            ) : (
+              <>
+                {!uploadSuccess && (
+                  <button
+                    className="upload-btn"
+                    type="submit"
+                    onClick={handleImgUpload}
+                  >
+                    Upload
+                  </button>
+                )}
+                {uploadSuccess && <p>Photo uploaded successfully!</p>}
+              </>
+            )}{" "}
+          </div>
         </label>
         <button type="submit" className="add-new-pet-btn">
           Add Pet

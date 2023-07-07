@@ -12,6 +12,8 @@ import PetProfilePage from "./pages/PetProfilePage";
 import AddPet from "./pages/AddNewPetPage";
 import EditPetProfilePage from "./pages/EditPetProfilePage.jsx";
 import SearchPetProfiles from "./pages/SearchPetProfiles";
+import SearchPetSittersPage from "./pages/SearchPetSittersPage";
+import BookingsPage from "./pages/BookingsPage";
 
 function App() {
   return (
@@ -27,6 +29,8 @@ function App() {
         <Route path="/add-pet" element={<AddPet />} />
         <Route path="/edit-pet/:petId" element={<EditPetProfilePage />} />
         <Route path="/pet-profiles" element={<SearchPetProfiles />} />
+        <Route path="/sitters-profiles" element={<SearchPetSittersPage />} />
+        <Route path="/bookings" element={<BookingsPage />} />
       </Routes>
       <Footer />
     </div>
