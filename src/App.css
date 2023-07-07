@@ -903,3 +903,13 @@ label {
 .react-calendar--selectRange .react-calendar__tile--hover {
   background-color: #e6e6e6;
 }
+
+/* bookings */
+
+.booking-item {
+  box-sizing: border-box;
+  background-color: #e2ede5;
+  padding: 20px;
+  margin: 10px;
+  box-shadow: 0 3px 8px rgba(4, 15, 10, 0.601);
+}

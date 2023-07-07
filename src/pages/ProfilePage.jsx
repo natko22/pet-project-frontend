@@ -8,6 +8,7 @@ import heart from "../assets/heart.png";
 import ReviewBox from "../components/ReviewBox";
 import MyPetsBox from "../components/MyPetsBox";
 import Calendar from "react-calendar";
+import BookingsPage from "./BookingsPage";
 
 function ProfilePage() {
   const { userId } = useParams();
@@ -37,6 +38,8 @@ function ProfilePage() {
   if (!currentUser) {
     return "loading";
   }
+
+  // handle date changes
   const handleDateChange = (date) => {
     if (date instanceof Date) {
       // Single date selected
@@ -49,6 +52,7 @@ function ProfilePage() {
     }
   };
 
+  // handle bookings submit
   const handleBookingSubmit = async (event) => {
     event.preventDefault();
 
@@ -110,21 +114,7 @@ function ProfilePage() {
       <div>
         <MyPetsBox pets={currentUser.pets} />
       </div>
-      <div>
-        <h2>Bookings</h2>
-        {currentUser.bookings && currentUser.bookings.length > 0 ? (
-          currentUser.bookings.map((booking) => (
-            <div key={booking._id} className="booking-item">
-              <p>Booking ID: {booking._id}</p>
-              <p>Pet Sitter: {booking.sitterId.username}</p>
-              <p>Start Date: {booking.startDate}</p>
-              <p>End Date: {booking.endDate}</p>
-            </div>
-          ))
-        ) : (
-          <p>No bookings found.</p>
-        )}
-      </div>
+      <BookingsPage bookings={currentUser.bookings} />
 
       {/*Add React Calendar*/}
       <h1>React Calendar</h1>
