@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import AvatarEditor from "react-avatar-editor";
 
 const EditPet = () => {
   const [name, setName] = useState("");
@@ -13,8 +14,13 @@ const EditPet = () => {
   const [medicalCondition, setMedicalCondition] = useState("");
   const [diet, setDiet] = useState("");
   const [instruction, setInstruction] = useState("");
-  const [img, setImg] = useState("");
   const [loading, setLoading] = useState(true);
+
+  const [img, setImg] = useState("");
+  const [imagePreview, setImagePreview] = useState(null);
+  const [isLoading, setIsLoading] = useState(false);
+  const [scale, setScale] = useState(1);
+  const [uploadSuccess, setUploadSuccess] = useState(false);
 
   const { petId } = useParams();
   const navigate = useNavigate();
@@ -88,8 +94,39 @@ const EditPet = () => {
     setInstruction(e.target.value);
   };
 
+  // Handle image change
   const handleImgChange = (e) => {
-    setImg(e.target.value);
+    const file = e.target.files[0];
+    setImg(file);
+    setImagePreview(URL.createObjectURL(file));
+  };
+
+  // Upload image
+  const handleImgUpload = async (e) => {
+    e.preventDefault();
+    setIsLoading(true);
+
+    try {
+      if (img && img.type.includes("image")) {
+        const formData = new FormData();
+        formData.append("imageUrl", img);
+        console.log(formData, "FORMDATA");
+
+        const response = await axios.post(
+          `http://localhost:5005/api/upload/${petId}`,
+          formData
+        );
+        console.log(response);
+        setUploadSuccess(true);
+        setIsLoading(false);
+        console.log(setUploadSuccess, "upload success");
+      } else {
+        throw new Error("Please select a valid image file.");
+      }
+    } catch (error) {
+      console.error(error);
+      setIsLoading(false);
+    }
   };
 
   const handleSubmit = async (e) => {
@@ -105,7 +142,7 @@ const EditPet = () => {
       medicalCondition,
       diet,
       instruction,
-      img,
+      img: img ? img.img : "",
     };
 
     try {
@@ -221,14 +258,56 @@ const EditPet = () => {
         <label>
           Image URL:
           <input
-            type="text"
-            value={img}
+            name="imageUrl"
+            type="file"
+            accept="image/png, image/jpeg, image/jpg"
             onChange={handleImgChange}
             placeholder="Image URL"
           />
         </label>
 
-        <button type="submit">Save</button>
+        <div className="pet-photo">
+          {imagePreview && (
+            <div className="avatar-editor">
+              <AvatarEditor
+                image={imagePreview}
+                width={250}
+                height={250}
+                border={50}
+                borderRadius={125}
+                color={[255, 255, 255, 0.6]}
+                scale={scale}
+              />
+              <input
+                type="range"
+                min={0.1}
+                max={2}
+                step={0.1}
+                value={scale}
+                onChange={(e) => setScale(parseFloat(e.target.value))}
+              />
+            </div>
+          )}
+          {isLoading ? (
+            <p>Uploading...</p>
+          ) : (
+            <>
+              {!uploadSuccess && (
+                <button
+                  className="upload-btn"
+                  type="submit"
+                  onClick={handleImgUpload}
+                >
+                  Upload
+                </button>
+              )}
+              {uploadSuccess && <p>Photo uploaded successfully!</p>}
+            </>
+          )}
+        </div>
+        <button className="save-pet-btn" type="submit">
+          Save
+        </button>
       </form>
     </div>
   );

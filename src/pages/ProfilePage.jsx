@@ -7,12 +7,19 @@ import { useParams } from "react-router-dom";
 import heart from "../assets/heart.png";
 import ReviewBox from "../components/ReviewBox";
 import MyPetsBox from "../components/MyPetsBox";
+import Calendar from "react-calendar";
+import BookingsPage from "./BookingsPage";
 
 function ProfilePage() {
   const { userId } = useParams();
   const { user } = useContext(AuthContext);
   const [currentUser, setCurrentUser] = useState(null);
   const [favorite, setFavorite] = useState(false);
+  const [date, setDate] = useState(new Date());
+
+  const [startDate, setStartDate] = useState(null);
+  const [endDate, setEndDate] = useState(null);
+  const [bookingError, setBookingError] = useState(null);
 
   useEffect(() => {
     if(user){const fetchUserData = async () => {
@@ -78,6 +85,46 @@ function ProfilePage() {
     return "loading";
   }
 
+  // handle date changes
+  const handleDateChange = (date) => {
+    if (date instanceof Date) {
+      // Single date selected
+      setStartDate(date);
+      setEndDate(null);
+    } else if (Array.isArray(date)) {
+      // Date range selected
+      setStartDate(date[0]);
+      setEndDate(date[1]);
+    }
+  };
+
+  // handle bookings submit
+  const handleBookingSubmit = async (event) => {
+    event.preventDefault();
+
+    try {
+      if (!startDate || !endDate) {
+        setBookingError("Please select start and end dates.");
+        return;
+      }
+
+      const bookingPayload = {
+        sitterId: userId,
+        startDate: startDate,
+        endDate: endDate,
+      };
+
+      const response = await axios.post(
+        "http://localhost:5005/api/bookings",
+        bookingPayload
+      );
+      console.log("Booking created:", response.data);
+    } catch (error) {
+      console.log("Booking error:", error.response.data);
+      setBookingError("An error occurred while creating the booking.");
+    }
+  };
+
   return (
     <div className="profilepage">
       <img
@@ -111,12 +158,36 @@ function ProfilePage() {
       <div>
         <MyPetsBox pets={currentUser.pets} />
       </div>
-      <div className="contact-box">
-        <div className="calender">calender</div>
+      <BookingsPage bookings={currentUser.bookings} />
+
+      {/*Add React Calendar*/}
+      <h1>React Calendar</h1>
+      <div className="calendar-container">
+        <Calendar
+          onChange={handleDateChange}
+          value={[startDate, endDate]}
+          selectRange={true}
+        />
+
+        <div className="text-center">
+          {startDate && endDate ? (
+            <p>
+              <span>Start:</span> {startDate.toDateString()} to{" "}
+              {endDate.toDateString()}
+            </p>
+          ) : (
+            <p>
+              <span>Default selected date:</span> {date.toDateString()}
+            </p>
+          )}
+        </div>
+
         <div className="contact-btns">
           <Link>Chat with me</Link>
-          <Link>Book</Link>
+          <button onClick={handleBookingSubmit}>Book</button>
         </div>
+
+        {bookingError && <p className="error-message">{bookingError}</p>}
       </div>
     </div>
   );

@@ -387,8 +387,52 @@ textarea {
   font-family: "Times New Roman", Times, serif;
   border: none;
   border-radius: 10px;
-
   cursor: pointer;
+}
+
+.upload-form-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.upload-form {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.upload-btn {
+  width: 100px;
+  height: 30px;
+  border-radius: 10%;
+  color: #000000;
+  cursor: pointer;
+  margin: 10px;
+}
+.upload-input {
+  width: 100px;
+  height: 30px;
+  border-radius: 10%;
+  color: #000000;
+  cursor: pointer;
+}
+
+.upload-photo-p {
+  color: black;
+}
+
+.pet-photo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.save-pet-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #3a4d3c;
 }
 
 @media (max-width: 1142px) {
@@ -571,6 +615,12 @@ textarea {
 
 /* pet profile page */
 
+.pet-profile-img {
+  border-radius: 50%;
+  width: 100px;
+  height: 100px;
+}
+
 .gender-img {
   width: 25px;
 }
@@ -656,6 +706,10 @@ label {
   height: auto;
   margin-bottom: 10px;
 }
+.pet-card-img {
+  width: 80px;
+  border-radius: 10px;
+}
 
 .card-content {
   font-family: "Times New Roman", Times, serif;
@@ -668,4 +722,194 @@ label {
 
 .card-content p {
   margin: 5px 0;
+}
+
+.link-to-pet-profile {
+  text-decoration: none;
+  color: black;
+  font-size: 20px;
+}
+.link-to-pet-profile :hover {
+  color: #176b21;
+}
+/* search sitters */
+.sitter-card {
+  border: 2px solid black;
+  border-radius: 4px;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+.sitter-card-img {
+  width: 80px;
+  border-radius: 10px;
+}
+
+.link-to-sitter-profile {
+  text-decoration: none;
+  color: black;
+  font-size: 20px;
+}
+.link-to-sitter-profile :hover {
+  color: #176b21;
+}
+
+/* react calendar */
+.react-calendar {
+  width: 350px;
+  max-width: 100%;
+  background: #bcd4c1;
+  border: 1px solid #2d6b4c;
+  border-radius: 8px;
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
+  font-family: "Times New Roman", Times, serif;
+  line-height: 1.125em;
+}
+
+.react-calendar--doubleView {
+  width: 700px;
+}
+
+.react-calendar--doubleView .react-calendar__viewContainer {
+  display: flex;
+  margin: -0.5em;
+}
+
+.react-calendar--doubleView .react-calendar__viewContainer > * {
+  width: 50%;
+  margin: 0.5em;
+}
+
+.react-calendar,
+.react-calendar *,
+.react-calendar *:before,
+.react-calendar *:after {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+.react-calendar button {
+  margin: 0;
+  border: 0;
+  outline: none;
+}
+
+.react-calendar button:enabled:hover {
+  cursor: pointer;
+}
+
+.react-calendar__navigation {
+  display: flex;
+  height: 44px;
+  margin-bottom: 1em;
+}
+
+.react-calendar__navigation button {
+  color: white;
+  min-width: 44px;
+  background: none;
+  font-size: 16px;
+  margin-top: 8px;
+}
+
+.react-calendar__navigation button:disabled {
+  background-color: #dcf0e0;
+}
+
+.react-calendar__navigation button:enabled:hover,
+.react-calendar__navigation button:enabled:focus {
+  background-color: #e6e6e6;
+}
+
+.react-calendar__month-view__weekdays {
+  text-align: center;
+  text-transform: uppercase;
+  font-weight: bold;
+  font-size: 0.75em;
+}
+
+.react-calendar__month-view__weekdays__weekday {
+  padding: 0.5em;
+}
+
+.react-calendar__month-view__weekNumbers .react-calendar__tile {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.75em;
+  font-weight: bold;
+}
+
+.react-calendar__month-view__days__day--weekend {
+  color: #047c3a;
+}
+
+.react-calendar__month-view__days__day--neighboringMonth {
+  color: #9c0a0a;
+}
+
+.react-calendar__year-view .react-calendar__tile,
+.react-calendar__decade-view .react-calendar__tile,
+.react-calendar__century-view .react-calendar__tile {
+  padding: 2em 0.5em;
+}
+
+.react-calendar__tile {
+  max-width: 100%;
+  padding: 10px 6.6667px;
+  background: none;
+  text-align: center;
+  line-height: 16px;
+}
+
+.react-calendar__tile:disabled {
+  background-color: #f0f0f0;
+}
+
+.react-calendar__tile:enabled:hover,
+.react-calendar__tile:enabled:focus {
+  background-color: #e6e6e6;
+}
+
+.react-calendar__tile--now {
+  background: #ffff76;
+}
+
+.react-calendar__tile--now:enabled:hover,
+.react-calendar__tile--now:enabled:focus {
+  background: #ffffa9;
+}
+
+.react-calendar__tile--hasActive {
+  background: #034d2e;
+}
+
+.react-calendar__tile--hasActive:enabled:hover,
+.react-calendar__tile--hasActive:enabled:focus {
+  background: #09b556;
+}
+
+.react-calendar__tile--active {
+  background: #477863;
+  color: white;
+}
+
+.react-calendar__tile--active:enabled:hover,
+.react-calendar__tile--active:enabled:focus {
+  background: #03593e;
+}
+
+.react-calendar--selectRange .react-calendar__tile--hover {
+  background-color: #e6e6e6;
+}
+
+/* bookings */
+
+.booking-item {
+  box-sizing: border-box;
+  background-color: #e2ede5;
+  padding: 20px;
+  margin: 10px;
+  box-shadow: 0 3px 8px rgba(4, 15, 10, 0.601);
 }
