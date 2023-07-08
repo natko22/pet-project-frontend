@@ -16,30 +16,10 @@ function ProfilePage() {
   const [currentUser, setCurrentUser] = useState(null);
   const [favorite, setFavorite] = useState(false);
   const [date, setDate] = useState(new Date());
-
   const [startDate, setStartDate] = useState(null);
   const [endDate, setEndDate] = useState(null);
   const [bookingError, setBookingError] = useState(null);
-
-  useEffect(() => {
-    if(user){const fetchUserData = async () => {
-      try {
-        const { data } = await axios.get(
-          `http://localhost:5005/api/users/${user._id}`
-        );
-        console.log("fetched data for user ", data);
-  
-        // Check if currentUser's ID is in the favorites array
-        if (data.favorites.includes(userId)) {
-          setFavorite(true);
-        }else{setFavorite(false);
-        }
-      } catch (err) {
-        console.log("fetch user data error", err);
-      }
-    };
-    fetchUserData();}
-  }, [user,userId]);
+  const [addReview,setAddReviews] = useState(null)
 
   useEffect(() => {
     const fetchCurrentUserData = async () => {
@@ -54,7 +34,8 @@ function ProfilePage() {
       }
     };
     fetchCurrentUserData();
-  }, [userId]);
+  }, [userId,addReview]);
+
   const handleFavoriteClick = async () => {
     try {
       if (favorite) {
@@ -79,7 +60,18 @@ function ProfilePage() {
       console.log("update favorites error", err);
     }
   };
-  
+
+  const fetchCurrentUserData = async () => {
+    try {
+      const { data } = await axios.get(
+        `http://localhost:5005/api/users/${userId}`
+      );
+      console.log("fetched data", data);
+      setCurrentUser(data);
+    } catch (err) {
+      console.log("fetch user data error", err);
+    }
+  };
 
   if (!currentUser) {
     return "loading";
@@ -119,6 +111,7 @@ function ProfilePage() {
         bookingPayload
       );
       console.log("Booking created:", response.data);
+      fetchCurrentUserData(); // Fetch updated currentUserData
     } catch (error) {
       console.log("Booking error:", error.response.data);
       setBookingError("An error occurred while creating the booking.");
@@ -153,7 +146,7 @@ function ProfilePage() {
         )}
       </div>
       <div>
-        <ReviewBox reviews={currentUser.reviews} />
+        <ReviewBox reviews={currentUser.reviews} setAddReviews={setAddReviews}/>
       </div>
       <div>
         <MyPetsBox pets={currentUser.pets} />
