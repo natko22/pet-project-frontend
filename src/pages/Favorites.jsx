@@ -24,11 +24,13 @@ function Favorites() {
     }, [user]);
   
     return (
-      <div>
+      <div className="fav-page">
         <h1>My Favorites</h1>
+        <div className="favorite-box">
+        <div className="all-favorites">
         {favorites.map((favorite) => (
-          <div key={favorite._id}>
-            <Link to={`/profile/${favorite._id}`}>
+          <div className="each-favorite-box" key={favorite._id}>
+            <Link className="favorite-link" to={`/profile/${favorite._id}`}>
               <img
                 className="profileImg"
                 src={!favorite.img ? imgPlaceholder : favorite.img}
@@ -38,6 +40,8 @@ function Favorites() {
             </Link>
           </div>
         ))}
+        </div>
+        </div>
       </div>
     );
 }
