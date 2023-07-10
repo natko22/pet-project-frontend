@@ -1,8 +1,11 @@
-import React from "react";
+import {useContext} from "react";
+import { AuthContext } from "../context/auth.context";
 import MyPet from "./MyPet";
-import { Link } from "react-router-dom";
+import { Link,useParams } from "react-router-dom";
 
 function MyPetsBox({ pets }) {
+  const { userId } = useParams();
+  const { user } = useContext(AuthContext);
   console.log("mypet", pets);
   return (
     <>
@@ -24,7 +27,8 @@ function MyPetsBox({ pets }) {
               </Link>
             ))}
         </div>
-        <Link to="/add-pet">+ Add a new Pet</Link>
+        {userId === user._id && <Link to="/add-pet">+ Add a new Pet</Link>}
+
       </div>
     </>
   );
