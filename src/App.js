@@ -12,7 +12,6 @@ import PetProfilePage from "./pages/PetProfilePage";
 import AddPet from "./pages/AddNewPetPage";
 import EditPetProfilePage from "./pages/EditPetProfilePage.jsx";
 import SearchPetProfiles from "./pages/SearchPetProfiles";
-import AllFavorites from "./pages/AllFavorites";
 import Favorites from "./pages/Favorites";
 import SearchPetSittersPage from "./pages/SearchPetSittersPage";
 import BookingsPage from "./pages/BookingsPage";

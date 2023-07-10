@@ -1,11 +1,9 @@
 import React, { useState } from "react";
 import axios from "axios";
-import { useNavigate, useParams } from "react-router-dom";
-import { Link } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { useContext } from "react";
 import { AuthContext } from "../context/auth.context";
 
-const API_URL = "http://localhost:5005";
 
 function AddReview({ onClose, setAddReviews }) {
   const [review, setReview] = useState("");
@@ -14,7 +12,6 @@ function AddReview({ onClose, setAddReviews }) {
   const [success, setSuccess] = useState(false);
   const { user } = useContext(AuthContext);
   const { userId } = useParams();
-  const navigate = useNavigate();
 
   const handleStarHover = (starValue) => {
     if (stars === 0) {
@@ -45,7 +42,6 @@ function AddReview({ onClose, setAddReviews }) {
         "http://localhost:5005/api/add-review/",
         newReview
       );
-      navigate(`/profile/${user._id}`);
       setReview("");
       setStars(0);
       setError(null);

@@ -22,25 +22,33 @@ function ProfilePage() {
   const [addReview,setAddReviews] = useState(null)
 
   useEffect(() => {
-    const fetchCurrentUserData = async () => {
+    fetchCurrentUserData();
+  }, [userId,addReview]);
+
+  useEffect(()=>{
+    if(user){
+    const fetchUserData = async () => {
       try {
         const { data } = await axios.get(
-          `http://localhost:5005/api/users/${userId}`
+          `http://localhost:5005/api/users/${user._id}`
         );
         console.log("fetched data", data);
-        setCurrentUser(data);
+        if (data.favorites.includes(userId)) {
+          setFavorite(true);
+        }
       } catch (err) {
         console.log("fetch user data error", err);
       }
-    };
-    fetchCurrentUserData();
-  }, [userId,addReview]);
+     
+    }; fetchUserData()}
+    
+  },[user,userId])
 
   const handleFavoriteClick = async () => {
     try {
       if (favorite) {
         const response = await axios.put(
-          `http://localhost:5005/api/favorites/${currentUser._id}`,
+          `http://localhost:5005/api/favorites/${userId}`,
           {
             userIdToRemove: user._id,
           }
@@ -48,7 +56,7 @@ function ProfilePage() {
         console.log("favorite removed", response.data);
       } else {
         const response = await axios.put(
-          `http://localhost:5005/api/favorites/${currentUser._id}`,
+          `http://localhost:5005/api/favorites/${userId}`,
           {
             userIdToAdd: user._id,
           }
@@ -127,12 +135,12 @@ function ProfilePage() {
       />
       <h1>{currentUser.username} </h1>
       {currentUser.postalCode && <p>{currentUser.postalCode}</p>}
-      <img
+      {userId !== user._id && <img
         className={favorite ? "coloredHeart" : "blackHeart"}
         src={heart}
         alt="heart"
         onClick={handleFavoriteClick}
-      />
+      />}
       {userId === user._id && <Link to={`/edit/${userId}`}>Edit Profile</Link>}
       <div className="aboutme-box">
         <h2>About me</h2>
