@@ -74,8 +74,8 @@ const EditProfile = () => {
         setPostalCode(response.data.user.postalCode || "");
         setDescription(response.data.user.description || "");
         setAvailability(response.data.user.availability || "");
-        setIsPetOwner(response.data.user.isPetOwner || "");
-        setIsSitter(response.data.user.isSitter || "");
+        setIsPetOwner(response.data.user.isPetOwner || false);
+        setIsSitter(response.data.user.isSitter || false);
         setProfileImage(response.data.user.profileImage || null);
 
         setLoading(false);
