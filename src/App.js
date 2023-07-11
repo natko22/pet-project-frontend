@@ -1,9 +1,10 @@
 import "./App.css";
-import { Routes, Route } from "react-router-dom";
+import { useContext } from "react";
+import { AuthContext } from "../src/context/auth.context";
+import { Routes, Route, Navigate } from "react-router-dom";
 import SignupPage from "./pages/SignupPage";
 import LoginPage from "./pages/LoginPage.jsx";
 import ProfilePage from "./pages/ProfilePage";
-
 import HomePage from "./pages/HomePage";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
@@ -12,20 +13,21 @@ import PetProfilePage from "./pages/PetProfilePage";
 import AddPet from "./pages/AddNewPetPage";
 import EditPetProfilePage from "./pages/EditPetProfilePage.jsx";
 import SearchPetProfiles from "./pages/SearchPetProfiles";
-import AllFavorites from "./pages/AllFavorites";
 import Favorites from "./pages/Favorites";
 import SearchPetSittersPage from "./pages/SearchPetSittersPage";
 import BookingsPage from "./pages/BookingsPage";
 
 
 function App() {
+  const { isLoggedIn, user } = useContext(AuthContext);
+
   return (
     <div className="App">
       <Navbar />
       <Routes>
-        <Route path="/" element={<HomePage />} />
-        <Route path="/signup" element={<SignupPage />} />
-        <Route path="/login" element={<LoginPage />} />
+      <Route path="/" element={isLoggedIn ? <Navigate to={`/profile/${user._id}`} replace /> : <HomePage />} />
+        <Route path="/signup" element={isLoggedIn ? <Navigate to={`/profile/${user._id}`} replace /> : <SignupPage />} />
+        <Route path="/login" element={isLoggedIn ? <Navigate to={`/profile/${user._id}`} replace /> : <LoginPage />} />
         <Route path="/profile/:userId" element={<ProfilePage />} />
         <Route path="/edit/:userId" element={<EditProfile />} />
         <Route path="/petProfile/:petId" element={<PetProfilePage />} />

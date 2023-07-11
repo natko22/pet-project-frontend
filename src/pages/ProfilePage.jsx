@@ -16,50 +16,39 @@ function ProfilePage() {
   const [currentUser, setCurrentUser] = useState(null);
   const [favorite, setFavorite] = useState(false);
   const [date, setDate] = useState(new Date());
-
   const [startDate, setStartDate] = useState(null);
   const [endDate, setEndDate] = useState(null);
   const [bookingError, setBookingError] = useState(null);
+  const [addReview,setAddReviews] = useState(null)
 
   useEffect(() => {
-    if(user){const fetchUserData = async () => {
+    fetchCurrentUserData();
+  }, [userId,addReview]);
+
+  useEffect(()=>{
+    if(user){
+    const fetchUserData = async () => {
       try {
         const { data } = await axios.get(
           `http://localhost:5005/api/users/${user._id}`
         );
-        console.log("fetched data for user ", data);
-  
-        // Check if currentUser's ID is in the favorites array
+        console.log("fetched data", data);
         if (data.favorites.includes(userId)) {
           setFavorite(true);
-        }else{setFavorite(false);
         }
       } catch (err) {
         console.log("fetch user data error", err);
       }
-    };
-    fetchUserData();}
-  }, [user,userId]);
+     
+    }; fetchUserData()}
+    
+  },[user,userId])
 
-  useEffect(() => {
-    const fetchCurrentUserData = async () => {
-      try {
-        const { data } = await axios.get(
-          `http://localhost:5005/api/users/${userId}`
-        );
-        console.log("fetched data", data);
-        setCurrentUser(data);
-      } catch (err) {
-        console.log("fetch user data error", err);
-      }
-    };
-    fetchCurrentUserData();
-  }, [userId]);
   const handleFavoriteClick = async () => {
     try {
       if (favorite) {
         const response = await axios.put(
-          `http://localhost:5005/api/favorites/${currentUser._id}`,
+          `http://localhost:5005/api/favorites/${userId}`,
           {
             userIdToRemove: user._id,
           }
@@ -67,7 +56,7 @@ function ProfilePage() {
         console.log("favorite removed", response.data);
       } else {
         const response = await axios.put(
-          `http://localhost:5005/api/favorites/${currentUser._id}`,
+          `http://localhost:5005/api/favorites/${userId}`,
           {
             userIdToAdd: user._id,
           }
@@ -79,7 +68,18 @@ function ProfilePage() {
       console.log("update favorites error", err);
     }
   };
-  
+
+  const fetchCurrentUserData = async () => {
+    try {
+      const { data } = await axios.get(
+        `http://localhost:5005/api/users/${userId}`
+      );
+      console.log("fetched data", data);
+      setCurrentUser(data);
+    } catch (err) {
+      console.log("fetch user data error", err);
+    }
+  };
 
   if (!currentUser) {
     return "loading";
@@ -119,6 +119,7 @@ function ProfilePage() {
         bookingPayload
       );
       console.log("Booking created:", response.data);
+      fetchCurrentUserData(); // Fetch updated currentUserData
     } catch (error) {
       console.log("Booking error:", error.response.data);
       setBookingError("An error occurred while creating the booking.");
@@ -134,12 +135,12 @@ function ProfilePage() {
       />
       <h1>{currentUser.username} </h1>
       {currentUser.postalCode && <p>{currentUser.postalCode}</p>}
-      <img
+      {userId !== user._id && <img
         className={favorite ? "coloredHeart" : "blackHeart"}
         src={heart}
         alt="heart"
         onClick={handleFavoriteClick}
-      />
+      />}
       {userId === user._id && <Link to={`/edit/${userId}`}>Edit Profile</Link>}
       <div className="aboutme-box">
         <h2>About me</h2>
@@ -153,7 +154,7 @@ function ProfilePage() {
         )}
       </div>
       <div>
-        <ReviewBox reviews={currentUser.reviews} />
+        <ReviewBox reviews={currentUser.reviews} setAddReviews={setAddReviews}/>
       </div>
       <div>
         <MyPetsBox pets={currentUser.pets} />

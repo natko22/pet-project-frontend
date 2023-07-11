@@ -485,29 +485,45 @@ textarea {
   flex-direction: column;
   align-items: center;
 }
-
+/* Reviews-box */
 .commenterImg {
   width: 40px;
 }
 
-.each-review-box {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  width: 180px;
-  box-sizing: border-box;
-}
-
 .review-box {
-  display: flex;
   background-color: #fffcfc;
-  width: 800px;
   padding: 20px;
-  justify-content: space-evenly;
   border-radius: 5px;
   box-shadow: 0 3px 8px rgba(4, 15, 10, 0.601);
+  text-align: center;
+  width:800px
 }
+
+.all-reviews {
+  display: flex;
+  padding: 25px 0px;
+  overflow-x: scroll;
+  scroll-snap-type: x mandatory;
+  flex-wrap: nowrap;
+}
+
+.all-reviews::-webkit-scrollbar {
+  height: 12px;
+}
+
+.all-reviews::-webkit-scrollbar-thumb,
+.all-reviews::-webkit-scrollbar-track {
+  border-radius: 92px;
+}
+
+.all-reviews::-webkit-scrollbar-thumb {
+  background: #c4cdc6;
+}
+
+.all-reviews::-webkit-scrollbar-track {
+  background: #e2ede5;
+}
+
 .review-box-h2 {
   text-align: center;
 }
@@ -517,15 +533,62 @@ textarea {
   padding: 20px;
   margin: 10px;
   box-shadow: 0 3px 8px rgba(4, 15, 10, 0.601);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 180px;
+  box-sizing: border-box;
 }
 
 .each-review-box p {
   margin: 10px;
+  width: 180px;
 }
+
 .each-review-box h3 {
   margin: 2px;
 }
 
+/* add review */
+
+.add-review {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #e2ede5;
+  margin: 15px auto;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 3px 8px rgba(4, 15, 10, 0.601);
+}
+
+
+.add-review-btn {
+  width: 90%;
+  padding: 15px;
+  margin: 20px;
+  background-color: #8ca38e;
+  color: #000000;
+  font-size: 20px;
+  font-family: "Times New Roman", Times, serif;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.close-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 20px;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  color: #000;
+}
+/* pets-box */
 .pet-img {
   width: 40px;
   margin-bottom: 10px;
@@ -541,24 +604,43 @@ textarea {
 }
 
 .pet-box {
-  display: flex;
   background-color: #fffcfc;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  width: 400px;
   width: 800px;
   padding: 20px;
   border-radius: 5px;
   box-shadow: 0 3px 8px rgba(4, 15, 10, 0.601);
+  text-align: center;
 }
+
 .pet-box-h2 {
   text-align: center;
 }
 .all-pets {
   display: flex;
-  justify-content: space-around;
+  padding: 25px 0px;
+  overflow-x: scroll;
+  scroll-snap-type: x mandatory;
+}
+.all-pets::-webkit-scrollbar {
+  height: 12px;
 }
 
+.all-pets::-webkit-scrollbar-thumb,
+.all-pets::-webkit-scrollbar-track {
+  border-radius: 92px;
+}
+
+.all-pets::-webkit-scrollbar-thumb {
+  background: #c4cdc6;
+}
+
+.all-pets::-webkit-scrollbar-track {
+  background:#e2ede5;
+}
+.each-pet-box:hover{
+  background-color: #f1fff5;
+}
 .each-pet-box {
   box-sizing: border-box;
   background-color: #e2ede5;
@@ -566,6 +648,7 @@ textarea {
   margin: 10px;
   box-shadow: 0 3px 8px rgba(4, 15, 10, 0.601);
 }
+
 
 .each-pet-box h3 {
   margin: 5px;
@@ -575,6 +658,7 @@ textarea {
   text-decoration: none;
   color: #000000;
 }
+/* contact-box */
 .contact-box a {
   width: 100%;
   padding: 15px;
@@ -642,6 +726,8 @@ textarea {
 .aboutme-box h2 {
   margin: 0;
 }
+
+
 
 /* add new pet */
 
@@ -912,4 +998,58 @@ label {
   padding: 20px;
   margin: 10px;
   box-shadow: 0 3px 8px rgba(4, 15, 10, 0.601);
+}
+
+/* favorite-page */
+.fav-page{
+display: flex;
+flex-direction: column;
+align-items: center;
+margin: 20px;
+}
+
+.each-favorite-box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 180px;
+}
+
+.favorite-box {
+  background-color: #fffcfc;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 3px 8px rgba(4, 15, 10, 0.601);
+  text-align: center;
+}
+
+.favorite-box-h2 {
+  text-align: center;
+}
+.all-favorites {
+  display: flex;
+  justify-content: center;
+  padding: 25px 0px;
+  flex-wrap: wrap;
+}
+
+.each-favorite-box:hover{
+  background-color: #f1fff5;
+}
+.each-favorite-box {
+  box-sizing: border-box;
+  background-color: #e2ede5;
+  padding: 20px;
+  margin: 10px;
+  box-shadow: 0 3px 8px rgba(4, 15, 10, 0.601);
+}
+
+.each-favorite-box h3 {
+  margin: 5px;
+}
+
+.favorite-link {
+  text-decoration: none;
+  color: #000000;
 }
