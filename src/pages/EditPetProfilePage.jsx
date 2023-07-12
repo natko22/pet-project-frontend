@@ -3,6 +3,7 @@ import { Link, useParams } from "react-router-dom";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import AvatarEditor from "react-avatar-editor";
+import imgPlaceholder from "../assets/pawprint.png";
 
 const EditPet = () => {
   const [name, setName] = useState("");
@@ -21,6 +22,8 @@ const EditPet = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [scale, setScale] = useState(1);
   const [uploadSuccess, setUploadSuccess] = useState(false);
+  const [showUploadForm, setShowUploadForm] = useState(false);
+  const [petImg, setPetImg] = useState("");
 
   const { petId } = useParams();
   const navigate = useNavigate();
@@ -53,7 +56,22 @@ const EditPet = () => {
 
     fetchPetProfile();
   }, []);
-
+  const fetchPetforImg = async () => {
+    try {
+      const response = await axios.get(
+        `http://localhost:5005/api/edit-pet/${petId}`
+      );
+  
+      setPetImg(response.data.pet.img);
+    } catch (error) {
+      console.error("Error fetching pet profile:", error);
+      setLoading(false);
+    }
+  };
+  
+  useEffect(() => {
+    fetchPetforImg();
+  }, []);
   if (loading) {
     return <div>Loading...</div>;
   }
@@ -93,6 +111,9 @@ const EditPet = () => {
   const handleInstructionChange = (e) => {
     setInstruction(e.target.value);
   };
+  const handleEditPhoto = () => {
+    setShowUploadForm(true);
+  };
 
   // Handle image change
   const handleImgChange = (e) => {
@@ -119,6 +140,11 @@ const EditPet = () => {
         console.log(response);
         setUploadSuccess(true);
         setIsLoading(false);
+        setShowUploadForm(false);
+        setImg(null);
+        setImagePreview(null);
+        fetchPetforImg();
+
         console.log(setUploadSuccess, "upload success");
       } else {
         throw new Error("Please select a valid image file.");
@@ -142,7 +168,6 @@ const EditPet = () => {
       medicalCondition,
       diet,
       instruction,
-      img: img ? img.img : "",
     };
 
     try {
@@ -162,7 +187,74 @@ const EditPet = () => {
       <Link to={`/petProfile/${petId}`}>Back to Pet Profile</Link>
 
       <h2>Edit Pet Profile</h2>
+      {!showUploadForm && (
+        <div className="container-parent">
+  <div className="profileImg-container">
+    <img
+      className="profileImg"
+      src={!petImg ? imgPlaceholder : petImg}
+      alt={name}
+    />
+    <button className="photo-edit-btn" onClick={handleEditPhoto}>
+      Edit
+    </button>
+  </div>
+  </div>
+)}
 
+
+      {showUploadForm && (
+        <div>
+          <h2>Add image</h2>
+          <div className="upload-form-container">
+            <div className="upload-form">
+              <form onSubmit={handleImgUpload}>
+                <label>
+                  <input
+                    className="upload-input"
+                    type="file"
+                    accept="image/png, image/jpeg, image/jpg"
+                    name="image"
+                    onChange={handleImgChange}
+                  />
+                </label>
+                <div className="profile-photo">
+                  {imagePreview && (
+                    <div className="avatar-editor">
+                      <AvatarEditor
+                        image={imagePreview}
+                        width={250}
+                        height={250}
+                        border={50}
+                        borderRadius={125}
+                        color={[255, 255, 255, 0.6]}
+                        scale={scale}
+                      />
+                      <input
+                        type="range"
+                        min={0.1}
+                        max={2}
+                        step={0.1}
+                        value={scale}
+                        onChange={(e) => setScale(parseFloat(e.target.value))}
+                      />
+                    </div>
+                  )}
+                </div>
+                {isLoading ? (
+                  <p>Uploading...</p>
+                ) : (
+
+                      <button className="upload-btn" type="submit">
+                        Upload
+                      </button>
+
+                )}
+              </form>
+            </div>
+          </div>
+        </div>
+      )}
       <form onSubmit={handleSubmit} className="edit-pet-form">
         <label>
           Name:
@@ -255,56 +347,6 @@ const EditPet = () => {
           />
         </label>
 
-        <label>
-          Image URL:
-          <input
-            name="imageUrl"
-            type="file"
-            accept="image/png, image/jpeg, image/jpg"
-            onChange={handleImgChange}
-            placeholder="Image URL"
-          />
-        </label>
-
-        <div className="pet-photo">
-          {imagePreview && (
-            <div className="avatar-editor">
-              <AvatarEditor
-                image={imagePreview}
-                width={250}
-                height={250}
-                border={50}
-                borderRadius={125}
-                color={[255, 255, 255, 0.6]}
-                scale={scale}
-              />
-              <input
-                type="range"
-                min={0.1}
-                max={2}
-                step={0.1}
-                value={scale}
-                onChange={(e) => setScale(parseFloat(e.target.value))}
-              />
-            </div>
-          )}
-          {isLoading ? (
-            <p>Uploading...</p>
-          ) : (
-            <>
-              {!uploadSuccess && (
-                <button
-                  className="upload-btn"
-                  type="submit"
-                  onClick={handleImgUpload}
-                >
-                  Upload
-                </button>
-              )}
-              {uploadSuccess && <p>Photo uploaded successfully!</p>}
-            </>
-          )}
-        </div>
         <button className="save-pet-btn" type="submit">
           Save
         </button>

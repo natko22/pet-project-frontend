@@ -5,6 +5,7 @@ import { AuthContext } from "../context/auth.context";
 import { useParams } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import AvatarEditor from "react-avatar-editor";
+import imgPlaceholder from "../assets/placeholder.png";
 
 const EditProfile = () => {
   const [username, setUsername] = useState("");
@@ -24,9 +25,9 @@ const EditProfile = () => {
   const navigate = useNavigate();
   const [showUploadForm, setShowUploadForm] = useState(false);
   const [scale, setScale] = useState(1);
-  const [uploadSuccess, setUploadSuccess] = useState(false);
 
   const [loading, setLoading] = useState(true);
+  const [userImg, setUserImg] = useState("");
 
   // Handle image change
   const handleImageChange = (e) => {
@@ -39,20 +40,26 @@ const EditProfile = () => {
   const uploadImage = async (e) => {
     e.preventDefault();
     setIsLoading(true);
-
+  
     try {
       if (profileImage && profileImage.type.includes("image")) {
         const formData = new FormData();
         formData.append("imageUrl", e.target.image.files[0]);
-
+  
         const response = await axios.post(
           `http://localhost:5005/auth/upload/${userId}`,
           formData
         );
         console.log(response);
-        // setProfileImage(response.data.imageUrl);
-        setUploadSuccess(true);
         setIsLoading(false);
+        setShowUploadForm(false);
+  
+        // Reset form
+        setProfileImage(null);
+        setImagePreview(null);
+  
+        // Fetch user data again for the image
+        fetchUserforImg();
       } else {
         throw new Error("Please select a valid image file.");
       }
@@ -86,6 +93,21 @@ const EditProfile = () => {
     };
 
     fetchUserProfile();
+  }, []);
+  const fetchUserforImg = async () => {
+    try {
+      const response = await axios.get(
+        `http://localhost:5005/auth/edit/${userId}`
+      );
+  
+      setUserImg(response.data.user.img);
+    } catch (error) {
+      console.error("Error fetching user profile:", error);
+      setLoading(false);
+    }
+  };
+  useEffect(() => {
+    fetchUserforImg();
   }, []);
 
   if (loading) {
@@ -158,14 +180,17 @@ const EditProfile = () => {
       console.error("Error updating profile:", error);
     }
   };
-  console.log(uploadSuccess, "upload success");
   return (
     <div>
       <Link to={`/profile/${userId}`}>Back to Profile</Link>
 
       {!showUploadForm && (
         <button className="photo-edit-btn" onClick={handleEditPhoto}>
-          <span>Edit Photo</span>
+        <img
+        className="profileImg"
+        src={!userImg ? imgPlaceholder : userImg}
+        alt={username}
+      />
         </button>
       )}
 
@@ -210,14 +235,11 @@ const EditProfile = () => {
                 {isLoading ? (
                   <p>Uploading...</p>
                 ) : (
-                  <>
-                    {!uploadSuccess && (
+
                       <button className="upload-btn" type="submit">
                         Upload
                       </button>
-                    )}
-                    {uploadSuccess && <p>Photo uploaded successfully!</p>}
-                  </>
+
                 )}
               </form>
             </div>

@@ -324,9 +324,36 @@
 
 /* edit -profile -form */
 
-.photo-edit-btn {
-  width: 100px;
+.container-parent { /* replace with the actual parent class name */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+}
+
+.profileImg-container {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100px; 
   height: 100px;
+}
+
+.profileImg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.photo-edit-btn {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
   border-radius: 50%;
   background-color: #8ca38e;
   color: #ffffff;
@@ -334,7 +361,12 @@
   justify-content: center;
   align-items: center;
   cursor: pointer;
-  margin: 80px auto;
+  opacity: 0.5;
+  transition: opacity 0.3s ease;
+}
+
+.photo-edit-btn:hover {
+  opacity: 0.9;
 }
 
 .photo-upload-btn:hover {
@@ -463,6 +495,8 @@ textarea {
 .profileImg {
   border-radius: 50%;
   width: 100px;
+  height: 100px;
+  object-fit: cover;
 }
 .profilepage {
   display: flex;
@@ -486,9 +520,6 @@ textarea {
   align-items: center;
 }
 /* Reviews-box */
-.commenterImg {
-  width: 40px;
-}
 
 .review-box {
   background-color: #fffcfc;
@@ -590,7 +621,8 @@ textarea {
 }
 /* pets-box */
 .pet-img {
-  width: 40px;
+  width: 100px;
+  height: 100px;
   margin-bottom: 10px;
   border-radius: 50%;
 }
