@@ -27,43 +27,13 @@ function AddPet() {
   const { user } = useContext(AuthContext);
 
   const [imagePreview, setImagePreview] = useState(null);
-  const [isLoading, setIsLoading] = useState(false);
   const [scale, setScale] = useState(1);
-  const [uploadSuccess, setUploadSuccess] = useState(false);
 
   // Handle image change
   const handleImgChange = (e) => {
     const file = e.target.files[0];
     setImg(file);
     setImagePreview(URL.createObjectURL(file));
-  };
-
-  // Upload image
-  const handleImgUpload = async (e) => {
-    e.preventDefault();
-    setIsLoading(true);
-
-    try {
-      if (img && img.type.includes("image")) {
-        const formData = new FormData();
-        formData.append("imageUrl", img);
-        console.log(formData, "FORMDATA");
-
-        const response = await axios.post(
-          `http://localhost:5005/api/upload/${petId}`,
-          formData
-        );
-        console.log(response);
-        setUploadSuccess(true);
-        setIsLoading(false);
-        console.log(setUploadSuccess, "upload success");
-      } else {
-        throw new Error("Please select a valid image file.");
-      }
-    } catch (error) {
-      console.error(error);
-      setIsLoading(false);
-    }
   };
 
   useEffect(() => {
@@ -89,42 +59,31 @@ function AddPet() {
       setError("Please fill in all required fields.");
       return;
     }
-    const updatedProfile = {
-      ...userData,
-      pets: [...userData.pets, { _id: pet._id }],
-    };
-    console.log("uploadprofile", updatedProfile);
-
-    const newPet = {
-      name,
-      race,
-      age,
-      gender,
-      type,
-      castrated,
-      medicalCondition,
-      diet,
-      instruction,
-      img,
-      owner: user._id,
-    };
-
+  
+    const formData = new FormData();
+    formData.append('name', name);
+    formData.append('race', race);
+    formData.append('age', age);
+    formData.append('gender', gender);
+    formData.append('type', type);
+    formData.append('castrated', castrated);
+    formData.append('medicalCondition', medicalCondition);
+    formData.append('diet', diet);
+    formData.append('instruction', instruction);
+    formData.append('owner', user._id);
+    if (img) {
+      formData.append('imageUrl', img);
+    }
+  
     try {
-      const response = await axios.post(
-        "http://localhost:5005/api/add-pet/",
-        newPet
-      );
+      const response = await axios.post("http://localhost:5005/api/add-pet", formData);
       setPet(response.data);
-      // const responseUser = await axios.put(
-      //   `http://localhost:5005/auth/edit/${userData._id}`,
-      //   updatedProfile
-      // );
-      // console.log("user updated", responseUser);
       navigate(`/profile/${user._id}`);
     } catch (error) {
       console.error(error);
     }
   };
+  
 
   return (
     <div>
@@ -246,22 +205,7 @@ function AddPet() {
                 />
               </div>
             )}
-            {isLoading ? (
-              <p>Uploading...</p>
-            ) : (
-              <>
-                {!uploadSuccess && (
-                  <button
-                    className="upload-btn"
-                    type="submit"
-                    onClick={handleImgUpload}
-                  >
-                    Upload
-                  </button>
-                )}
-                {uploadSuccess && <p>Photo uploaded successfully!</p>}
-              </>
-            )}{" "}
+
           </div>
         </label>
         <button type="submit" className="add-new-pet-btn">
