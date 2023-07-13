@@ -7,7 +7,6 @@ function SearchSittersPage() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [searchQuery, setSearchQuery] = useState("");
-  const [sitterPostalCode, setSitterPostalCode] = useState("");
 
   useEffect(() => {
     fetchSitters();
@@ -30,10 +29,7 @@ function SearchSittersPage() {
 
   const filteredSitters = sitters.filter((sitter) => {
     const sitterName = sitter.username && sitter.username.toLowerCase();
-    const sitterPostalCode = sitter.postalCode && sitter.postalCode.toString();
-
     return sitterName && sitterName.includes(searchQuery.toLowerCase());
-    sitterPostalCode.includes(searchQuery);
   });
   if (loading) {
     return <p>Loading...</p>;
