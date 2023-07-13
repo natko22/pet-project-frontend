@@ -292,7 +292,8 @@ function ProfilePage() {
       <div>
         <MyPetsBox pets={currentUser.pets} />
       </div>
-      <BookingsPage bookings={currentUser.bookings} />
+      {userId === user._id && (
+      <BookingsPage bookings={currentUser.bookings} />)}
       {userId === user._id && (
     <div className="available-dates">
       <h2>Set your availability</h2>
@@ -325,6 +326,8 @@ function ProfilePage() {
     </div>
   )}
       {/*Add React Calendar*/}
+      {userId !== user._id && (  
+    <div>
       <h2>Book a service</h2>
       <div className="calendar-container">
         <Calendar
@@ -355,7 +358,9 @@ function ProfilePage() {
 {bookingError && <p className="error-message">{bookingError}</p>}
       {bookingSuccess && (
         <p className="success-message">Booking created successfully!</p>
-      )}      </div>
+      )}     
+       </div>
+       </div>)}
     </div>
   );
 }
