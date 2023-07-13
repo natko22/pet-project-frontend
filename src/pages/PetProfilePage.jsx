@@ -6,10 +6,13 @@ import imgPlaceholder from "../assets/pawprint.png";
 import { useParams } from "react-router-dom";
 import male from "../assets/male.png";
 import female from "../assets/female.png";
+import { useNavigate } from "react-router-dom";
 
 function PetProfilePage() {
   const { petId } = useParams();
   const [pet, setPet] = useState(null);
+  const navigate = useNavigate();
+  const { user } = useContext(AuthContext);
 
   useEffect(() => {
     const fetchPetData = async () => {
@@ -25,6 +28,19 @@ function PetProfilePage() {
     };
     fetchPetData();
   }, [petId]);
+
+  const handleDelete = async () => {
+    try {
+      await axios.post(`http://localhost:5005/api/pets/${petId}`, {
+        owner: user._id,
+      });
+      navigate("/");
+      console.log("succesfully deleted");
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
   if (!pet) {
     return "loading";
   }
@@ -34,6 +50,7 @@ function PetProfilePage() {
       {petId === pet._id && (
         <Link to={`/edit-pet/${petId}`}>Edit Pet Profile</Link>
       )}
+      <button onClick={handleDelete}>Delete Pet</button>
 
       <div className="profilepage">
         <img

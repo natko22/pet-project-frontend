@@ -59,35 +59,37 @@ function AddPet() {
       setError("Please fill in all required fields.");
       return;
     }
-  
+
     const formData = new FormData();
-    formData.append('name', name);
-    formData.append('race', race);
-    formData.append('age', age);
-    formData.append('gender', gender);
-    formData.append('type', type);
-    formData.append('castrated', castrated);
-    formData.append('medicalCondition', medicalCondition);
-    formData.append('diet', diet);
-    formData.append('instruction', instruction);
-    formData.append('owner', user._id);
+    formData.append("name", name);
+    formData.append("race", race);
+    formData.append("age", age);
+    formData.append("gender", gender);
+    formData.append("type", type);
+    formData.append("castrated", castrated);
+    formData.append("medicalCondition", medicalCondition);
+    formData.append("diet", diet);
+    formData.append("instruction", instruction);
+    formData.append("owner", user._id);
     if (img) {
-      formData.append('imageUrl', img);
+      formData.append("imageUrl", img);
     }
-  
+
     try {
-      const response = await axios.post("http://localhost:5005/api/add-pet", formData);
+      const response = await axios.post(
+        "http://localhost:5005/api/add-pet",
+        formData
+      );
       setPet(response.data);
       navigate(`/profile/${user._id}`);
     } catch (error) {
       console.error(error);
     }
   };
-  
 
   return (
     <div>
-      <Link to={`/petProfile/${petId}`}>Back to Pet Profile</Link>
+      <Link to={`/profile/${user._id}`}>Back to User's Profile</Link>
 
       <h1>Add a New Pet</h1>
       <form onSubmit={handleSubmit} className="add-new-pet">
@@ -205,7 +207,6 @@ function AddPet() {
                 />
               </div>
             )}
-
           </div>
         </label>
         <button type="submit" className="add-new-pet-btn">

@@ -67,11 +67,10 @@ function SearchSittersPage() {
               />
 
               <h3>{sitter.username}</h3>
-              <p>{sitter.email}</p>
-              <p>{sitter.isPetOwner}</p>
-              <p>{sitter.postalCode}</p>
-              <p>{sitter.description}</p>
-              <p>{sitter.reviews}</p>
+              <p>Pet Owner:{sitter.isPetOwner ? "Yes" : "No"}</p>
+              <p>Postal Code:{sitter.postalCode}</p>
+              <p>Description:{sitter.description}</p>
+              <p>Reviews:{sitter.reviews.length}</p>
             </div>
           </Link>
         ))
