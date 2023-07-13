@@ -1031,6 +1031,19 @@ label {
   margin: 10px;
   box-shadow: 0 3px 8px rgba(4, 15, 10, 0.601);
 }
+.booked-date-indicator {
+  width: 100%;
+  height: 100%;
+  background-color: red;
+  opacity: 0.5;
+}
+.available-date-indicator {
+  width: 100%;
+  height: 100%;
+  background-color: green;  
+  opacity: 0.5;
+}
+
 
 /* favorite-page */
 .fav-page{

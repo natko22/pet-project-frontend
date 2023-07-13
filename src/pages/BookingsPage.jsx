@@ -8,7 +8,8 @@ function BookingsPage({ bookings }) {
         bookings.map((booking) => (
           <div key={booking._id} className="booking-item">
             <p>Booking ID: {booking._id}</p>
-            <p>Pet Sitter: {booking.sitterId.username}</p>
+            <p>Pet Sitter: {booking.sitterId}</p>
+            <p>Pet Owner: {booking.ownerId}</p>
             <p>
               Start Date:{" "}
               {new Date(booking.startDate).toLocaleDateString("de-DE")}
