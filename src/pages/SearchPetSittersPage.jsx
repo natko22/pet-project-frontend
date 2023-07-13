@@ -7,6 +7,7 @@ function SearchSittersPage() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [searchQuery, setSearchQuery] = useState("");
+  const [sitterPostalCode, setSitterPostalCode] = useState("");
 
   useEffect(() => {
     fetchSitters();
@@ -29,7 +30,10 @@ function SearchSittersPage() {
 
   const filteredSitters = sitters.filter((sitter) => {
     const sitterName = sitter.username && sitter.username.toLowerCase();
+    const sitterPostalCode = sitter.postalCode && sitter.postalCode.toString();
+
     return sitterName && sitterName.includes(searchQuery.toLowerCase());
+    sitterPostalCode.includes(searchQuery);
   });
   if (loading) {
     return <p>Loading...</p>;
@@ -65,13 +69,11 @@ function SearchSittersPage() {
                 alt={sitter.name}
                 className="sitter-card-img"
               />
-
               <h3>{sitter.username}</h3>
-              <p>{sitter.email}</p>
-              <p>{sitter.isPetOwner}</p>
-              <p>{sitter.postalCode}</p>
-              <p>{sitter.description}</p>
-              <p>{sitter.reviews}</p>
+              <p>Pet Owner:{sitter.isPetOwner ? "Yes" : "No"}</p>
+              <p>Postal Code:{sitter.postalCode}</p>
+              <p>Description:{sitter.description}</p>
+              <p>Reviews:{sitter.reviews.length}</p>
             </div>
           </Link>
         ))

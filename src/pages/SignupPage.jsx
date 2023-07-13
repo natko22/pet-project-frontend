@@ -10,6 +10,8 @@ function SignupPage() {
   const [password, setPassword] = useState("");
   const [isPetOwner, setIsPetOwner] = useState(false);
   const [isSitter, setIsSitter] = useState(false);
+  const [postalCode, setPostalCode] = useState("");
+
   const [errorMessage, setErrorMessage] = useState(undefined);
 
   const navigate = useNavigate();
@@ -34,10 +36,21 @@ function SignupPage() {
     setIsSitter(e.target.checked);
   };
 
+  const handlePostalCodeChange = (e) => {
+    setPostalCode(e.target.value);
+  };
+
   const handleSignupSubmit = async (e) => {
     e.preventDefault();
     // Create an object representing the request body
-    const requestBody = { username, email, password, isPetOwner, isSitter };
+    const requestBody = {
+      username,
+      email,
+      password,
+      isPetOwner,
+      isSitter,
+      postalCode,
+    };
 
     try {
       await axios.post(`${API_URL}/auth/signup`, requestBody);
@@ -79,6 +92,15 @@ function SignupPage() {
             type="password"
             value={password}
             onChange={handlePasswordChange}
+          />
+        </label>
+        <label>
+          Postal Code:
+          <input
+            className="signup-input"
+            type="postalCode"
+            value={postalCode}
+            onChange={handlePostalCodeChange}
           />
         </label>
 
