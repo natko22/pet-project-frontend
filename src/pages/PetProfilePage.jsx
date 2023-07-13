@@ -31,7 +31,9 @@ function PetProfilePage() {
 
   const handleDelete = async () => {
     try {
-      await axios.delete(`http://localhost:5005/api/pets/${petId}`);
+      await axios.post(`http://localhost:5005/api/pets/${petId}`, {
+        owner: user._id,
+      });
       navigate("/");
       console.log("succesfully deleted");
     } catch (error) {

@@ -65,6 +65,7 @@ function SearchSittersPage() {
                 alt={sitter.name}
                 className="sitter-card-img"
               />
+
               <h3>{sitter.username}</h3>
               <p>Pet Owner:{sitter.isPetOwner ? "Yes" : "No"}</p>
               <p>Postal Code:{sitter.postalCode}</p>

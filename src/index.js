@@ -5,7 +5,10 @@ import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { BrowserRouter } from "react-router-dom";
 import { AuthProviderWrapper } from "./context/auth.context";
-
+import "./Fonts/LmsThisFontIsForTheDogs-7PnR.ttf";
+import "./Fonts/Pet Shop.otf";
+import "./Fonts/Animal Paws.otf";
+import "./Fonts/SunnyspellsRegular-MV9ze.otf";
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
