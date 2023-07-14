@@ -12,6 +12,22 @@
     url("../src/Fonts/Animal\ Paws.otf") format("truetype");
 }
 
+/* links */
+
+.edit-profile-link {
+  text-decoration: none;
+  font-size: 25px;
+  color: black;
+  font-style: italic;
+  position: absolute;
+  top: 110px;
+  right: 20px;
+}
+
+.edit-profile-link:hover {
+  color: #f6c5a2;
+}
+
 /* Signup page styling */
 
 .signup-container {
@@ -55,7 +71,7 @@
   width: 100%;
   padding: 15px;
   margin: 20px;
-  background-color: #Cb997e;
+  background-color: #cb997e;
   color: #000000;
   font-size: 20px;
   font-family: "Times New Roman", Times, serif;
@@ -116,7 +132,7 @@
   width: 100%;
   padding: 15px;
   margin: 20px;
-  background-color: #Cb997e;
+  background-color: #cb997e;
   color: #000000;
   font-size: 20px;
   font-family: "Times New Roman", Times, serif;
@@ -140,7 +156,7 @@
 /* for nav bar */
 .nav {
   height: 50px;
-  background-color: #Cb997e;
+  background-color: #cb997e;
   color: black;
   box-shadow: 0 3px 10px rgba(0, 0, 0, 0.343);
   padding: 20px;
@@ -247,7 +263,7 @@
 
 .footer-basic {
   padding: 40px 0;
-  background-color: #Cb997e;
+  background-color: #cb997e;
   color: white;
   box-shadow: 0 3px 8px rgba(4, 15, 10, 0.601);
 }
@@ -336,7 +352,7 @@
   width: 100%;
   padding: 15px;
   margin: 20px;
-  background-color: #Cb997e;
+  background-color: #cb997e;
   color: #000000;
   font-size: 20px;
   font-family: "Times New Roman", Times, serif;
@@ -379,7 +395,7 @@
   width: 100%;
   height: 100%;
   border-radius: 50%;
-  background-color: #Cb997e;
+  background-color: #cb997e;
   color: #ffffff;
   display: flex;
   justify-content: center;
@@ -388,8 +404,29 @@
   opacity: 0.5;
   transition: opacity 0.3s ease;
 }
+.user-photo-edit-btn {
+  position: absolute;
+  width: 5%;
+  height: 5%;
+  border-radius: 50%;
+  background-color: #cb997e;
+  color: #ffffff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  opacity: 0.5;
+  transition: opacity 0.3s ease;
+  top: 16%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
 
 .photo-edit-btn:hover {
+  opacity: 0.9;
+}
+
+.user-photo-edit-btn:hover {
   opacity: 0.9;
 }
 
@@ -403,7 +440,7 @@
   align-items: center;
   background-color: #f9efe8;
   max-width: 400px;
-  margin: 100px auto;
+  margin: 130px auto;
   padding: 20px;
   border-radius: 5px;
   box-shadow: 0 3px 8px rgba(4, 15, 10, 0.601);
@@ -437,7 +474,7 @@ textarea {
   width: 100%;
   padding: 15px;
   margin: 20px;
-  background-color: #Cb997e;
+  background-color: #cb997e;
   color: #000000;
   font-size: 20px;
   font-family: "Times New Roman", Times, serif;
@@ -546,7 +583,7 @@ textarea {
 /* Reviews-box */
 
 .review-box {
-  background-color: #Cb997e;
+  background-color: #cb997e;
   padding: 20px;
   border-radius: 5px;
   box-shadow: 0 3px 8px rgba(4, 15, 10, 0.601);
@@ -623,7 +660,7 @@ textarea {
   width: 90%;
   padding: 15px;
   margin: 20px;
-  background-color: #Cb997e;
+  background-color: #cb997e;
   color: #000000;
   font-size: 20px;
   font-family: "Times New Roman", Times, serif;
@@ -659,7 +696,7 @@ textarea {
 }
 
 .pet-box {
-  background-color: #Cb997e;
+  background-color: #cb997e;
   width: 400px;
   width: 800px;
   padding: 20px;
@@ -717,7 +754,7 @@ textarea {
   width: 100%;
   padding: 15px;
   margin: 20px;
-  background-color: #Cb997e;
+  background-color: #cb997e;
   color: #000000;
   font-size: 20px;
   font-family: "Times New Roman", Times, serif;
@@ -769,7 +806,7 @@ textarea {
 
 .aboutme-box {
   display: flex;
-  background-color: #Cb997e;
+  background-color: #cb997e;
   width: 800px;
   padding: 20px;
   justify-content: space-evenly;
@@ -821,7 +858,7 @@ label {
   width: 90%;
   padding: 15px;
   margin: 20px;
-  background-color: #Cb997e;
+  background-color: #cb997e;
   color: #000000;
   font-size: 20px;
   font-family: "Times New Roman", Times, serif;
@@ -896,7 +933,7 @@ label {
 .react-calendar {
   width: 350px;
   max-width: 100%;
-  background: #Cb997e;
+  background: #cb997e;
   border: 1px solid #2d6b4c;
   border-radius: 8px;
   box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
@@ -1046,7 +1083,7 @@ label {
 
 .booking-item {
   box-sizing: border-box;
-  background-color: #Cb997e;
+  background-color: #cb997e;
   color: white;
   padding: 20px;
   margin: 10px;
@@ -1061,10 +1098,9 @@ label {
 .available-date-indicator {
   width: 100%;
   height: 100%;
-  background-color: green;  
+  background-color: green;
   opacity: 0.5;
 }
-
 
 /* favorite-page */
 .fav-page {
