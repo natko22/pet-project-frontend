@@ -201,11 +201,12 @@ const EditProfile = () => {
 
       {showUploadForm && (
         <div>
-          <h2>Add image</h2>
+          <h2 className="h2-edit-img">Add image</h2>
           <div className="upload-form-container">
             <div className="upload-form">
               <form onSubmit={uploadImage}>
-                <label>
+                <label className="file-upload-label">
+                  Choose Photo
                   <input
                     className="upload-input"
                     type="file"
