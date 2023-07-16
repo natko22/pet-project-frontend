@@ -319,7 +319,10 @@ function ProfilePage() {
             selectRange={true}
             tileContent={renderTileContent} // Custom tile content function
           />
-          <button onClick={handleAvailableDatesSubmit}>
+          <button
+            className="available-date-btn"
+            onClick={handleAvailableDatesSubmit}
+          >
             Set Available Dates
           </button>
         </div>

@@ -48,9 +48,10 @@ function PetProfilePage() {
   return (
     <div>
       {petId === pet._id && (
-        <Link to={`/edit-pet/${petId}`}>Edit Pet Profile</Link>
+        <Link className="edit-pet-btn" to={`/edit-pet/${petId}`}>
+          Edit Pet Profile
+        </Link>
       )}
-      <button onClick={handleDelete}>Delete Pet</button>
 
       <div className="profilepage">
         <img
@@ -87,6 +88,9 @@ function PetProfilePage() {
           )}
           <h3>Diet</h3>
           {!pet.diet ? <p>There's no medical condition yet.</p> : pet.diet}
+          <button className="delete-pet-btn" onClick={handleDelete}>
+            Delete Pet
+          </button>
         </div>
       </div>
     </div>

@@ -540,12 +540,12 @@ textarea {
   justify-content: center;
   align-items: center;
 }
-.save-pet-btn {
+/* .save-pet-btn {
   display: flex;
   justify-content: center;
   align-items: center;
   color: #3a4d3c;
-}
+} */
 
 @media (max-width: 1142px) {
   .header {
@@ -886,6 +886,114 @@ label {
   cursor: pointer;
 }
 
+.add-pet {
+  text-decoration: none;
+  color: black;
+  font-size: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #f9efe8;
+  max-width: 100px;
+  margin: 40px auto;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 3px 8px rgba(4, 15, 10, 0.601);
+}
+
+.edit-pet-heading {
+  text-align: center;
+  margin-bottom: 10px;
+  padding: 30px;
+}
+
+.edit-pet-form {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  background-color: #f9efe8;
+  max-width: 400px;
+  margin: 130px auto;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 3px 8px rgba(4, 15, 10, 0.601);
+}
+
+.edit-pet-form label {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 10px;
+}
+
+.edit-pet-form input,
+.edit-pet-form select,
+.edit-pet-form textarea {
+  padding: 5px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  margin-top: 5px;
+}
+.edit-pet-form label.checkbox-label {
+  align-items: center;
+  flex-direction: row;
+}
+
+.edit-pet-form label.checkbox-label input[type="checkbox"] {
+  margin-top: 0;
+  margin-right: 5px;
+}
+
+.edit-pet-btn {
+  text-decoration: none;
+  font-size: 25px;
+  color: black;
+  font-style: italic;
+  position: absolute;
+  top: 110px;
+  right: 20px;
+}
+
+.backtoprofile-btn {
+  text-decoration: none;
+  font-size: 25px;
+  color: black;
+  font-style: italic;
+  position: absolute;
+  top: 110px;
+  right: 20px;
+}
+
+.delete-pet-btn {
+  text-decoration: none;
+  border: none;
+  color: black;
+  font-size: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #f9efe8;
+  max-width: 200px;
+  margin: 20px auto;
+  padding: 10px;
+  border-radius: 5px;
+  box-shadow: 0 3px 8px rgba(4, 15, 10, 0.601);
+}
+
+.save-pet-btn {
+  text-decoration: none;
+  border: none;
+  color: black;
+  font-size: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #cb997e;
+  margin: 20px auto;
+  padding: 10px;
+  border-radius: 5px;
+  box-shadow: 0 3px 8px rgba(4, 15, 10, 0.601);
+}
+
 /* search pet profiles */
 
 .card {
@@ -1119,6 +1227,23 @@ label {
   height: 100%;
   background-color: green;
   opacity: 0.5;
+}
+
+.available-date-btn {
+  text-decoration: none;
+  color: black;
+  border: none;
+  font-size: 20px;
+  font-family: sunny spells;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #f9efe8;
+  max-width: 200px;
+  margin: 40px auto;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.601);
 }
 
 /* favorite-page */

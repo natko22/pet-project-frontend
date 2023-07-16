@@ -24,13 +24,13 @@ function Navbar() {
       {console.log("logedin check", isLoggedIn)}
       {isLoggedIn ? (
         <div className="nav-links">
-          <Link to="/" onClick={logOutUser}>
-            Logout
-          </Link>
           <Link to={`/profile/${user._id}`}>Profile</Link>
           <Link to={"/favorites"}>Favorites</Link>
           <Link to={"pet-profiles"}>Search Pets</Link>
           <Link to={"sitters-profiles"}>Search Pet Sitters</Link>
+          <Link to="/" onClick={logOutUser}>
+            Logout
+          </Link>
         </div>
       ) : (
         <div className="nav-links">

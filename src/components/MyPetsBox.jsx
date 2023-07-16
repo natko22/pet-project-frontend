@@ -30,7 +30,11 @@ function MyPetsBox({ pets }) {
               </Link>
             ))}
         </div>
-        {userId === user._id && <Link to="/add-pet">+ Add a new Pet</Link>}
+        {userId === user._id && (
+          <Link className="add-pet" to="/add-pet">
+            Add A New Pet
+          </Link>
+        )}
       </div>
     </>
   );
