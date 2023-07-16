@@ -869,6 +869,10 @@ label {
   padding: 10px;
 }
 
+.pet-upload-input {
+  background-color: #f9efe8;
+}
+
 .add-new-pet-checkbox {
   transform: scale(1.5);
 }
@@ -909,8 +913,14 @@ label {
 
 .edit-pet-heading {
   text-align: center;
-  margin-bottom: 10px;
+  margin-bottom: 90px;
   padding: 30px;
+}
+
+.add-image-header {
+  text-align: center;
+  margin-bottom: -50px;
+  padding: 0px;
 }
 
 .edit-pet-form {

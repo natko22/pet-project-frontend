@@ -206,13 +206,13 @@ const EditPet = () => {
 
       {showUploadForm && (
         <div>
-          <h2>Add image</h2>
+          <h2 className="add-image-header">Add image</h2>
           <div className="upload-form-container">
             <div className="upload-form">
               <form className="edit-pet-form" onSubmit={handleImgUpload}>
                 <label>
                   <input
-                    className="upload-input"
+                    className="pet-upload-input"
                     type="file"
                     accept="image/png, image/jpeg, image/jpg"
                     name="image"
