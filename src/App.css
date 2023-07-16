@@ -432,7 +432,7 @@
 }
 
 .photo-upload-btn:hover {
-  background-color: #3a4d3c;
+  background-color: #f6c5a2;
 }
 
 .edit-profile-form {
@@ -567,7 +567,7 @@ textarea {
 }
 
 .edit-profile-form button:hover {
-  background-color: #3a4d3c;
+  background-color: #b5672f;
 }
 
 /* profilepage */
@@ -901,6 +901,12 @@ label {
   box-shadow: 0 3px 8px rgba(4, 15, 10, 0.601);
 }
 
+.add-new-pet-heading {
+  text-align: center;
+  margin-bottom: 10px;
+  padding: 10px;
+}
+
 .edit-pet-heading {
   text-align: center;
   margin-bottom: 10px;
@@ -961,6 +967,14 @@ label {
   position: absolute;
   top: 110px;
   right: 20px;
+}
+
+.back-to-user-link {
+  text-decoration: none;
+  color: black;
+  font-size: 20px;
+  margin: 10px;
+  padding: 20px;
 }
 
 .delete-pet-btn {
@@ -1032,28 +1046,68 @@ label {
   font-size: 20px;
 }
 .link-to-pet-profile :hover {
-  color: #176b21;
+  color: #a06113;
 }
 /* search sitters */
+.search-sitters-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.search-sitters-heading {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.search-input {
+  margin-bottom: 30px;
+  width: 200px;
+}
+
 .sitter-card {
-  border: 2px solid black;
+  border: 1px solid black;
   border-radius: 4px;
   padding: 10px;
   margin-bottom: 10px;
+  background-color: #ddae95;
+  height: 300px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
 }
 
 .sitter-card-img {
-  width: 80px;
-  border-radius: 10px;
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 50%;
+  margin: 0 auto;
 }
 
-.link-to-sitter-profile {
+.sitter-card-details {
+  margin-top: 10px;
+}
+
+.sitter-card-username {
+  font-size: 25px;
+  font-weight: bold;
+}
+
+.sitter-card-info {
+  margin-bottom: 5px;
+}
+
+.sitter-card-link {
   text-decoration: none;
   color: black;
-  font-size: 20px;
+  font-family: sunny spells;
 }
-.link-to-sitter-profile :hover {
-  color: #176b21;
+
+.sitter-card-link:hover {
+  color: #a06113;
 }
 
 /* react calendar */

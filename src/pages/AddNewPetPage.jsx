@@ -94,9 +94,11 @@ function AddPet() {
 
   return (
     <div>
-      <Link to={`/profile/${user._id}`}>Back to User's Profile</Link>
+      <Link className="back-to-user-link" to={`/profile/${user._id}`}>
+        Back to User's Profile
+      </Link>
 
-      <h1>Add a New Pet</h1>
+      <h1 className="add-new-pet-heading">Add a New Pet</h1>
       {loading && <h1>Creating Pet...</h1>}
 
       {!loading && (
