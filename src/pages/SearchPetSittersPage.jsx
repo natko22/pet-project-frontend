@@ -7,6 +7,7 @@ function SearchSittersPage() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [searchQuery, setSearchQuery] = useState("");
+  const [postalCodeQuery, setPostalCodeQuery] = useState("");
 
   useEffect(() => {
     fetchSitters();
@@ -24,13 +25,25 @@ function SearchSittersPage() {
     }
   };
   const handleSearch = (e) => {
-    setSearchQuery(e.target.value);
+    const value = e.target.value;
+    setSearchQuery(value);
+    setPostalCodeQuery(value);
   };
 
   const filteredSitters = sitters.filter((sitter) => {
     const sitterName = sitter.username && sitter.username.toLowerCase();
-    return sitterName && sitterName.includes(searchQuery.toLowerCase());
+    const sitterPostalCode =
+      sitter.postalCode && sitter.postalCode.toString().toLowerCase();
+
+    const searchQueryLower = searchQuery.toLowerCase();
+    const postalCodeQueryLower = postalCodeQuery.toLowerCase();
+
+    return (
+      (sitterName && sitterName.includes(searchQueryLower)) ||
+      (sitterPostalCode && sitterPostalCode.includes(postalCodeQueryLower))
+    );
   });
+
   if (loading) {
     return <p>Loading...</p>;
   }
@@ -47,7 +60,7 @@ function SearchSittersPage() {
         type="text"
         value={searchQuery}
         onChange={handleSearch}
-        placeholder="Search Pet Sitters..."
+        placeholder="Search Pet Sitters by Username or Postal Code..."
         className="search-input"
       />
 
