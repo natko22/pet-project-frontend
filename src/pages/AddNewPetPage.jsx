@@ -44,7 +44,6 @@ function AddPet() {
           const { data } = await axios.get(
             `http://localhost:5005/api/users/${user._id}`
           );
-          console.log("fetched data", data);
           setUserData(data);
         }
       } catch (err) {
