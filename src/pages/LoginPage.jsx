@@ -31,6 +31,7 @@ const LoginPage = () => {
       console.log("JWT token", response.data.authToken);
 
       storeToken(response.data.authToken);
+
       authenticateUser();
       setIsLoading(false);
     } catch (error) {
@@ -42,6 +43,23 @@ const LoginPage = () => {
     return "laoding";
   }
   if (!isLoading && user) {
+    navigate(`/profile/${user._id}`);
+  }
+
+  // Google Login
+  const handleGoogleAuth = async () => {
+    try {
+      const { data } = await axios.get(`${API_URL}/auth/google`, {});
+
+      localStorage.setItem("authToken", data.authToken);
+
+      window.location.href = data.url;
+    } catch (error) {
+      console.error("Failed to initiate Google authentication:", error);
+    }
+  };
+
+  if (user) {
     navigate(`/profile/${user._id}`);
   }
 
@@ -77,6 +95,10 @@ const LoginPage = () => {
           Login
         </button>
       </form>
+      <button onClick={handleGoogleAuth}>
+        <img src="" alt="" />
+        <span>Sign in with Google</span>
+      </button>
       {errorMessage && <p className="error-message">{errorMessage}</p>}
     </div>
   );
