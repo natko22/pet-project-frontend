@@ -46,9 +46,10 @@ const SearchPetProfiles = () => {
   }
 
   return (
-    <div>
-      <h2>Pet Profiles</h2>
+    <div className="search-container">
+      <h2 className="search-pet-header">Search Pet Profiles</h2>
       <input
+        className="search-pet-input"
         type="text"
         value={searchQuery}
         onChange={(e) => setSearchQuery(e.target.value)}
@@ -56,6 +57,7 @@ const SearchPetProfiles = () => {
       />
 
       <select
+        className="animal-type-select"
         value={animalType}
         onChange={(e) => setAnimalType(e.target.value)}
       >
@@ -68,26 +70,28 @@ const SearchPetProfiles = () => {
         <option value="bird">Bird</option>
       </select>
 
-      {filteredPetProfiles.length === 0 ? (
-        <div>No matching pet profiles found.</div>
-      ) : (
-        filteredPetProfiles.map((pet) => (
-          <div key={pet._id} className="card">
-            <Link to={`/petProfile/${pet._id}`} className="link-to-pet-profile">
-              <img src={pet.img} alt={pet.name} className="pet-card-img" />
-              <div className="card-content">
-                <h3>{pet.name}</h3>
-                <p>Race: {pet.race}</p>
-                <p>Age: {pet.age}</p>
-                <p>Gender: {pet.gender}</p>
-                <p>Castrated: {pet.castrated}</p>
-                <p>Medical Condition: {pet.medicalCondition}</p>
-                <p>Diet: {pet.diet}</p>
-              </div>
-            </Link>
-          </div>
-        ))
-      )}
+      <div className="pet-profiles-container">
+        {filteredPetProfiles.length === 0 ? (
+          <div>No matching pet profiles found.</div>
+        ) : (
+          filteredPetProfiles.map((pet) => (
+            <div key={pet._id} className="card">
+              <Link to={`/petProfile/${pet._id}`} className="pet-card-link">
+                <img src={pet.img} alt={pet.name} className="pet-card-img" />
+                <div className="card-content">
+                  <h3>{pet.name}</h3>
+                  <p>Race: {pet.race}</p>
+                  <p>Age: {pet.age}</p>
+                  <p>Gender: {pet.gender}</p>
+                  <p>Castrated: {pet.castrated}</p>
+                  <p>Medical Condition: {pet.medicalCondition}</p>
+                  <p>Diet: {pet.diet}</p>
+                </div>
+              </Link>
+            </div>
+          ))
+        )}
+      </div>
     </div>
   );
 };
