@@ -39,7 +39,10 @@ function SearchSittersPage() {
 
     return (
       (sitterName && sitterName.includes(searchQueryLower)) ||
-      (sitterPostalCode && sitterPostalCode.includes(postalCodeQueryLower))
+      (sitterPostalCode && sitterPostalCode.includes(postalCodeQueryLower)) ||
+      (postalCodeQueryLower &&
+        sitterPostalCode &&
+        sitterPostalCode.startsWith(postalCodeQueryLower))
     );
   });
 
