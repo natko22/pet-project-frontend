@@ -34,7 +34,6 @@ function SearchSittersPage() {
     const sitterName = sitter.username && sitter.username.toLowerCase();
     const sitterPostalCode =
       sitter.postalCode && sitter.postalCode.toString().toLowerCase();
-
     const searchQueryLower = searchQuery.toLowerCase();
     const postalCodeQueryLower = postalCodeQuery.toLowerCase();
 
