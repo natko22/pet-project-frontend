@@ -62,15 +62,17 @@ function SignupPage() {
   };
 
   // Google signup
-  const handleGoogleSignUp = async () => {
-    try {
-      const { data } = await axios.get(`${API_URL}/auth/google/signup`);
-      window.location.href = data;
-    } catch (error) {
-      console.error("Failed to initiate Google authentication:", error);
-    }
+  // const handleGoogleSignUp = async () => {
+  //   try {
+  //     const { data } = await axios.get(`${API_URL}/auth/google/signup`);
+  //     window.location.href = data;
+  //   } catch (error) {
+  //     console.error("Failed to initiate Google authentication:", error);
+  //   }
+  // };
+  const handleGoogleSignUp = () => {
+    window.location.href = `${API_URL}/auth/google/callback`;
   };
-
   return (
     <div className="signup-container">
       <h2>Sign Up</h2>

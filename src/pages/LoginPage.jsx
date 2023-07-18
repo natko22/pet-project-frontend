@@ -1,4 +1,4 @@
-import { useState, useContext } from "react";
+import { useState, useContext, useEffect } from "react";
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
@@ -47,21 +47,29 @@ const LoginPage = () => {
   }
 
   // Google Login
-  const handleGoogleAuth = async () => {
-    try {
-      const { data } = await axios.get(`${API_URL}/auth/google`, {});
+  // const handleGoogleAuth = async () => {
+  //   try {
+  //     const { data } = await axios.get(`${API_URL}/auth/google/callback`);
 
-      localStorage.setItem("authToken", data.authToken);
+  //     localStorage.setItem("authToken", data.authToken);
 
-      window.location.href = data.url;
-    } catch (error) {
-      console.error("Failed to initiate Google authentication:", error);
-    }
+  //     window.location.href = data.url;
+  //     console.log("URL", data.url, data.authToken);
+  //   } catch (error) {
+  //     console.error("Failed to initiate Google authentication:", error);
+  //   }
+
+  //   window.location.href = `${API_URL}/auth/google/callback`;
+  // };
+
+  // if (user) {
+  //   navigate(`/profile/${user._id}`);
+  // }
+
+  // Google Login
+  const handleGoogleAuth = () => {
+    window.location.href = `${API_URL}/auth/google/callback`;
   };
-
-  if (user) {
-    navigate(`/profile/${user._id}`);
-  }
 
   return (
     <div className="login-container">
