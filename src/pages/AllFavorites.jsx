@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import axios from "axios";
 import { AuthContext } from "../context/auth.context";
-
+import { API_URL } from "../config/config.index";
 function AllFavorites() {
   const [favorites, setFavorites] = useState([]);
   const { user } = useContext(AuthContext);
@@ -10,7 +10,7 @@ function AllFavorites() {
     const fetchFavorites = async () => {
       try {
         const { data } = await axios.get(
-          `http://localhost:5005/api/favorites/${user._id}`
+          `${API_URL}/api/favorites/${user._id}`
         );
         console.log("fetched favorites", data);
         setFavorites(data);

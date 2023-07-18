@@ -6,6 +6,7 @@ import { useContext } from "react";
 import { AuthContext } from "../context/auth.context";
 import { useEffect } from "react";
 import AvatarEditor from "react-avatar-editor";
+import { API_URL } from "../config/config.index";
 
 function AddPet() {
   const [name, setName] = useState("");
@@ -41,9 +42,7 @@ function AddPet() {
     const fetchUserData = async () => {
       try {
         if (user) {
-          const { data } = await axios.get(
-            `http://localhost:5005/api/users/${user._id}`
-          );
+          const { data } = await axios.get(`${API_URL}/api/users/${user._id}`);
           setUserData(data);
         }
       } catch (err) {
@@ -77,10 +76,7 @@ function AddPet() {
     }
 
     try {
-      const response = await axios.post(
-        "http://localhost:5005/api/add-pet",
-        formData
-      );
+      const response = await axios.post(`${API_URL}/api/add-pet`, formData);
       setPet(response.data);
       navigate(`/profile/${user._id}`);
       setLoading(false);

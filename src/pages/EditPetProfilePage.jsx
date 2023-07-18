@@ -4,6 +4,7 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import AvatarEditor from "react-avatar-editor";
 import imgPlaceholder from "../assets/pawprint.png";
+import { API_URL } from "../config/config.index";
 
 const EditPet = () => {
   const [name, setName] = useState("");
@@ -31,9 +32,7 @@ const EditPet = () => {
   useEffect(() => {
     const fetchPetProfile = async () => {
       try {
-        const response = await axios.get(
-          `http://localhost:5005/api/edit-pet/${petId}`
-        );
+        const response = await axios.get(`${API_URL}/api/edit-pet/${petId}`);
         const petData = response.data;
 
         setName(petData.pet.name || "");
@@ -58,9 +57,7 @@ const EditPet = () => {
   }, []);
   const fetchPetforImg = async () => {
     try {
-      const response = await axios.get(
-        `http://localhost:5005/api/edit-pet/${petId}`
-      );
+      const response = await axios.get(`${API_URL}/api/edit-pet/${petId}`);
 
       setPetImg(response.data.pet.img);
     } catch (error) {
@@ -134,7 +131,7 @@ const EditPet = () => {
         console.log(formData, "FORMDATA");
 
         const response = await axios.post(
-          `http://localhost:5005/api/upload/${petId}`,
+          `${API_URL}/api/upload/${petId}`,
           formData
         );
         console.log(response);
@@ -172,7 +169,7 @@ const EditPet = () => {
 
     try {
       const response = await axios.put(
-        `http://localhost:5005/api/edit-pet/${petId}`,
+        `${API_URL}/api/edit-pet/${petId}`,
         updatedPetProfile
       );
       console.log("Pet profile updated successfully:", response.data);

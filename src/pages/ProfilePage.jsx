@@ -9,6 +9,7 @@ import ReviewBox from "../components/ReviewBox";
 import MyPetsBox from "../components/MyPetsBox";
 import Calendar from "react-calendar";
 import BookingsPage from "./BookingsPage";
+import { API_URL } from "../config/config.index";
 
 function ProfilePage() {
   const { userId } = useParams();
@@ -34,9 +35,7 @@ function ProfilePage() {
     if (user) {
       const fetchUserData = async () => {
         try {
-          const { data } = await axios.get(
-            `http://localhost:5005/api/users/${user._id}`
-          );
+          const { data } = await axios.get(`${API_URL}/api/users/${user._id}`);
           console.log("fetched data", data);
           if (data.favorites.includes(userId)) {
             setFavorite(true);
@@ -74,20 +73,14 @@ function ProfilePage() {
   const handleFavoriteClick = async () => {
     try {
       if (favorite) {
-        const response = await axios.put(
-          `http://localhost:5005/api/favorites/${userId}`,
-          {
-            userIdToRemove: user._id,
-          }
-        );
+        const response = await axios.put(`${API_URL}/api/favorites/${userId}`, {
+          userIdToRemove: user._id,
+        });
         console.log("favorite removed", response.data);
       } else {
-        const response = await axios.put(
-          `http://localhost:5005/api/favorites/${userId}`,
-          {
-            userIdToAdd: user._id,
-          }
-        );
+        const response = await axios.put(`${API_URL}/api/favorites/${userId}`, {
+          userIdToAdd: user._id,
+        });
         console.log("favorite added", response.data);
       }
       setFavorite(!favorite);
@@ -98,9 +91,7 @@ function ProfilePage() {
 
   const fetchCurrentUserData = async () => {
     try {
-      const { data } = await axios.get(
-        `http://localhost:5005/api/users/${userId}`
-      );
+      const { data } = await axios.get(`${API_URL}/api/users/${userId}`);
       console.log("fetched data", data);
       setCurrentUser(data);
     } catch (err) {
@@ -174,7 +165,7 @@ function ProfilePage() {
       }
 
       const response = await axios.post(
-        "http://localhost:5005/api/bookings",
+        `${API_URL}/api/bookings`,
         bookingPayload
       );
       console.log("Booking created:", response.data);
@@ -217,7 +208,7 @@ function ProfilePage() {
       };
 
       const response = await axios.post(
-        "http://localhost:5005/api/availableDates",
+        `${API_URL}/api/availableDates`,
         availableDatesPayload
       );
       console.log("Available dates set:", response.data);

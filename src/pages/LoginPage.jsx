@@ -3,8 +3,7 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { AuthContext } from "../context/auth.context";
-
-const API_URL = "http://localhost:5005";
+import { API_URL } from "../config/config.index";
 
 const LoginPage = () => {
   const [email, setEmail] = useState("");
@@ -45,26 +44,6 @@ const LoginPage = () => {
   if (!isLoading && user) {
     navigate(`/profile/${user._id}`);
   }
-
-  // Google Login
-  // const handleGoogleAuth = async () => {
-  //   try {
-  //     const { data } = await axios.get(`${API_URL}/auth/google/callback`);
-
-  //     localStorage.setItem("authToken", data.authToken);
-
-  //     window.location.href = data.url;
-  //     console.log("URL", data.url, data.authToken);
-  //   } catch (error) {
-  //     console.error("Failed to initiate Google authentication:", error);
-  //   }
-
-  //   window.location.href = `${API_URL}/auth/google/callback`;
-  // };
-
-  // if (user) {
-  //   navigate(`/profile/${user._id}`);
-  // }
 
   // Google Login
   const handleGoogleAuth = () => {

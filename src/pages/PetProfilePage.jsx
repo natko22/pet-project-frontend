@@ -7,6 +7,7 @@ import { useParams } from "react-router-dom";
 import male from "../assets/male.png";
 import female from "../assets/female.png";
 import { useNavigate } from "react-router-dom";
+import { API_URL } from "../config/config.index";
 
 function PetProfilePage() {
   const { petId } = useParams();
@@ -17,9 +18,7 @@ function PetProfilePage() {
   useEffect(() => {
     const fetchPetData = async () => {
       try {
-        const { data } = await axios.get(
-          `http://localhost:5005/api/pets/${petId}`
-        );
+        const { data } = await axios.get(`${API_URL}/api/pets/${petId}`);
         console.log("fetched data", data);
         setPet(data);
       } catch (err) {
@@ -31,7 +30,7 @@ function PetProfilePage() {
 
   const handleDelete = async () => {
     try {
-      await axios.post(`http://localhost:5005/api/pets/${petId}`, {
+      await axios.post(`${API_URL}/api/pets/${petId}`, {
         owner: user._id,
       });
       navigate("/");

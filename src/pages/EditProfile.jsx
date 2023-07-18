@@ -6,6 +6,7 @@ import { useParams } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import AvatarEditor from "react-avatar-editor";
 import imgPlaceholder from "../assets/placeholder.png";
+import { API_URL } from "../config/config.index";
 
 const EditProfile = () => {
   const [username, setUsername] = useState("");
@@ -47,7 +48,7 @@ const EditProfile = () => {
         formData.append("imageUrl", e.target.image.files[0]);
 
         const response = await axios.post(
-          `http://localhost:5005/auth/upload/${userId}`,
+          `${API_URL}/auth/upload/${userId}`,
           formData
         );
         console.log(response);
@@ -72,9 +73,7 @@ const EditProfile = () => {
   useEffect(() => {
     const fetchUserProfile = async () => {
       try {
-        const response = await axios.get(
-          `http://localhost:5005/auth/edit/${userId}`
-        );
+        const response = await axios.get(`${API_URL}/auth/edit/${userId}`);
         setUsername(response.data.user.username || "");
         setEmail(response.data.user.email || "");
         setPassword(response.data.user.password || "");
@@ -96,9 +95,7 @@ const EditProfile = () => {
   }, []);
   const fetchUserforImg = async () => {
     try {
-      const response = await axios.get(
-        `http://localhost:5005/auth/edit/${userId}`
-      );
+      const response = await axios.get(`${API_URL}/auth/edit/${userId}`);
 
       setUserImg(response.data.user.img);
     } catch (error) {
@@ -166,7 +163,7 @@ const EditProfile = () => {
     try {
       // Make a POST request to save the updated profile
       const response = await axios.put(
-        `http://localhost:5005/auth/edit/${userId}`,
+        `${API_URL}/auth/edit/${userId}`,
         updatedProfile,
         {
           headers: {

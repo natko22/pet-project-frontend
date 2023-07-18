@@ -3,7 +3,7 @@ import axios from "axios";
 import { useParams } from "react-router-dom";
 import { useContext } from "react";
 import { AuthContext } from "../context/auth.context";
-
+import { API_URL } from "../config/config.index";
 
 function AddReview({ onClose, setAddReviews }) {
   const [review, setReview] = useState("");
@@ -39,7 +39,7 @@ function AddReview({ onClose, setAddReviews }) {
 
     try {
       const response = await axios.post(
-        "http://localhost:5005/api/add-review/",
+        `${API_URL}/api/add-review/`,
         newReview
       );
       setReview("");
@@ -56,9 +56,9 @@ function AddReview({ onClose, setAddReviews }) {
   return (
     <div>
       <form onSubmit={handleSubmit} className="add-review">
-      <button className="close-btn" onClick={onClose}>
-        X
-      </button>
+        <button className="close-btn" onClick={onClose}>
+          X
+        </button>
         <label>
           Review:
           <textarea

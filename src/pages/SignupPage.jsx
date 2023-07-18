@@ -1,8 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
-
-const API_URL = "http://localhost:5005";
+import { API_URL } from "../config/config.index";
 
 function SignupPage() {
   const [username, setUsername] = useState("");

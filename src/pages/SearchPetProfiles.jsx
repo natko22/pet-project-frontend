@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
+import { API_URL } from "../config/config.index";
 
 const SearchPetProfiles = () => {
   const [petProfiles, setPetProfiles] = useState([]);
@@ -14,14 +15,11 @@ const SearchPetProfiles = () => {
 
   const fetchPetProfiles = async () => {
     try {
-      const response = await axios.get(
-        "http://localhost:5005/api/pet-profiles/",
-        {
-          populate: "user",
-          select:
-            "name race age gender castrated medicalCondition diet user.postalCode",
-        }
-      );
+      const response = await axios.get(`${API_URL}/api/pet-profiles/`, {
+        populate: "user",
+        select:
+          "name race age gender castrated medicalCondition diet user.postalCode",
+      });
       setPetProfiles(response.data);
       setLoading(false);
     } catch (error) {
