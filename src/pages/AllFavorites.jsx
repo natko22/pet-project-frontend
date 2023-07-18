@@ -1,7 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
 import axios from "axios";
-import { Link } from "react-router-dom";
-import imgPlaceholder from "../assets/placeholder.png";
 import { AuthContext } from "../context/auth.context";
 
 function AllFavorites() {

@@ -1,12 +1,11 @@
-import {useContext} from "react";
+import { useContext } from "react";
 import { AuthContext } from "../context/auth.context";
 import MyPet from "./MyPet";
-import { Link,useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 
 function MyPetsBox({ pets }) {
   const { userId } = useParams();
   const { user } = useContext(AuthContext);
-  console.log("mypet", pets);
   return (
     <>
       <h2 className="pet-box-h2">My Pets</h2>
@@ -16,7 +15,11 @@ function MyPetsBox({ pets }) {
   defined when map function is called.*/}
           {pets &&
             pets.map((pet) => (
-              <Link className="pet-link" to={`/petProfile/${pet._id}`}>
+              <Link
+                className="pet-link"
+                to={`/petProfile/${pet._id}`}
+                key={pet._id}
+              >
                 <MyPet
                   key={pet._id}
                   id={pet._id}
@@ -27,8 +30,11 @@ function MyPetsBox({ pets }) {
               </Link>
             ))}
         </div>
-        {userId === user._id && <Link to="/add-pet">+ Add a new Pet</Link>}
-
+        {userId === user._id && (
+          <Link className="add-pet" to="/add-pet">
+            Add A New Pet
+          </Link>
+        )}
       </div>
     </>
   );

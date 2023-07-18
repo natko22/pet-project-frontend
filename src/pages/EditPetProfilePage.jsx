@@ -61,14 +61,14 @@ const EditPet = () => {
       const response = await axios.get(
         `http://localhost:5005/api/edit-pet/${petId}`
       );
-  
+
       setPetImg(response.data.pet.img);
     } catch (error) {
       console.error("Error fetching pet profile:", error);
       setLoading(false);
     }
   };
-  
+
   useEffect(() => {
     fetchPetforImg();
   }, []);
@@ -184,34 +184,35 @@ const EditPet = () => {
 
   return (
     <div>
-      <Link to={`/petProfile/${petId}`}>Back to Pet Profile</Link>
+      <Link className="backtoprofile-btn" to={`/petProfile/${petId}`}>
+        Back to Pet Profile
+      </Link>
 
-      <h2>Edit Pet Profile</h2>
+      <h2 className="edit-pet-heading">Edit Pet Profile</h2>
       {!showUploadForm && (
         <div className="container-parent">
-  <div className="profileImg-container">
-    <img
-      className="profileImg"
-      src={!petImg ? imgPlaceholder : petImg}
-      alt={name}
-    />
-    <button className="photo-edit-btn" onClick={handleEditPhoto}>
-      Edit
-    </button>
-  </div>
-  </div>
-)}
-
+          <div className="profileImg-container">
+            <img
+              className="profileImg"
+              src={!petImg ? imgPlaceholder : petImg}
+              alt={name}
+            />
+            <button className="photo-edit-btn" onClick={handleEditPhoto}>
+              Edit
+            </button>
+          </div>
+        </div>
+      )}
 
       {showUploadForm && (
         <div>
-          <h2>Add image</h2>
+          <h2 className="add-image-header">Add image</h2>
           <div className="upload-form-container">
             <div className="upload-form">
-              <form onSubmit={handleImgUpload}>
+              <form className="edit-pet-form" onSubmit={handleImgUpload}>
                 <label>
                   <input
-                    className="upload-input"
+                    className="pet-upload-input"
                     type="file"
                     accept="image/png, image/jpeg, image/jpg"
                     name="image"
@@ -244,11 +245,9 @@ const EditPet = () => {
                 {isLoading ? (
                   <p>Uploading...</p>
                 ) : (
-
-                      <button className="upload-btn" type="submit">
-                        Upload
-                      </button>
-
+                  <button className="upload-btn" type="submit">
+                    Upload
+                  </button>
                 )}
               </form>
             </div>
@@ -308,7 +307,7 @@ const EditPet = () => {
           </select>
         </label>
 
-        <label>
+        <label className="checkbox-label">
           Castrated:
           <input
             type="checkbox"

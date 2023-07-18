@@ -40,12 +40,12 @@ const EditProfile = () => {
   const uploadImage = async (e) => {
     e.preventDefault();
     setIsLoading(true);
-  
+
     try {
       if (profileImage && profileImage.type.includes("image")) {
         const formData = new FormData();
         formData.append("imageUrl", e.target.image.files[0]);
-  
+
         const response = await axios.post(
           `http://localhost:5005/auth/upload/${userId}`,
           formData
@@ -53,11 +53,11 @@ const EditProfile = () => {
         console.log(response);
         setIsLoading(false);
         setShowUploadForm(false);
-  
+
         // Reset form
         setProfileImage(null);
         setImagePreview(null);
-  
+
         // Fetch user data again for the image
         fetchUserforImg();
       } else {
@@ -99,7 +99,7 @@ const EditProfile = () => {
       const response = await axios.get(
         `http://localhost:5005/auth/edit/${userId}`
       );
-  
+
       setUserImg(response.data.user.img);
     } catch (error) {
       console.error("Error fetching user profile:", error);
@@ -182,25 +182,31 @@ const EditProfile = () => {
   };
   return (
     <div>
-      <Link to={`/profile/${userId}`}>Back to Profile</Link>
+      <Link className="edit-profile-link" to={`/profile/${userId}`}>
+        Back to Profile
+      </Link>
 
       {!showUploadForm && (
-        <button className="photo-edit-btn" onClick={handleEditPhoto}>
-        <img
-        className="profileImg"
-        src={!userImg ? imgPlaceholder : userImg}
-        alt={username}
-      />
-        </button>
+        <div className="user-photo-edit-btn">
+          <img
+            className="profileImg"
+            src={!userImg ? imgPlaceholder : userImg}
+            alt={username}
+          />
+          <button className="user-photo-edit-btn" onClick={handleEditPhoto}>
+            Edit
+          </button>
+        </div>
       )}
 
       {showUploadForm && (
         <div>
-          <h2>Add image</h2>
+          <h2 className="h2-edit-img">Add image</h2>
           <div className="upload-form-container">
             <div className="upload-form">
               <form onSubmit={uploadImage}>
-                <label>
+                <label className="file-upload-label">
+                  Choose Photo
                   <input
                     className="upload-input"
                     type="file"
@@ -235,11 +241,9 @@ const EditProfile = () => {
                 {isLoading ? (
                   <p>Uploading...</p>
                 ) : (
-
-                      <button className="upload-btn" type="submit">
-                        Upload
-                      </button>
-
+                  <button className="upload-btn" type="submit">
+                    Upload
+                  </button>
                 )}
               </form>
             </div>

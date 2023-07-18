@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { Navigate } from "react-router-dom";
 
 const API_URL = "http://localhost:5005";
 
@@ -19,7 +18,7 @@ function AuthProviderWrapper(props) {
   const authenticateUser = () => {
     // Get the stored token from the localStorage
     const storedToken = localStorage.getItem("authToken");
-    console.log(storedToken, "token");
+    console.log(storedToken, "Stored Token");
     // If the token exists in the localStorage
     if (storedToken) {
       // We must send the JWT token in the request's "Authorization" Headers
@@ -27,6 +26,7 @@ function AuthProviderWrapper(props) {
         .get(`${API_URL}/auth/verify`, {
           headers: { Authorization: `Bearer ${storedToken}` },
         })
+
         .then((response) => {
           // If the server verifies that JWT token is valid  ✅
           const user = response.data;

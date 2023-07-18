@@ -7,6 +7,7 @@ function SearchSittersPage() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [searchQuery, setSearchQuery] = useState("");
+  const [postalCodeQuery, setPostalCodeQuery] = useState("");
 
   useEffect(() => {
     fetchSitters();
@@ -24,13 +25,27 @@ function SearchSittersPage() {
     }
   };
   const handleSearch = (e) => {
-    setSearchQuery(e.target.value);
+    const value = e.target.value;
+    setSearchQuery(value);
+    setPostalCodeQuery(value);
   };
 
   const filteredSitters = sitters.filter((sitter) => {
     const sitterName = sitter.username && sitter.username.toLowerCase();
-    return sitterName && sitterName.includes(searchQuery.toLowerCase());
+    const sitterPostalCode =
+      sitter.postalCode && sitter.postalCode.toString().toLowerCase();
+    const searchQueryLower = searchQuery.toLowerCase();
+    const postalCodeQueryLower = postalCodeQuery.toLowerCase();
+
+    return (
+      (sitterName && sitterName.includes(searchQueryLower)) ||
+      (sitterPostalCode && sitterPostalCode.includes(postalCodeQueryLower)) ||
+      (postalCodeQueryLower &&
+        sitterPostalCode &&
+        sitterPostalCode.startsWith(postalCodeQueryLower))
+    );
   });
+
   if (loading) {
     return <p>Loading...</p>;
   }
@@ -40,42 +55,55 @@ function SearchSittersPage() {
   }
 
   return (
-    <div>
-      <h2>Sitters</h2>
+    <div className="search-sitters-page">
+      <h2 className="search-sitters-heading">Search Pet Sitters</h2>
 
       <input
         type="text"
         value={searchQuery}
         onChange={handleSearch}
-        placeholder="Search Pet Sitters ..."
+        placeholder="Search Pet Sitters by Username or Postal Code..."
+        className="search-input"
       />
 
       {filteredSitters.length === 0 ? (
         <p>No matching sitters found.</p>
       ) : (
-        filteredSitters.map((sitter) => (
-          <Link
-            to={`/profile/${sitter._id}`}
-            key={sitter._id}
-            className="link-to-sitter-profile"
-          >
-            <div className="sitter-card">
-              <img
-                src={sitter.img}
-                alt={sitter.name}
-                className="sitter-card-img"
-              />
-
-              <h3>{sitter.username}</h3>
-              <p>Pet Owner:{sitter.isPetOwner ? "Yes" : "No"}</p>
-              <p>Postal Code:{sitter.postalCode}</p>
-              <p>Description:{sitter.description}</p>
-              <p>Reviews:{sitter.reviews.length}</p>
-            </div>
-          </Link>
-        ))
+        <div className="sitter-list">
+          {filteredSitters.map((sitter) => (
+            <Link
+              to={`/profile/${sitter._id}`}
+              key={sitter._id}
+              className="sitter-card-link"
+            >
+              <div className="sitter-card">
+                <img
+                  src={sitter.img}
+                  alt={sitter.name}
+                  className="sitter-card-img"
+                />
+                <div className="sitter-card-details">
+                  <h3 className="sitter-card-username">{sitter.username}</h3>
+                  <p className="sitter-card-info">
+                    Pet Owner: {sitter.isPetOwner ? "Yes" : "No"}
+                  </p>
+                  <p className="sitter-card-info">
+                    Postal Code: {sitter.postalCode}
+                  </p>
+                  <p className="sitter-card-info">
+                    Description: {sitter.description}
+                  </p>
+                  <p className="sitter-card-info">
+                    Reviews: {sitter.reviews.length}
+                  </p>
+                </div>
+              </div>
+            </Link>
+          ))}
+        </div>
       )}
     </div>
   );
 }
+
 export default SearchSittersPage;

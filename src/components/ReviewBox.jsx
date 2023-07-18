@@ -1,14 +1,13 @@
-import {useContext} from "react";
+import { useContext } from "react";
 import { AuthContext } from "../context/auth.context";
 import Review from "./Review";
-import { Link, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import AddReview from "./AddReview";
 import { useState } from "react";
-import { useEffect } from "react";
 
-function ReviewBox({ reviews,setAddReviews}) {
+function ReviewBox({ reviews, setAddReviews }) {
   const { userId } = useParams();
-    const { user } = useContext(AuthContext);
+  const { user } = useContext(AuthContext);
 
   const [showAddReview, setShowAddReview] = useState(false);
 
@@ -34,10 +33,15 @@ function ReviewBox({ reviews,setAddReviews}) {
             />
           ))}
         </div>
-        {!showAddReview && userId !== user._id &&(
+        {!showAddReview && userId !== user._id && (
           <button onClick={handleAddReviewClick}>+ leave a review</button>
         )}
-        {showAddReview && <AddReview onClose={handleAddReviewClose} setAddReviews={setAddReviews}/>}
+        {showAddReview && (
+          <AddReview
+            onClose={handleAddReviewClose}
+            setAddReviews={setAddReviews}
+          />
+        )}
       </div>
     </>
   );

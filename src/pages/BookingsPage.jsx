@@ -1,11 +1,7 @@
-import { useEffect, useState } from "react";
-import axios from "axios";
-import imgPlaceholder from "../assets/placeholder.png";
 import EachBooking from "../components/EachBooking";
 import { Link } from "react-router-dom";
 
 function BookingsPage({ bookings }) {
- 
   return (
     <div>
       <h2 className="pet-box-h2">Bookings</h2>
@@ -13,7 +9,11 @@ function BookingsPage({ bookings }) {
         <div className="all-pets">
           {bookings && bookings.length > 0 ? (
             bookings.map((booking) => (
-              <Link className="pet-link" to={`/profile/${booking.ownerId}`}>
+              <Link
+                className="pet-link"
+                to={`/profile/${booking.ownerId}`}
+                key={booking._id}
+              >
                 <EachBooking
                   key={booking._id}
                   ownerId={booking.ownerId}
@@ -21,7 +21,6 @@ function BookingsPage({ bookings }) {
                   endDate={booking.endDate}
                 />
               </Link>
-              
             ))
           ) : (
             <p>No bookings found.</p>
