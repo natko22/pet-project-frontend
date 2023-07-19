@@ -182,25 +182,28 @@ const EditProfile = () => {
       <Link className="edit-profile-link" to={`/profile/${userId}`}>
         Back to Profile
       </Link>
-
+      <h2 className="edit-pet-heading">Edit Pet Profile</h2>
       {!showUploadForm && (
-        <div className="user-photo-edit-btn">
+        <div className="container-parent">
+        <div className="profileImg-container">
           <img
             className="profileImg"
             src={!userImg ? imgPlaceholder : userImg}
             alt={username}
           />
-          <button className="user-photo-edit-btn" onClick={handleEditPhoto}>
+          <button className="photo-edit-btn" onClick={handleEditPhoto}>
             Edit
           </button>
+        </div>
         </div>
       )}
 
       {showUploadForm && (
         <div>
-          <h2 className="h2-edit-img">Add image</h2>
-          <div className="upload-form-container">
+        <div className="upload-form-container">
             <div className="upload-form">
+            <h2 className="add-image-header">Add image</h2>
+            <div className="close-btn" onClick={() => setShowUploadForm(false)}>x</div>
               <form onSubmit={uploadImage}>
                 <label className="file-upload-label">
                   Choose Photo

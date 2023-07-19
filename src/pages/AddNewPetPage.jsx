@@ -7,6 +7,8 @@ import { AuthContext } from "../context/auth.context";
 import { useEffect } from "react";
 import AvatarEditor from "react-avatar-editor";
 import { API_URL } from "../config/config.index";
+import imgPlaceholder from "../assets/placeholder.png";
+
 
 function AddPet() {
   const [name, setName] = useState("");
@@ -27,6 +29,9 @@ function AddPet() {
   const navigate = useNavigate();
   const { user } = useContext(AuthContext);
   const [loading, setLoading] = useState(false);
+  const [showUploadForm, setShowUploadForm] = useState(false);
+  const [userImg, setUserImg] = useState("");
+
 
   const [imagePreview, setImagePreview] = useState(null);
   const [scale, setScale] = useState(1);
@@ -36,6 +41,9 @@ function AddPet() {
     const file = e.target.files[0];
     setImg(file);
     setImagePreview(URL.createObjectURL(file));
+  };
+  const handleEditPhoto = () => {
+    setShowUploadForm(true);
   };
 
   useEffect(() => {
@@ -59,7 +67,9 @@ function AddPet() {
       return;
     }
     setLoading(true);
-
+    const handleEditPhoto = () => {
+      setShowUploadForm(true);
+    };
     const formData = new FormData();
     formData.append("name", name);
     formData.append("race", race);
@@ -93,12 +103,103 @@ function AddPet() {
       <Link className="back-to-user-link" to={`/profile/${user._id}`}>
         Back to User's Profile
       </Link>
-
+      {/* <label>
+            Image URL:
+            <input
+              type="file"
+              name="imageUrl"
+              onChange={handleImgChange}
+              placeholder="E.g., https://example.com/pet-image.jpg"
+            />
+            <div className="pet-photo">
+              {imagePreview && (
+                <div className="avatar-editor">
+                  <AvatarEditor
+                    image={imagePreview}
+                    width={250}
+                    height={250}
+                    border={50}
+                    borderRadius={125}
+                    color={[255, 255, 255, 0.6]}
+                    scale={scale}
+                  />
+                  <input
+                    type="range"
+                    min={0.1}
+                    max={2}
+                    step={0.1}
+                    value={scale}
+                    onChange={(e) => setScale(parseFloat(e.target.value))}
+                  />
+                </div>
+              )}
+            </div>
+          </label> */}
+     
       <h1 className="add-new-pet-heading">Add a New Pet</h1>
       {loading && <h1>Creating Pet...</h1>}
 
       {!loading && (
         <form onSubmit={handleSubmit} className="add-new-pet">
+        {!showUploadForm && (
+        <div className="container-parent">
+        <div className="profileImg-container">
+          <img
+            className="profileImg"
+            src={!userImg ? imgPlaceholder : userImg}
+            alt="pet-img"
+          />
+          <button className="photo-edit-btn" onClick={handleEditPhoto}>
+            Edit
+          </button>
+        </div>
+        </div>
+      )}
+
+      {showUploadForm && (
+        <div>
+        <div className="upload-form-container">
+            <div className="upload-form">
+            <h2 className="add-image-header">Add image</h2>
+            <div className="close-btn" onClick={() => setShowUploadForm(false)}>x</div>
+                <label className="file-upload-label">
+                  Choose Photo
+                  <input
+                    className="upload-input"
+                    type="file"
+                    accept="image/png, image/jpeg, image/jpg"
+                    name="image"
+                    onChange={handleImgChange}
+                  />
+                </label>
+                <div className="profile-photo">
+                  {imagePreview && (
+                    <div className="avatar-editor">
+                      <AvatarEditor
+                        image={imagePreview}
+                        width={250}
+                        height={250}
+                        border={50}
+                        borderRadius={125}
+                        color={[255, 255, 255, 0.6]}
+                        scale={scale}
+                      />
+                      <input
+                        type="range"
+                        min={0.1}
+                        max={2}
+                        step={0.1}
+                        value={scale}
+                        onChange={(e) => setScale(parseFloat(e.target.value))}
+                      />
+                    </div>
+                  )}
+                </div>
+                
+            </div>
+          </div>
+        </div>
+      )}
           <label>
             Name:
             <input
@@ -183,38 +284,7 @@ function AddPet() {
               placeholder="E.g., Walk twice a day"
             />
           </label>
-          <label>
-            Image URL:
-            <input
-              type="file"
-              name="imageUrl"
-              onChange={handleImgChange}
-              placeholder="E.g., https://example.com/pet-image.jpg"
-            />
-            <div className="pet-photo">
-              {imagePreview && (
-                <div className="avatar-editor">
-                  <AvatarEditor
-                    image={imagePreview}
-                    width={250}
-                    height={250}
-                    border={50}
-                    borderRadius={125}
-                    color={[255, 255, 255, 0.6]}
-                    scale={scale}
-                  />
-                  <input
-                    type="range"
-                    min={0.1}
-                    max={2}
-                    step={0.1}
-                    value={scale}
-                    onChange={(e) => setScale(parseFloat(e.target.value))}
-                  />
-                </div>
-              )}
-            </div>
-          </label>
+         
           <button type="submit" className="add-new-pet-btn">
             Add Pet
           </button>
