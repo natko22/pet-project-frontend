@@ -67,8 +67,10 @@ const LoginPage = () => {
   // }
 
   // Google Login
-  const handleGoogleAuth = () => {
-    window.location.href = `${API_URL}/auth/google/callback`;
+  const handleGoogleAuth = async() => {
+    // window.location.href = `${API_URL}/auth/google/callback`;
+    const res = await axios.get(`${API_URL}/auth/google/callback`)
+    console.log(res)
   };
 
   return (
