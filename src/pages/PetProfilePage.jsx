@@ -30,11 +30,18 @@ function PetProfilePage() {
 
   const handleDelete = async () => {
     try {
-      await axios.post(`${API_URL}/api/pets/${petId}`, {
-        owner: user._id,
-      });
-      navigate("/");
-      console.log("succesfully deleted");
+      console.log("Delete button clicked");
+      console.log("Authenticated user ID:", user._id);
+      console.log("Pet owner ID:", pet.owner);
+      if (user._id === pet.owner) {
+        await axios.post(`${API_URL}/api/pets/${petId}`, {
+          owner: user._id,
+        });
+        navigate("/");
+        console.log("Successfully deleted");
+      } else {
+        console.log("Unauthorized: You are not allowed to delete this pet.");
+      }
     } catch (error) {
       console.error(error);
     }
@@ -87,9 +94,11 @@ function PetProfilePage() {
           )}
           <h3>Diet</h3>
           {!pet.diet ? <p>There's no medical condition yet.</p> : pet.diet}
-          <button className="delete-pet-btn" onClick={handleDelete}>
-            Delete Pet
-          </button>
+          {user._id === pet.owner && (
+            <button className="delete-pet-btn" onClick={handleDelete}>
+              Delete Pet
+            </button>
+          )}
         </div>
       </div>
     </div>
