@@ -9,7 +9,8 @@ import { AuthProviderWrapper } from "./context/auth.context";
 import "./Fonts/LmsThisFontIsForTheDogs-7PnR.ttf";
 import "./Fonts/Pet Shop.otf";
 import "./Fonts/Animal Paws.otf";
-import "./Fonts/SunnyspellsRegular-MV9ze.otf";
+import "./Fonts/BabyPanda-p79q1.otf";
+
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
