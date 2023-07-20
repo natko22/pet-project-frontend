@@ -13,6 +13,12 @@
     font-family: "Baby Panda";
     src: local("Baby Panda"),
       url("../src/Fonts/BabyPanda-p79q1.otf") format("truetype");
+      font-family: "Doggie";
+      src: local("Doggie"),
+        url("../src/Fonts/Doggie.otf") format("truetype");
+        font-family: "Poppins";
+        src: local("Poppins"),
+          url("../src/Fonts/Poppins-ExtraLight.ttf") format("truetype");
 }
 
 .text-center{
@@ -23,19 +29,17 @@
   flex-direction: column;
 }
 h1{
-  font-family: Baby Panda;
+  font-family:Doggie;
   margin: 0px;
-  letter-spacing:2px;
 }
 h2{
-  font-family: Baby Panda;
+  font-family: Doggie;
   margin: 0px;
-  letter-spacing:2px;
+
 }
 h3{
-  font-family: Baby Panda;
+  font-family: Doggie;
   margin: 0px;
-  letter-spacing:2px;
 }
 /* links */
 
@@ -192,6 +196,9 @@ h3{
   color: black;
   box-shadow: 0 3px 10px rgba(0, 0, 0, 0.343);
   padding: 20px;
+  font-family:Doggie;
+  font-size: 25px;
+
 }
 
 .nav-title {
@@ -226,7 +233,7 @@ h3{
 .nav > .nav-links {
   display: inline;
   float: right;
-  font-size: 18px;
+  font-size: 25px;
 }
 
 .nav > .nav-links > a {
