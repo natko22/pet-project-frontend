@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import { API_URL } from "../config/config.index";
+import placeholder from "../assets/pawprint.png"
 
 const SearchPetProfiles = () => {
   const [petProfiles, setPetProfiles] = useState([]);
@@ -75,7 +76,7 @@ const SearchPetProfiles = () => {
           filteredPetProfiles.map((pet) => (
             <div key={pet._id} className="card">
               <Link to={`/petProfile/${pet._id}`} className="pet-card-link">
-                <img src={pet.img} alt={pet.name} className="pet-card-img" />
+                <img src={pet.img?pet.img:placeholder} alt={pet.name} className="pet-card-img" />
                 <div className="card-content">
                   <h3>{pet.name}</h3>
                   <p>Race: {pet.race}</p>

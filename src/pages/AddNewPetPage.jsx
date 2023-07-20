@@ -177,8 +177,8 @@ function AddPet() {
                     <div className="avatar-editor">
                       <AvatarEditor
                         image={imagePreview}
-                        width={250}
-                        height={250}
+                        width={150}
+                        height={150}
                         border={50}
                         borderRadius={125}
                         color={[255, 255, 255, 0.6]}

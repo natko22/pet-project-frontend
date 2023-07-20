@@ -19,21 +19,29 @@
   display: flex;
   flex-direction: column;
 }
+
+h2{
+  margin: 0px;
+}
 /* links */
 
 .edit-profile-link {
   text-decoration: none;
-  font-size: 25px;
-  color: black;
   font-style: italic;
   position: absolute;
-  top: 110px;
-  right: 20px;
+  top: 90px;
+  left: 8px;
+  padding: 10px;
+  margin: 20px;
+  background-color: #cb997e;
+  color: #000000;
+  font-size: 15px;
+  font-family: "Times New Roman", Times, serif;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
 }
 
-.edit-profile-link:hover {
-  color: #f6c5a2;
-}
 
 /* Signup page styling */
 
@@ -88,7 +96,8 @@
 }
 
 .signup-button:hover {
-  background-color: #3a4d3c;
+  background-color: #ab785d;
+  color: #ffffff;
 }
 
 .error-message {
@@ -149,7 +158,9 @@
 }
 
 .login-button:hover {
-  background-color: #3a4d3c;
+  background-color: #ab785d;
+  color: #ffffff;
+
 }
 
 .error-message {
@@ -573,6 +584,7 @@ justify-content: center;
 .file-upload-label {
   padding: 10px 16px;
   height: 20px;
+  width:150px;
   background-color: #cb997e;
   color: #ffffff;
   border-radius: 4px;
@@ -655,6 +667,7 @@ justify-content: center;
   box-shadow: 0 3px 8px rgba(4, 15, 10, 0.601);
   text-align: center;
   width: 800px;
+  margin: 20px;
 }
 
 .all-reviews {
@@ -749,6 +762,7 @@ justify-content: center;
 .pet-img {
   width: 100px;
   height: 100px;
+  object-fit: cover;
   margin-bottom: 10px;
   border-radius: 50%;
 }
@@ -763,12 +777,12 @@ justify-content: center;
 
 .pet-box {
   background-color: #cb997e;
-  width: 400px;
   width: 800px;
   padding: 20px;
   border-radius: 5px;
   box-shadow: 0 3px 8px rgba(4, 15, 10, 0.601);
   text-align: center;
+  margin: 20px;
 }
 
 .pet-box-h2 {
@@ -798,7 +812,7 @@ justify-content: center;
   background: #f9efe8;
 }
 .each-pet-box:hover {
-  background-color: #f1fff5;
+  background-color: #ffe5d2;
 }
 .each-pet-box {
   box-sizing: border-box;
@@ -947,13 +961,20 @@ label {
   flex-direction: column;
   align-items: center;
   background-color: #f9efe8;
-  max-width: 100px;
+  width:150px;
   margin: 40px auto;
   padding: 20px;
   border-radius: 5px;
   box-shadow: 0 3px 8px rgba(4, 15, 10, 0.601);
 }
+.add-pet:hover{
+  background-color: #f6c5a2;
+  color: #000000;
+}
 
+.avatar-editor{
+  padding-top: 10px;
+}
 .add-new-pet-heading {
   text-align: center;
   margin-bottom: 10px;
@@ -1011,12 +1032,19 @@ label {
 
 .edit-pet-btn {
   text-decoration: none;
-  font-size: 25px;
-  color: black;
   font-style: italic;
   position: absolute;
-  top: 110px;
-  right: 20px;
+  top: 90px;
+  left: 8px;
+  padding: 10px;
+  margin: 20px;
+  background-color: #cb997e;
+  color: #000000;
+  font-size: 15px;
+  font-family: "Times New Roman", Times, serif;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
 }
 
 .backtoprofile-btn {
@@ -1031,22 +1059,31 @@ label {
 
 .back-to-user-link {
   text-decoration: none;
-  color: black;
-  font-size: 20px;
-  margin: 10px;
-  padding: 20px;
+  font-style: italic;
+  position: absolute;
+  top: 90px;
+  left: 8px;
+  padding: 10px;
+  margin: 20px;
+  background-color: #cb997e;
+  color: #000000;
+  font-size: 15px;
+  font-family: "Times New Roman", Times, serif;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
 }
 
 .delete-pet-btn {
   text-decoration: none;
   border: none;
-  color: black;
-  font-size: 20px;
+  font-size: 18px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: #f9efe8;
-  max-width: 200px;
+  background-color: #cb997e;
+  color: #000000;
+  width: 120px;
   margin: 20px auto;
   padding: 10px;
   border-radius: 5px;
@@ -1070,9 +1107,14 @@ label {
 
 /* search pet profiles */
 
+.search-container{
+  padding:20px;
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
 .search-pet-input {
-  margin-right: 20px;
-  margin-left: 650px;
   width: 200px;
 }
 
@@ -1091,18 +1133,23 @@ label {
 }
 
 .pet-profiles-container {
-  display: grid;
+  display:flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  /* display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 20px;
+  gap: 20px; */
 }
 
 .card {
-  border: 1px solid black;
   border-radius: 4px;
   padding: 10px;
+  margin:10px;
   margin-bottom: 10px;
   background-color: #ddae95;
-  height: 300px;
+  height: 400px;
+  width:250px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -1356,6 +1403,15 @@ label {
 }
 
 /* bookings */
+
+.delete-dates{
+  border:none;
+  background-color:#f9efe800 ;
+}
+.delete-dates img{
+  padding-top: 10px;
+  width: 40px;
+}
 .available-dates{
   display: flex;
   flex-direction: column;
@@ -1406,13 +1462,15 @@ label {
   flex-direction: column;
   align-items: center;
   background-color: #f9efe8;
-  max-width: 200px;
+  max-width: 250px;
   margin: 40px auto;
   padding: 20px;
   border-radius: 5px;
   box-shadow: 0 3px 8px rgba(0, 0, 0, 0.601);
 }
-
+.available-date-btn:hover {
+background-color: #f6c5a2;
+color: #000000;}
 /* favorite-page */
 .fav-page {
   display: flex;
@@ -1427,15 +1485,10 @@ label {
   align-items: center;
   flex-direction: column;
   width: 180px;
-}
-
-.favorite-box {
-  background-color: #fffcfc;
-  padding: 20px;
-  border-radius: 5px;
-  box-shadow: 0 3px 8px rgba(4, 15, 10, 0.601);
   text-align: center;
 }
+
+
 
 .favorite-box-h2 {
   text-align: center;
@@ -1447,12 +1500,9 @@ label {
   flex-wrap: wrap;
 }
 
-.each-favorite-box:hover {
-  background-color: #f1fff5;
-}
 .each-favorite-box {
   box-sizing: border-box;
-  background-color: #f9efe8;
+  background-color: #ddae95;
   padding: 20px;
   margin: 10px;
   box-shadow: 0 3px 8px rgba(4, 15, 10, 0.601);

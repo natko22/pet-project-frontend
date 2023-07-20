@@ -21,8 +21,8 @@ function ReviewBox({ reviews, setAddReviews }) {
 
   return (
     <>
-      <h2 className="review-box-h2">Reviews</h2>
       <div className="review-box">
+      <h2 className="review-box-h2">Reviews</h2>
         <div className="all-reviews">
           {reviews.map((review) => (
             <Review

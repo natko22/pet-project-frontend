@@ -54,7 +54,7 @@ function SearchSittersPage() {
   }
 
   return (
-    <div className="search-sitters-page">
+    <div className="search-container">
       <h2 className="search-sitters-heading">Search Pet Sitters</h2>
 
       <input
@@ -68,20 +68,20 @@ function SearchSittersPage() {
       {filteredSitters.length === 0 ? (
         <p>No matching sitters found.</p>
       ) : (
-        <div className="sitter-list">
+        <div className="pet-profiles-container">
           {filteredSitters.map((sitter) => (
+            <div className="card">
             <Link
               to={`/profile/${sitter._id}`}
               key={sitter._id}
               className="sitter-card-link"
             >
-              <div className="sitter-card">
                 <img
                   src={sitter.img}
                   alt={sitter.name}
                   className="sitter-card-img"
                 />
-                <div className="sitter-card-details">
+                <div className="card-content">
                   <h3 className="sitter-card-username">{sitter.username}</h3>
                   <p className="sitter-card-info">
                     Pet Owner: {sitter.isPetOwner ? "Yes" : "No"}
@@ -95,9 +95,9 @@ function SearchSittersPage() {
                   <p className="sitter-card-info">
                     Reviews: {sitter.reviews.length}
                   </p>
-                </div>
               </div>
             </Link>
+            </div>
           ))}
         </div>
       )}

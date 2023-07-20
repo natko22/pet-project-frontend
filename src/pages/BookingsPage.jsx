@@ -4,8 +4,8 @@ import { Link } from "react-router-dom";
 function BookingsPage({ bookings }) {
   return (
     <div>
-      <h2 className="pet-box-h2">Bookings</h2>
       <div className="pet-box">
+      <h2 className="pet-box-h2">Bookings</h2>
         <div className="all-pets">
           {bookings && bookings.length > 0 ? (
             bookings.map((booking) => (

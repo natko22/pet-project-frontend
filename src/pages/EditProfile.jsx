@@ -301,15 +301,7 @@ const EditProfile = () => {
             placeholder="Share your pet journey... Whether you're a pet owner or sitter, tell us your story!"
           />
         </label>
-        <label>
-          Availability:
-          <input
-            type="text"
-            value={availability}
-            onChange={handleAvailabilityChange}
-            placeholder="Enter your availability for pet sitting "
-          />
-        </label>
+        
         <label>
           Pet Owner:
           <input
