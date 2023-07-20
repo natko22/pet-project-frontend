@@ -218,6 +218,18 @@ function ProfilePage() {
     }
   };
 
+  const handleRemoveAvailability = async (bookingId) => {
+    try {
+      const response = await axios.delete(
+        `${API_URL}/api/availableDates/${bookingId}`
+      );
+      console.log("Available date removed:", response.data);
+      fetchCurrentUserData();
+    } catch (error) {
+      console.log("Remove available date error:", error);
+    }
+  };
+
   const renderTileContent = ({ date, view }) => {
     if (view === "month") {
       const isBooked = bookedDates.some(
@@ -239,6 +251,10 @@ function ProfilePage() {
 
     return null;
   };
+
+  if (!user) {
+    return "Loading...";
+  }
 
   return (
     <div className="profilepage">
@@ -282,46 +298,64 @@ function ProfilePage() {
       <div>
         <MyPetsBox pets={currentUser.pets} />
       </div>
-      {userId === user._id && <BookingsPage bookings={currentUser.bookings} />}
-      {userId === user._id && (
-        <div className="available-dates">
-          <h2>Set your availability</h2>
-          {currentUser.availability && currentUser.availability.length > 0 ? (
-            currentUser.availability.map((booking) => (
-              <div key={booking._id} className="booking-item">
-                <p>Booking ID: {booking._id}</p>
+      {userId === user._id && currentUser.isSitter && <BookingsPage bookings={currentUser.bookings} />}
 
-                <p>
-                  Start Date:{" "}
-                  {new Date(booking.startDate).toLocaleDateString("de-DE")}
-                </p>
-                <p>
-                  End Date:{" "}
-                  {new Date(booking.endDate).toLocaleDateString("de-DE")}
-                </p>
+      {userId === user._id && currentUser.isSitter &&(
+        <>
+          <h2>Set your availability</h2>
+          <div className="pet-box">
+            <div className="available-dates">
+              <h3>my available Dates</h3>
+              <div className="all-pets">
+                {currentUser.availability &&
+                currentUser.availability.length > 0 ? (
+                  currentUser.availability.map((booking) => (
+                    <div key={booking._id} className="each-pet-box">
+                      <p>
+                        Start Date:{" "}
+                        {new Date(booking.startDate).toLocaleDateString(
+                          "de-DE"
+                        )}
+                      </p>
+                      <p>
+                        End Date:{" "}
+                        {new Date(booking.endDate).toLocaleDateString("de-DE")}
+                      </p>
+                      <button
+                        className="delete-pet-btn"
+                        onClick={() => handleRemoveAvailability(booking._id)}
+                      >
+                        Remove Availability
+                      </button>
+                    </div>
+                  ))
+                ) : (
+                  <p>No bookings found.</p>
+                )}
               </div>
-            ))
-          ) : (
-            <p>No bookings found.</p>
-          )}
+            </div>{" "}
+          </div>
+          <h3>Add your availability</h3>
           <Calendar
             onChange={handleAvailableDateChange}
             value={[startAvailableDate, endAvailableDate]}
             selectRange={true}
             tileContent={renderTileContent} // Custom tile content function
           />
+          <span className="indicator-red">🟥already booked dates</span>
+          <span className="indicator-green">🟩available dates</span>
           <button
             className="available-date-btn"
             onClick={handleAvailableDatesSubmit}
           >
-            Set Available Dates
+            Add Available Dates
           </button>
-        </div>
+        </>
       )}
       {/*Add React Calendar*/}
-      {userId !== user._id && (
+      {userId !== user._id && currentUser.isSitter && (
         <div>
-          <h2>Book a service</h2>
+          <h2 className="text-center">Book a service</h2>
           <div className="calendar-container">
             <Calendar
               onChange={handleDateChange}
@@ -329,7 +363,6 @@ function ProfilePage() {
               selectRange={true}
               tileContent={renderTileContent} // Custom tile content function
             />
-
             <div className="text-center">
               {startDate && endDate ? (
                 <p>
@@ -341,6 +374,10 @@ function ProfilePage() {
                   <span>Default selected date:</span> {date.toDateString()}
                 </p>
               )}
+            </div>
+            <div className="direction-column text-center">
+              <span className="indicator-red">🟥already booked dates</span>
+              <span className="indicator-green">🟩available dates</span>
             </div>
 
             <div className="contact-btns">

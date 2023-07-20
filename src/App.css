@@ -12,6 +12,13 @@
     url("../src/Fonts/Animal\ Paws.otf") format("truetype");
 }
 
+.text-center{
+  text-align: center;
+}
+.direction-column{
+  display: flex;
+  flex-direction: column;
+}
 /* links */
 
 .edit-profile-link {
@@ -772,6 +779,7 @@ justify-content: center;
   padding: 25px 0px;
   overflow-x: scroll;
   scroll-snap-type: x mandatory;
+  margin: 10px;
 }
 .all-pets::-webkit-scrollbar {
   height: 12px;
@@ -1201,12 +1209,12 @@ label {
 .react-calendar {
   width: 350px;
   max-width: 100%;
-  background: #cb997e;
-  border: 1px solid #2d6b4c;
+  background: #f9efe8;
   border-radius: 8px;
   box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
   font-family: "Times New Roman", Times, serif;
   line-height: 1.125em;
+  padding: 10px;
 }
 
 .react-calendar--doubleView {
@@ -1249,7 +1257,7 @@ label {
 }
 
 .react-calendar__navigation button {
-  color: white;
+  color: #000000;
   min-width: 44px;
   background: none;
   font-size: 16px;
@@ -1348,7 +1356,25 @@ label {
 }
 
 /* bookings */
+.available-dates{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
 
+.available-dates h3{
+  margin: 0;
+}
+
+.available-dates .all-pets{
+  margin-bottom: 20px;
+  padding: 0;
+}
+
+.available-dates .react-calendar{
+  margin: 10px;
+}
 .booking-item {
   box-sizing: border-box;
   background-color: #cb997e;
