@@ -122,7 +122,7 @@ function SignupPage() {
             checked={isPetOwner}
             onChange={handlePetOwnerChange}
           />
-          Pet Owner
+          Pet Owner :
         </label>
 
         <label>
@@ -132,14 +132,14 @@ function SignupPage() {
             checked={isSitter}
             onChange={handleSitterChange}
           />
-          Pet Sitter
+          Pet Sitter :
         </label>
 
         <button type="submit" className="signup-button">
           Sign Up
         </button>
       </form>
-      <button onClick={handleGoogleSignUp}>
+      <button className="signup-button" onClick={handleGoogleSignUp}>
         <img src="" alt="" />
         <span>Sign up with Google</span>
       </button>

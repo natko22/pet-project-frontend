@@ -82,9 +82,9 @@ const LoginPage = () => {
           Login
         </button>
       </form>
-      <button onClick={handleGoogleAuth}>
+      <button className="login-button" onClick={handleGoogleAuth}>
         <img src="" alt="" />
-        <span>Sign in with Google</span>
+        <span> Log in with Google</span>
       </button>
       {errorMessage && <p className="error-message">{errorMessage}</p>}
     </div>

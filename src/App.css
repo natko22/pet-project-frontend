@@ -87,7 +87,7 @@ h3 {
 }
 
 .signup-button {
-  width: 100%;
+  width: 300px;
   padding: 15px;
   margin: 20px;
   background-color: #cb997e;
@@ -149,9 +149,9 @@ h3 {
 }
 
 .login-button {
-  width: 100%;
+  width: 200px;
   padding: 15px;
-  margin: 20px;
+  margin: 10px;
   background-color: #cb997e;
   color: #000000;
   font-size: 20px;
