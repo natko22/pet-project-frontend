@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import { API_URL } from "../config/config.index";
+import placeholder from "../assets/placeholder.png"
 
 function SearchSittersPage() {
   const [sitters, setSitters] = useState([]);
@@ -77,7 +78,7 @@ function SearchSittersPage() {
               className="sitter-card-link"
             >
                 <img
-                  src={sitter.img}
+                  src={sitter.img?sitter.img:placeholder}
                   alt={sitter.name}
                   className="sitter-card-img"
                 />
