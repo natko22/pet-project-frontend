@@ -205,11 +205,16 @@ const EditPet = () => {
         <div>
           <div className="upload-form-container">
             <div className="upload-form">
-            <h2 className="add-image-header">Add image</h2>
-            <div className="close-btn" onClick={() => setShowUploadForm(false)}>x</div>
+              <h2 className="add-image-header">Add image</h2>
+              <div
+                className="close-btn"
+                onClick={() => setShowUploadForm(false)}
+              >
+                x
+              </div>
               <form onSubmit={handleImgUpload}>
                 <label className="file-upload-label">
-                Choose Photo
+                  Choose Photo
                   <input
                     className="upload-input"
                     type="file"

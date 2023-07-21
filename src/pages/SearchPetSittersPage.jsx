@@ -71,11 +71,11 @@ function SearchSittersPage() {
         <div className="pet-profiles-container">
           {filteredSitters.map((sitter) => (
             <div className="card">
-            <Link
-              to={`/profile/${sitter._id}`}
-              key={sitter._id}
-              className="sitter-card-link"
-            >
+              <Link
+                to={`/profile/${sitter._id}`}
+                key={sitter._id}
+                className="sitter-card-link"
+              >
                 <img
                   src={sitter.img}
                   alt={sitter.name}
@@ -84,19 +84,25 @@ function SearchSittersPage() {
                 <div className="card-content">
                   <h3 className="sitter-card-username">{sitter.username}</h3>
                   <p className="sitter-card-info">
-                    Pet Owner: {sitter.isPetOwner ? "Yes" : "No"}
+                    <span className="doggie-font">Pet Owner : </span>{" "}
+                    <span className="poppins">
+                      {sitter.isPetOwner ? "Yes" : "No"}
+                    </span>
                   </p>
                   <p className="sitter-card-info">
-                    Postal Code: {sitter.postalCode}
+                    <span className="doggie-font">Postal Code : </span>
+                    <span className="poppins">{sitter.postalCode}</span>
                   </p>
                   <p className="sitter-card-info">
-                    Description: {sitter.description}
+                    <span className="doggie-font">Description : </span>
+                    <span className="poppins">{sitter.description}</span>
                   </p>
                   <p className="sitter-card-info">
-                    Reviews: {sitter.reviews.length}
+                    <span className="doggie-font">Reviews : </span>
+                    <span className="poppins"> {sitter.reviews.length}</span>
                   </p>
-              </div>
-            </Link>
+                </div>
+              </Link>
             </div>
           ))}
         </div>

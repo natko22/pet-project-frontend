@@ -1,51 +1,38 @@
 @font-face {
-  font-family: "Sunny Spells";
-  src: local("Sunny Spells"),
-    url("../src/Fonts/SunnyspellsRegular-MV9ze.otf") format("truetype");
-  font-family: "LmsThisFontIsForTheDogs";
-  src: local("LmsThisFontIsForTheDogs"),
-    url("../src/Fonts/LmsThisFontIsForTheDogs-7PnR.ttf") format("truetype");
   font-family: "Pet Shop";
   src: local("Pet Shop"), url("../src/Fonts/Pet\ Shop.otf") format("truetype");
   font-family: "Animal Paws";
   src: local("Animal Paws"),
     url("../src/Fonts/Animal\ Paws.otf") format("truetype");
-    font-family: "Baby Panda";
-    src: local("Baby Panda"),
-      url("../src/Fonts/BabyPanda-p79q1.otf") format("truetype");
-      font-family: "Doggie";
-      src: local("Doggie"),
-        url("../src/Fonts/Doggie.otf") format("truetype");
-        font-family: "Poppins";
-        src: local("Poppins"),
-          url("../src/Fonts/Poppins-ExtraLight.ttf") format("truetype");
+
+  font-family: "Doggie";
+  src: local("Doggie"), url("../src/Fonts/Doggie.otf") format("truetype");
 }
 
-.text-center{
+.text-center {
   text-align: center;
 }
-.direction-column{
+.direction-column {
   display: flex;
   flex-direction: column;
 }
-h1{
-  font-family:Doggie;
+h1 {
+  font-family: "Doggie", "Times New Roman";
   margin: 0px;
 }
-h2{
-  font-family: Doggie;
+h2 {
+  font-family: "Doggie", "Times New Roman";
   margin: 0px;
-
+  padding: 10px;
 }
-h3{
-  font-family: Doggie;
+h3 {
+  font-family: "Doggie", "Times New Roman";
   margin: 0px;
 }
 /* links */
 
 .edit-profile-link {
   text-decoration: none;
-  font-style: italic;
   position: absolute;
   top: 90px;
   left: 8px;
@@ -54,12 +41,11 @@ h3{
   background-color: #cb997e;
   color: #000000;
   font-size: 15px;
-  font-family: "Times New Roman", Times, serif;
+  font-family: "Doggie", "Times New Roman";
   border: none;
   border-radius: 10px;
   cursor: pointer;
 }
-
 
 /* Signup page styling */
 
@@ -107,7 +93,7 @@ h3{
   background-color: #cb997e;
   color: #000000;
   font-size: 20px;
-  font-family: "Times New Roman", Times, serif;
+  font-family: "Doggie", "Times New Roman";
   border: none;
   border-radius: 10px;
   cursor: pointer;
@@ -169,7 +155,7 @@ h3{
   background-color: #cb997e;
   color: #000000;
   font-size: 20px;
-  font-family: "Times New Roman", Times, serif;
+  font-family: "Doggie", "Times New Roman";
   border: none;
   border-radius: 10px;
   cursor: pointer;
@@ -178,7 +164,6 @@ h3{
 .login-button:hover {
   background-color: #ab785d;
   color: #ffffff;
-
 }
 
 .error-message {
@@ -186,7 +171,7 @@ h3{
   margin-top: 10px;
   text-align: center;
   font-size: 18px;
-  font-family: "Times New Roman", Times, serif;
+  font-family: "Doggie", "Times New Roman";
 }
 
 /* for nav bar */
@@ -196,14 +181,13 @@ h3{
   color: black;
   box-shadow: 0 3px 10px rgba(0, 0, 0, 0.343);
   padding: 20px;
-  font-family:Doggie;
+  font-family: "Doggie", "Times New Roman";
   font-size: 25px;
-
 }
 
 .nav-title {
   /* font-family: "Pet Shop"; */
-  font-family: Animal Paws;
+  font-family: "Animal Paws", "Times New Roman", Times, serif;
   font-size: 40px;
   color: white;
   /* font-weight: bold; */
@@ -394,7 +378,7 @@ h3{
   background-color: #cb997e;
   color: #000000;
   font-size: 20px;
-  font-family: "Times New Roman", Times, serif;
+  font-family: "Doggie", "Times New Roman";
   border: none;
   border-radius: 10px;
   cursor: pointer;
@@ -458,6 +442,8 @@ h3{
   border-radius: 50%;
   background-color: #cb997e;
   color: #ffffff;
+  font-family: "Doggie", "Times New Roman";
+  font-size: 25px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -540,7 +526,7 @@ textarea {
   background-color: #cb997e;
   color: #000000;
   font-size: 20px;
-  font-family: "Times New Roman", Times, serif;
+  font-family: "Doggie", "Times New Roman";
   border: none;
   border-radius: 10px;
   cursor: pointer;
@@ -567,7 +553,7 @@ textarea {
   box-shadow: 0 3px 8px rgba(4, 15, 10, 0.601);
 }
 
-.upload-form form{
+.upload-form form {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -581,13 +567,13 @@ textarea {
   color: white;
   cursor: pointer;
   margin: 10px;
-  font-family: sunny spells;
+  font-family: "Doggie", "Times New Roman";
   font-size: 15px;
   background-color: #cb997e;
   border: none;
   display: flex;
-align-items: center;
-justify-content: center;
+  align-items: center;
+  justify-content: center;
 }
 .upload-input {
   width: 30%;
@@ -605,7 +591,7 @@ justify-content: center;
 .file-upload-label {
   padding: 10px 16px;
   height: 20px;
-  width:150px;
+  width: 150px;
   background-color: #cb997e;
   color: #ffffff;
   border-radius: 4px;
@@ -664,6 +650,7 @@ justify-content: center;
   align-items: center;
   padding: 20px 100px;
 }
+
 .coloredHeart {
   width: 30px;
   filter: grayscale(0%);
@@ -763,7 +750,7 @@ justify-content: center;
   background-color: #cb997e;
   color: #000000;
   font-size: 20px;
-  font-family: "Times New Roman", Times, serif;
+  font-family: "Doggie", "Times New Roman";
   border: none;
   border-radius: 10px;
   cursor: pointer;
@@ -793,7 +780,7 @@ justify-content: center;
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  width: 180px;
+  width: 170px;
 }
 
 .pet-box {
@@ -859,7 +846,7 @@ justify-content: center;
   background-color: #cb997e;
   color: #000000;
   font-size: 20px;
-  font-family: "Times New Roman", Times, serif;
+  font-family: "Doggie", "Times New Roman";
   border: none;
   border-radius: 10px;
   cursor: pointer;
@@ -968,7 +955,7 @@ label {
   background-color: #cb997e;
   color: #000000;
   font-size: 20px;
-  font-family: "Times New Roman", Times, serif;
+  font-family: "Doggie", "Times New Roman";
   border: none;
   border-radius: 10px;
   cursor: pointer;
@@ -982,18 +969,19 @@ label {
   flex-direction: column;
   align-items: center;
   background-color: #f9efe8;
-  width:150px;
+  width: 150px;
   margin: 40px auto;
   padding: 20px;
   border-radius: 5px;
   box-shadow: 0 3px 8px rgba(4, 15, 10, 0.601);
+  font-family: "Doggie", "Times New Roman";
 }
-.add-pet:hover{
-  background-color: #f6c5a2;
+.add-pet:hover {
+  background-color: #ffe5d2;
   color: #000000;
 }
 
-.avatar-editor{
+.avatar-editor {
   padding-top: 10px;
 }
 .add-new-pet-heading {
@@ -1015,10 +1003,9 @@ label {
 }
 
 .edit-pet-form {
-  
   display: flex;
   flex-direction: column;
-  align-items: center;  
+  align-items: center;
   background-color: #f9efe8;
   max-width: 400px;
   margin: 10px auto;
@@ -1053,7 +1040,6 @@ label {
 
 .edit-pet-btn {
   text-decoration: none;
-  font-style: italic;
   position: absolute;
   top: 90px;
   left: 8px;
@@ -1062,7 +1048,7 @@ label {
   background-color: #cb997e;
   color: #000000;
   font-size: 15px;
-  font-family: "Times New Roman", Times, serif;
+  font-family: "Doggie", "Times New Roman";
   border: none;
   border-radius: 10px;
   cursor: pointer;
@@ -1070,17 +1056,6 @@ label {
 
 .backtoprofile-btn {
   text-decoration: none;
-  font-size: 25px;
-  color: black;
-  font-style: italic;
-  position: absolute;
-  top: 110px;
-  right: 20px;
-}
-
-.back-to-user-link {
-  text-decoration: none;
-  font-style: italic;
   position: absolute;
   top: 90px;
   left: 8px;
@@ -1089,7 +1064,23 @@ label {
   background-color: #cb997e;
   color: #000000;
   font-size: 15px;
-  font-family: "Times New Roman", Times, serif;
+  font-family: "Doggie", "Times New Roman";
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.back-to-user-link {
+  text-decoration: none;
+  position: absolute;
+  top: 90px;
+  left: 8px;
+  padding: 10px;
+  margin: 20px;
+  background-color: #cb997e;
+  color: #000000;
+  font-size: 15px;
+  font-family: "Doggie", "Times New Roman";
   border: none;
   border-radius: 10px;
   cursor: pointer;
@@ -1102,7 +1093,8 @@ label {
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: #cb997e;
+  background-color: #f9efe8;
+  font-family: "Doggie", "Times New Roman";
   color: #000000;
   width: 120px;
   margin: 20px auto;
@@ -1116,6 +1108,8 @@ label {
   border: none;
   color: black;
   font-size: 20px;
+  font-family: "Doggie", "Times New Roman";
+  width: 100px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -1128,24 +1122,41 @@ label {
 
 /* search pet profiles */
 
-.search-container{
-  padding:20px;
-  display:flex;
+.search-container {
+  padding: 20px;
+  display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
 }
 .search-pet-input {
-  width: 200px;
+  width: 250px;
+  font-family: "Doggie", "Times New Roman", Times, serif;
+  font-size: 15px;
+  padding: 10px;
+  border-radius: 15px;
 }
 
 .animal-type-select {
+  border-radius: 15px;
+  padding: 5px;
   width: 150px;
+  height: 25px;
+  font-family: "Doggie", "Times New Roman", Times, serif;
+}
+
+.option {
+  font-family: "Doggie", "Times New Roman", Times, serif;
 }
 
 .search-pet-header {
   text-align: center;
   margin-bottom: 20px;
+}
+
+.card-content {
+  align-items: flex-start;
+  justify-content: flex-start;
 }
 
 .card-content h3 {
@@ -1154,23 +1165,20 @@ label {
 }
 
 .pet-profiles-container {
-  display:flex;
+  display: flex;
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
-  /* display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 20px; */
 }
 
 .card {
   border-radius: 4px;
   padding: 10px;
-  margin:10px;
+  margin: 10px;
   margin-bottom: 10px;
   background-color: #ddae95;
   height: 400px;
-  width:250px;
+  width: 250px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -1226,6 +1234,10 @@ label {
 .search-input {
   margin-bottom: 30px;
   width: 300px;
+  font-family: "Doggie", "Times New Roman";
+  font-size: 15px;
+  padding: 10px;
+  border-radius: 15px;
 }
 
 .sitter-card {
@@ -1256,17 +1268,37 @@ label {
 
 .sitter-card-username {
   font-size: 25px;
-  font-weight: bold;
+  /* font-weight: bold; */
 }
 
 .sitter-card-info {
   margin-bottom: 5px;
 }
+.sitter-card-info {
+  margin-bottom: 5px;
+  font-family: "Poppins";
+}
+
+.doggie-font {
+  font-family: Doggie, "Times New Roman", Times, serif;
+  font-size: 15px;
+}
+.doggie-font-edit-pet {
+  font-family: Doggie, "Times New Roman", Times, serif;
+  font-size: 20px;
+}
+
+.poppins {
+  font-size: 12px;
+}
+.poppins-edit-pet {
+  font-size: 15px;
+}
 
 .sitter-card-link {
   text-decoration: none;
   color: black;
-  font-family: sunny spells;
+  font-family: "Doggie", "Times New Roman";
 }
 
 .sitter-card-link:hover {
@@ -1280,7 +1312,7 @@ label {
   background: #f9efe8;
   border-radius: 8px;
   box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
-  font-family: "Times New Roman", Times, serif;
+  font-family: "Doggie", "Times New Roman";
   line-height: 1.125em;
   padding: 10px;
 }
@@ -1361,7 +1393,7 @@ label {
 }
 
 .react-calendar__month-view__days__day--weekend {
-  color: #047c3a;
+  color: #cd7f6155;
 }
 
 .react-calendar__month-view__days__day--neighboringMonth {
@@ -1392,31 +1424,32 @@ label {
 }
 
 .react-calendar__tile--now {
-  background: #ffff76;
+  background: #cd7f6155;
+  border-radius: 5px;
 }
 
 .react-calendar__tile--now:enabled:hover,
 .react-calendar__tile--now:enabled:focus {
-  background: #ffffa9;
+  background: #dfd0ac;
 }
 
 .react-calendar__tile--hasActive {
-  background: #034d2e;
+  background: #cb997e;
 }
 
 .react-calendar__tile--hasActive:enabled:hover,
 .react-calendar__tile--hasActive:enabled:focus {
-  background: #09b556;
+  background: #cb997e;
 }
 
 .react-calendar__tile--active {
-  background: #477863;
+  background: #cb997e;
   color: white;
 }
 
 .react-calendar__tile--active:enabled:hover,
 .react-calendar__tile--active:enabled:focus {
-  background: #03593e;
+  background: #cb997e;
 }
 
 .react-calendar--selectRange .react-calendar__tile--hover {
@@ -1425,31 +1458,31 @@ label {
 
 /* bookings */
 
-.delete-dates{
-  border:none;
-  background-color:#f9efe800 ;
+.delete-dates {
+  border: none;
+  background-color: #f9efe800;
 }
-.delete-dates img{
+.delete-dates img {
   padding-top: 10px;
   width: 40px;
 }
-.available-dates{
+.available-dates {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
 
-.available-dates h3{
+.available-dates h3 {
   margin: 0;
 }
 
-.available-dates .all-pets{
+.available-dates .all-pets {
   margin-bottom: 20px;
   padding: 0;
 }
 
-.available-dates .react-calendar{
+.available-dates .react-calendar {
   margin: 10px;
 }
 .booking-item {
@@ -1460,6 +1493,7 @@ label {
   margin: 10px;
   box-shadow: 0 3px 8px rgba(4, 15, 10, 0.601);
 }
+
 .booked-date-indicator {
   width: 100%;
   height: 100%;
@@ -1478,7 +1512,7 @@ label {
   color: black;
   border: none;
   font-size: 20px;
-  font-family: sunny spells;
+  font-family: "Doggie", "Times New Roman";
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -1490,8 +1524,9 @@ label {
   box-shadow: 0 3px 8px rgba(0, 0, 0, 0.601);
 }
 .available-date-btn:hover {
-background-color: #f6c5a2;
-color: #000000;}
+  background-color: #ffe5d2;
+  color: #000000;
+}
 /* favorite-page */
 .fav-page {
   display: flex;
@@ -1508,8 +1543,6 @@ color: #000000;}
   width: 180px;
   text-align: center;
 }
-
-
 
 .favorite-box-h2 {
   text-align: center;

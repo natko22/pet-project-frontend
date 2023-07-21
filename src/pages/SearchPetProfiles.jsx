@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import { API_URL } from "../config/config.index";
-import placeholder from "../assets/pawprint.png"
+import placeholder from "../assets/pawprint.png";
 
 const SearchPetProfiles = () => {
   const [petProfiles, setPetProfiles] = useState([]);
@@ -60,13 +60,27 @@ const SearchPetProfiles = () => {
         value={animalType}
         onChange={(e) => setAnimalType(e.target.value)}
       >
-        <option value="">All Animals</option>
-        <option value="dog">Dog</option>
-        <option value="cat">Cat</option>
-        <option value="rabbit">Rabbit</option>
-        <option value="snake">Snake</option>
-        <option value="hamster">Hamster</option>
-        <option value="bird">Bird</option>
+        <option className="option" value="">
+          All Animals
+        </option>
+        <option className="option" value="dog">
+          Dog
+        </option>
+        <option className="option" value="cat">
+          Cat
+        </option>
+        <option className="option" value="rabbit">
+          Rabbit
+        </option>
+        <option className="option" value="snake">
+          Snake
+        </option>
+        <option className="option" value="hamster">
+          Hamster
+        </option>
+        <option className="option" value="bird">
+          Bird
+        </option>
       </select>
 
       <div className="pet-profiles-container">
@@ -76,15 +90,37 @@ const SearchPetProfiles = () => {
           filteredPetProfiles.map((pet) => (
             <div key={pet._id} className="card">
               <Link to={`/petProfile/${pet._id}`} className="pet-card-link">
-                <img src={pet.img?pet.img:placeholder} alt={pet.name} className="pet-card-img" />
+                <img
+                  src={pet.img ? pet.img : placeholder}
+                  alt={pet.name}
+                  className="pet-card-img"
+                />
                 <div className="card-content">
                   <h3>{pet.name}</h3>
-                  <p>Race: {pet.race}</p>
-                  <p>Age: {pet.age}</p>
-                  <p>Gender: {pet.gender}</p>
-                  <p>Castrated: {pet.castrated}</p>
-                  <p>Medical Condition: {pet.medicalCondition}</p>
-                  <p>Diet: {pet.diet}</p>
+                  <p>
+                    <span className="doggie-font"> Race : </span>
+                    <span className="poppins"> {pet.race}</span>
+                  </p>
+                  <p>
+                    <span className="doggie-font">Age : </span>
+                    <span className="poppins">{pet.age}</span>
+                  </p>
+                  <p>
+                    <span className="doggie-font"> Gender : </span>
+                    <span className="poppins"> {pet.gender}</span>
+                  </p>
+                  <p>
+                    <span className="doggie-font"> Castrated : </span>
+                    <span className="poppins"> {pet.castrated}</span>
+                  </p>
+                  <p>
+                    <span className="doggie-font"> Medical Condition : </span>
+                    <span className="poppins"> {pet.medicalCondition}</span>
+                  </p>
+                  <p>
+                    <span className="doggie-font"> Diet : </span>
+                    <span className="poppins">{pet.diet}</span>
+                  </p>
                 </div>
               </Link>
             </div>
