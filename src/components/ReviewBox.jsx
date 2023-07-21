@@ -3,9 +3,9 @@ import { AuthContext } from "../context/auth.context";
 import Review from "./Review";
 import { useParams } from "react-router-dom";
 import AddReview from "./AddReview";
-import { useState } from "react";
+import  { useState, useEffect } from "react";
 
-function ReviewBox({ reviews, setAddReviews }) {
+function ReviewBox({ reviews, setAddReviews, fetchCurrentUserDate }) {
   const { userId } = useParams();
   const { user } = useContext(AuthContext);
 
@@ -27,14 +27,16 @@ function ReviewBox({ reviews, setAddReviews }) {
           {reviews.map((review) => (
             <Review
               key={review._id}
+              reviewId={review._id}
               commenter={review.commenter}
               review={review.review}
               stars={review.stars}
+              fetchCurrentUserDate={fetchCurrentUserDate}
             />
           ))}
         </div>
         {!showAddReview && userId !== user._id && (
-          <button onClick={handleAddReviewClick}>+ leave a review</button>
+          <button onClick={handleAddReviewClick} className="add-pet">+ leave a review</button>
         )}
         {showAddReview && (
           <AddReview

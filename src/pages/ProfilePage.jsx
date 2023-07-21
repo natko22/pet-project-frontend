@@ -294,6 +294,7 @@ function ProfilePage() {
         <ReviewBox
           reviews={currentUser.reviews}
           setAddReviews={setAddReviews}
+          fetchCurrentUserDate={fetchCurrentUserData}
         />
       </div>
       <div>
