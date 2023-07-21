@@ -499,6 +499,8 @@ h3 {
   display: block;
   font-weight: bold;
   margin-bottom: 5px;
+  font-family: "Doggie", "Times New Roman", Times, serif;
+  font-size: 20px;
 }
 
 .edit-profile-form input,
@@ -508,6 +510,7 @@ textarea {
   margin-bottom: 10px;
   border: 1px solid #ccc;
   border-radius: 4px;
+  font-family: "poppins";
 }
 
 .edit-profile-form textarea {
@@ -568,7 +571,7 @@ textarea {
   cursor: pointer;
   margin: 10px;
   font-family: "Doggie", "Times New Roman";
-  font-size: 15px;
+  font-size: 20px;
   background-color: #cb997e;
   border: none;
   display: flex;
@@ -676,6 +679,23 @@ textarea {
   text-align: center;
   width: 800px;
   margin: 20px;
+}
+
+.review-btn {
+  text-decoration: none;
+  color: black;
+  font-size: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #f9efe8;
+  width: 150px;
+  margin: 40px auto;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 3px 8px rgba(4, 15, 10, 0.601);
+  font-family: "Doggie", "Times New Roman";
+  border: none;
 }
 
 .all-reviews {
@@ -930,6 +950,7 @@ input {
   margin-bottom: 10px;
   border: 1px solid #ccc;
   border-radius: 4px;
+  font-family: poppins;
 }
 
 .add-new-pet,
@@ -938,6 +959,13 @@ label {
   display: block;
   font-weight: bold;
   padding: 10px;
+  font-family: "Doggie", "Times New Roman", Times, serif;
+  font-size: 20px;
+}
+.add-new-pet select {
+  margin: 10px;
+  font-family: "poppins";
+  padding: 1px;
 }
 
 .pet-upload-input {
@@ -1027,6 +1055,7 @@ label {
   border-radius: 5px;
   border: 1px solid #ccc;
   margin-top: 5px;
+  font-family: "poppins";
 }
 .edit-pet-form label.checkbox-label {
   align-items: center;
@@ -1104,20 +1133,16 @@ label {
 }
 
 .save-pet-btn {
-  text-decoration: none;
-  border: none;
-  color: black;
+  width: 100%;
+  padding: 15px;
+  margin: 20px;
+  background-color: #cb997e;
+  color: #000000;
   font-size: 20px;
   font-family: "Doggie", "Times New Roman";
-  width: 100px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  background-color: #cb997e;
-  margin: 20px auto;
-  padding: 10px;
-  border-radius: 5px;
-  box-shadow: 0 3px 8px rgba(4, 15, 10, 0.601);
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
 }
 
 /* search pet profiles */
@@ -1317,6 +1342,17 @@ label {
   padding: 10px;
 }
 
+.calendar-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.calendar-container-p {
+  padding: 10px;
+}
+
 .react-calendar--doubleView {
   width: 700px;
 }
@@ -1457,6 +1493,23 @@ label {
 }
 
 /* bookings */
+
+.book-btn {
+  text-decoration: none;
+  color: black;
+  font-size: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #f9efe8;
+  width: 150px;
+  margin: 40px auto;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 3px 8px rgba(4, 15, 10, 0.601);
+  font-family: "Doggie", "Times New Roman";
+  border: none;
+}
 
 .delete-dates {
   border: none;

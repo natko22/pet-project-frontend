@@ -22,7 +22,7 @@ function ReviewBox({ reviews, setAddReviews }) {
   return (
     <>
       <div className="review-box">
-      <h2 className="review-box-h2">Reviews</h2>
+        <h2 className="review-box-h2">Reviews</h2>
         <div className="all-reviews">
           {reviews.map((review) => (
             <Review
@@ -34,7 +34,9 @@ function ReviewBox({ reviews, setAddReviews }) {
           ))}
         </div>
         {!showAddReview && userId !== user._id && (
-          <button onClick={handleAddReviewClick}>+ leave a review</button>
+          <button className="review-btn" onClick={handleAddReviewClick}>
+            Leave a review
+          </button>
         )}
         {showAddReview && (
           <AddReview

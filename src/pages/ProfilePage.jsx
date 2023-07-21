@@ -314,8 +314,8 @@ function ProfilePage() {
                 selectRange={true}
                 tileContent={renderTileContent} // Custom tile content function
               />
-              <span className="indicator-red">🟥already booked dates</span>
-              <span className="indicator-green">🟩available dates</span>
+              <span className="indicator-red">🟥 Already booked dates</span>
+              <span className="indicator-green">🟩 Available dates</span>
               <button
                 className="available-date-btn"
                 onClick={handleAvailableDatesSubmit}
@@ -366,14 +366,14 @@ function ProfilePage() {
       )}
       {/*Add React Calendar*/}
       {userId !== user._id && currentUser.isSitter && (
-        <div>
+        <div className="pet-box">
           <h2 className="text-center">Book a service</h2>
           <div className="calendar-container">
             <Calendar
               onChange={handleDateChange}
               value={[startDate, endDate]}
               selectRange={true}
-              tileContent={renderTileContent} // Custom tile content function
+              tileContent={renderTileContent}
             />
             <div className="text-center">
               {startDate && endDate ? (
@@ -382,19 +382,21 @@ function ProfilePage() {
                   {endDate.toDateString()}
                 </p>
               ) : (
-                <p>
+                <p className="calendar-container-p">
                   <span>Default selected date:</span> {date.toDateString()}
                 </p>
               )}
             </div>
             <div className="direction-column text-center">
-              <span className="indicator-red">🟥already booked dates</span>
-              <span className="indicator-green">🟩available dates</span>
+              <span className="indicator-red">🟥 Already booked dates</span>
+              <span className="indicator-green">🟩 Available dates</span>
             </div>
 
             <div className="contact-btns">
               <Link>Chat with me</Link>
-              <button onClick={handleBookingSubmit}>Book</button>
+              <button className="book-btn" onClick={handleBookingSubmit}>
+                Book
+              </button>
             </div>
 
             {bookingError && <p className="error-message">{bookingError}</p>}
