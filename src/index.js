@@ -10,15 +10,19 @@ import "./Fonts/Pet Shop.otf";
 import "./Fonts/Animal Paws.otf";
 import "./Fonts/Doggie.otf";
 import "./Fonts/Poppins-ExtraLight.ttf";
+import { ChakraProvider } from "@chakra-ui/react";
+import ChatProvider from "./context/chat.context";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <BrowserRouter>
-      <AuthProviderWrapper>
-        <App />
-      </AuthProviderWrapper>
-    </BrowserRouter>
+    <ChakraProvider>
+      <BrowserRouter>
+        <AuthProviderWrapper>
+          <App />
+        </AuthProviderWrapper>
+      </BrowserRouter>
+    </ChakraProvider>
   </React.StrictMode>
 );
 
