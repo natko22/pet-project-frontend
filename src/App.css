@@ -1,6 +1,4 @@
 @font-face {
-  font-family: "Pet Shop";
-  src: local("Pet Shop"), url("../src/Fonts/Pet\ Shop.otf") format("truetype");
   font-family: "Animal Paws";
   src: local("Animal Paws"),
     url("../src/Fonts/Animal\ Paws.otf") format("truetype");
@@ -110,12 +108,12 @@ h3 {
   color: #ffffff;
 }
 
-.error-message {
+p.error-message {
   color: red;
   margin-top: 10px;
   text-align: center;
-  font-size: 18px;
-  font-family: "Times New Roman", Times, serif;
+  font-size: 20px;
+  font-family: "Doggie", Times, serif;
 }
 
 /* Login page styling */

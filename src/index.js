@@ -6,7 +6,6 @@ import reportWebVitals from "./reportWebVitals";
 import { BrowserRouter } from "react-router-dom";
 import { AuthProviderWrapper } from "./context/auth.context";
 // Fonts
-import "./Fonts/Pet Shop.otf";
 import "./Fonts/Animal Paws.otf";
 import "./Fonts/Doggie.otf";
 import "./Fonts/Poppins-ExtraLight.ttf";
