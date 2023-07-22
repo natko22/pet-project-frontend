@@ -25,10 +25,9 @@ Petopia is a MERN (MongoDB, Express, React, Node.js) stack application dedicated
 ## How to Run Locally
 
 1. Clone the repository:
-
 git clone https://github.com/your-username/petopia.git
-2.Navigate to the project folder:
 
+2.Navigate to the project folder:
 cd petopia
 
 3. Install dependencies for both frontend and backend:
