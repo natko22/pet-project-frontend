@@ -1,70 +1,116 @@
-# Getting Started with Create React App
+# Petopia
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Description
 
-## Available Scripts
+Petopia is a MERN (MongoDB, Express, React, Node.js) stack application dedicated to connecting pet owners with loving caretakers and helping animals in need. It provides a seamless experience for pet owners and pet sitters to connect and build a community that cherishes all types of animals.
 
-In the project directory, you can run:
+## Features
 
-### `npm start`
+- Sign up and log in with email or Google account.
+- User profiles with reviews, bookings, and pet profiles.
+- Availability management to display available dates from calendar.
+- Search for pets and pet sitters in our search pages based on name or postal code .
+- Save and delete pet sitter's profiles from favorites.
+- Edit user and pet profile to update information.
+- Book a service inside sitter's profile.
+- Add a review for a pet sitter and edit it,or delete it.
+- Upload your own images in pet and sitter profiles.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+  ## Usage
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+### Signing Up and Logging In
 
-### `npm test`
+- Visit the Petopia homepage.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- Click on the "Sign Up" button to create a new account.
+- Alternatively, you can choose to log in with your Google account by clicking on the "Log In with Google" button.
 
-### `npm run build`
+### User Profile
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- After logging in, you will be redirected to your user profile page.
+- Update your profile information, including your name, profile picture, and contact details.
+- Add information about the pets you own, such as their names, breeds, and descriptions.
+- Manage your available dates for pet sitting by setting the dates when you are available to take care of pets.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### Searching for Pets and Pet Sitters
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- Use the search feature to find pets available for sitting or pet sitters in your area.
+- Filter your search by pet type, location, availability, and other criteria.
+- Browse through the search results to view detailed profiles of pets and pet sitters.
 
-### `npm run eject`
+### Adding Pet Sitters to Favorites
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+- When you find a pet sitter you like, click on the "heart " button on their profile.
+- The pet sitter will be added to your favorites list for easy access in the future.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### Editing Profiles
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+- As a user, you can edit your own profile details at any time.
+- Update your pet information, add new pets, or make changes to your available dates for pet sitting.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+### Booking and Reviews
 
-## Learn More
+- To book a pet sitting service, visit the profile page of the desired pet sitter.
+- Contact the pet sitter directly through the contact information provided on their profile.
+- After a pet sitting experience, you can leave a review and rating for the pet sitter based on your experience.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+### Managing Bookings
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+- As a pet sitter, you can manage your bookings through your user profile.
+- View upcoming bookings, accepted bookings, and completed bookings.
+- Communicate with pet owners to coordinate pet sitting services.
 
-### Code Splitting
+### Logging Out
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+- To log out of your Petopia account, click on the "Logout" button in the navigation menu.
 
-### Analyzing the Bundle Size
+We hope you enjoy using Petopia and have a pawsome time caring for pets and connecting with pet owners!
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+## Technologies Used
 
-### Making a Progressive Web App
+- Frontend: React (with React Router)
+- Backend: Node.js with Express
+- Database: MongoDB (with Mongoose)
+- Authentication: JWT (JSON Web Tokens) for email/password authentication
+- Styling: CSS (with Flexbox/Grid)
+- Hosting: Frontend on Netlify, Backend on Adaptable
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+## Installation
 
-### Advanced Configuration
+To run Petopia locally, please follow these steps:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+1. Clone the repository from GitHub:
 
-### Deployment
+   ```bash
+   git clone https://github.com/natko22/pet-project-frontend
+   ```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+2. Install the necessary dependencies using npm:
 
-### `npm run build` fails to minify
+   ```bash
+   cd petopia
+   npm install
+   ```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+3. Set up the MongoDB database:
+
+   - Install MongoDB if you haven't already (https://docs.mongodb.com/manual/installation/).
+   - Configure the MongoDB connection in the app's configuration file.
+
+4. Open your browser and go to http://localhost:3000 to access Petopia locally.
+
+## Deployment
+
+- Frontend: The frontend is deployed on Netlify and will automatically deploy when changes are pushed to the main branch.
+- Backend: The backend is hosted on Adaptable and will automatically deploy when changes are pushed to the main branch.
+
+Contributing
+We welcome contributions from the community! If you find any bugs or have ideas for new features, please open an issue or submit a pull request.
+
+## License
+
+MIT License
+
+## Contact
+
+For any questions or inquiries, please contact [Natassa Tsapanidou-Kornilaki](https://github.com/natko22) and [Yo-Chia Chen](https://github.com/Yo-Jia).
