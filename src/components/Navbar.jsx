@@ -10,7 +10,7 @@ function Navbar() {
       <input type="checkbox" id="nav-check" />
       <div className="nav-header">
         <Link to="/">
-          <div className="nav-title">Pet-Project</div>
+          <div className="nav-title">Petopia</div>
         </Link>
       </div>
       <div className="nav-btn">

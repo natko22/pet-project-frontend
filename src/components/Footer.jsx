@@ -3,35 +3,32 @@ import githubIcon from "../assets/github.png";
 import { Link } from "react-router-dom";
 function Footer() {
   return (
-    
-    <div className="footer-basic">
-    <footer>
-      <ul className="list-inline">
-        <li className="list-inline-item">
-          <Link to="/">Home</Link>
-        </li>
-        <li className="list-inline-item">
-          <Link to="/services">Services</Link>
-        </li>
-        <li className="list-inline-item">
-          <Link to="/about">About</Link>
-        </li>
-        <li className="list-inline-item">
-          <Link to="/terms">Terms</Link>
-        </li>
-        <li className="list-inline-item">
-          <Link to="/privacy-policy">Privacy Policy</Link>
-        </li>
-      </ul>
-      <div className="social">
-        <Link to="#">
-          <img className="icon" alt="github" src={githubIcon} />
-        </Link>
+    <div className="main-container">
+      <div className="footer-basic">
+        <footer>
+          <ul className="list-inline">
+            <li className="list-inline-item">
+              <Link to="/">Home</Link>
+            </li>
+
+            <li className="list-inline-item">
+              <Link to="/about" target="_top">
+                About Us
+              </Link>
+            </li>
+          </ul>
+          <div className="social">
+            <Link
+              to="https://github.com/natko22/pet-project-frontend"
+              target="_blank"
+            >
+              <img className="icon" alt="github" src={githubIcon} />
+            </Link>
+          </div>
+          <p className="copyright">Petopia © 2023</p>
+        </footer>
       </div>
-      <p className="copyright">Name © 2023</p>
-    </footer>
-  </div>
-    
+    </div>
   );
 }
 

@@ -51,9 +51,9 @@ const LoginPage = () => {
   }
 
   // Google Login
-  const handleGoogleAuth = async(e) => {
+  const handleGoogleAuth = async (e) => {
     e.preventDefault();
-  
+
     // Redirect the user to the Google Authentication route on your server
     window.location.href = `${API_URL}/auth/google/callback`;
   };
@@ -70,7 +70,6 @@ const LoginPage = () => {
             value={email}
             onChange={handleEmailChange}
             className="input-field"
-            required
           />
         </div>
 
@@ -82,7 +81,6 @@ const LoginPage = () => {
             value={password}
             onChange={handlePasswordChange}
             className="input-field"
-            required
           />
         </div>
 

@@ -86,26 +86,25 @@ function PetProfilePage() {
         <p>
           <span className="doggie-font-edit-pet"> Castrated : </span>
           <span className="poppins-edit-pet">
-            {" "}
             {pet.castrated ? "⭕" : "❌"}
           </span>
         </p>
         <div className="aboutme-box">
-          <h2>How to take care of me?</h2>
-          <h3>Instruction</h3>
+          <h2 className="pet-profile-h2">How to take care of me?</h2>
+          <h3 className="pet-profile-h3">Instructions</h3>
           {!pet.instruction ? (
             <p>There's no instruction yet.</p>
           ) : (
             pet.instruction
           )}
-          <h3>Medical condition</h3>
+          <h3 className="pet-profile-h3">Medical condition</h3>
           {!pet.medicalCondition ? (
             <p>There's no medical condition yet.</p>
           ) : (
             pet.medicalCondition
           )}
-          <h3>Diet</h3>
-          {!pet.diet ? <p>There's no medical condition yet.</p> : pet.diet}
+          <h3 className="pet-profile-h3">Diet</h3>
+          {!pet.diet ? <p>There are no diet instructions yet.</p> : pet.diet}
           {user._id === pet.owner && (
             <button className="delete-pet-btn" onClick={handleDelete}>
               Delete Pet

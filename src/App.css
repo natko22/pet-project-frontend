@@ -1,6 +1,4 @@
 @font-face {
-  font-family: "Pet Shop";
-  src: local("Pet Shop"), url("../src/Fonts/Pet\ Shop.otf") format("truetype");
   font-family: "Animal Paws";
   src: local("Animal Paws"),
     url("../src/Fonts/Animal\ Paws.otf") format("truetype");
@@ -20,12 +18,12 @@
 h1 {
   font-family: "Doggie", "Times New Roman";
 }
-.center-box{
+.center-box {
   display: flex;
   justify-content: center;
   align-items: center;
 }
-  
+
 h2 {
   font-family: "Doggie", "Times New Roman";
   margin: 0px;
@@ -110,12 +108,12 @@ h3 {
   color: #ffffff;
 }
 
-.error-message {
+p.error-message {
   color: red;
   margin-top: 10px;
   text-align: center;
-  font-size: 18px;
-  font-family: "Times New Roman", Times, serif;
+  font-size: 20px;
+  font-family: "Doggie", Times, serif;
 }
 
 /* Login page styling */
@@ -189,14 +187,13 @@ h3 {
   padding: 20px;
   font-family: "Doggie", "Times New Roman";
   font-size: 25px;
+  position: relative;
 }
 
 .nav-title {
-  /* font-family: "Pet Shop"; */
-  font-family: "Animal Paws","Doggie", "Times New Roman", Times, serif;
-  font-size: 40px;
+  font-family: "Animal Paws", "Doggie", "Times New Roman", Times, serif;
+  font-size: 50px;
   color: white;
-  /* font-weight: bold; */
 }
 
 .nav > .nav-header {
@@ -216,6 +213,15 @@ h3 {
   padding: 10px 10px 10px 10px;
 }
 
+.nav > .nav-header {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  padding-left: 20px;
+}
+
 .nav > .nav-btn {
   display: none;
 }
@@ -224,6 +230,7 @@ h3 {
   display: inline;
   float: right;
   font-size: 25px;
+  position: relative;
 }
 
 .nav > .nav-links > a {
@@ -290,11 +297,20 @@ h3 {
   width: 30px;
 }
 
+.main-container {
+  min-height: 80vh;
+  display: flex;
+  flex-direction: column;
+}
+
 .footer-basic {
-  padding: 40px 0;
+  padding: 10px 0;
   background-color: #cb997e;
   color: white;
   box-shadow: 0 3px 8px rgba(4, 15, 10, 0.601);
+  margin-top: auto;
+  position: sticky;
+  bottom: 0;
 }
 
 .footer-basic ul {
@@ -675,12 +691,23 @@ textarea {
   flex-direction: column;
   align-items: center;
 }
+
+.pet-profile-h2 {
+  padding: 30px;
+  margin: 20px;
+}
+
+.pet-profile-h3 {
+  margin: 18px;
+  font-style: oblique;
+  text-decoration: underline;
+}
 /* Reviews-box */
-.edit-form{
+.edit-form {
   padding-top: 20px;
 }
 
-.edit-form label{
+.edit-form label {
   padding: 5px;
 }
 
@@ -1011,7 +1038,7 @@ label {
   flex-direction: column;
   align-items: center;
   background-color: #f9efe8;
-  width:200px;
+  width: 200px;
   margin: 40px auto;
   padding: 20px;
   border-radius: 5px;
@@ -1602,6 +1629,14 @@ label {
   margin: 20px;
 }
 
+.favorites-message {
+  font-family: "poppins", "Times New Roman", Times, serif;
+  font-style: italic;
+  font-size: 20px;
+  padding: 100px;
+  margin: 100px;
+}
+
 .each-favorite-box {
   display: flex;
   justify-content: center;
@@ -1636,4 +1671,41 @@ label {
 .favorite-link {
   text-decoration: none;
   color: #000000;
+}
+
+/* About Us Page */
+
+.about-page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-color: #f8f8f8;
+  color: #000000;
+}
+
+.about-content {
+  text-align: center;
+  max-width: 600px;
+  padding: 20px;
+  margin-left: 550px;
+}
+
+.about-content h2 {
+  font-size: 40px;
+  margin-bottom: 30px;
+  padding: 20px;
+}
+
+.about-content p {
+  font-size: 16px;
+  margin-bottom: 15px;
+}
+
+.creator-bold,
+.petopia-bold {
+  font-weight: bolder;
+  color: black;
+  font-family: "Doggie", "Times New Roman", Times, serif;
+  font-size: 20px;
 }
