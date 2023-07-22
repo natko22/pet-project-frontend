@@ -28,28 +28,28 @@ function ProfilePage() {
   const [startAvailableDate, setStartAvailableDate] = useState(null);
   const [endAvailableDate, setEndAvailableDate] = useState(null);
   const { storeToken, authenticateUser } = useContext(AuthContext);
-useEffect(()=>{  
-  const getUrlParameter = (name) => {
-    name = name.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]');
-    const regex = new RegExp('[\\?&]' + name + '=([^&#]*)');
-    const results = regex.exec(window.location.search);
-    return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
-  };
-  const authToken = getUrlParameter('token');
-  if(authToken){ 
-  
-  // Get the authToken from URL
-  
-  // Store the token
-  localStorage.setItem("authToken", authToken);
-  if (authToken) {
-    console.log("Token stored");
-    storeToken(authToken);
-  }
-  authenticateUser();
-}
- 
-},[])
+  useEffect(() => {
+    const getUrlParameter = (name) => {
+      name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
+      const regex = new RegExp("[\\?&]" + name + "=([^&#]*)");
+      const results = regex.exec(window.location.search);
+      return results === null
+        ? ""
+        : decodeURIComponent(results[1].replace(/\+/g, " "));
+    };
+    const authToken = getUrlParameter("token");
+    if (authToken) {
+      // Get the authToken from URL
+
+      // Store the token
+      localStorage.setItem("authToken", authToken);
+      if (authToken) {
+        console.log("Token stored");
+        storeToken(authToken);
+      }
+      authenticateUser();
+    }
+  }, []);
 
   useEffect(() => {
     fetchCurrentUserData();
@@ -61,6 +61,7 @@ useEffect(()=>{
         try {
           const { data } = await axios.get(`${API_URL}/api/users/${user._id}`);
           console.log("fetched data", data);
+          console.log("USER", user._id, user);
           if (data.favorites.includes(userId)) {
             setFavorite(true);
           }
