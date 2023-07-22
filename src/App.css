@@ -684,6 +684,17 @@ textarea {
   flex-direction: column;
   align-items: center;
 }
+
+.pet-profile-h2 {
+  padding: 30px;
+  margin: 20px;
+}
+
+.pet-profile-h3 {
+  margin: 18px;
+  font-style: oblique;
+  text-decoration: underline;
+}
 /* Reviews-box */
 .edit-form {
   padding-top: 20px;
