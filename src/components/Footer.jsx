@@ -10,17 +10,9 @@ function Footer() {
             <li className="list-inline-item">
               <Link to="/">Home</Link>
             </li>
-            <li className="list-inline-item">
-              <Link to="/services">Services</Link>
-            </li>
+
             <li className="list-inline-item">
               <Link to="/about">About</Link>
-            </li>
-            <li className="list-inline-item">
-              <Link to="/terms">Terms</Link>
-            </li>
-            <li className="list-inline-item">
-              <Link to="/privacy-policy">Privacy Policy</Link>
             </li>
           </ul>
           <div className="social">

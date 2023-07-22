@@ -16,7 +16,7 @@ import SearchPetProfiles from "./pages/SearchPetProfiles";
 import Favorites from "./pages/Favorites";
 import SearchPetSittersPage from "./pages/SearchPetSittersPage";
 import BookingsPage from "./pages/BookingsPage";
-
+import AboutMe from "./pages/AboutMePage";
 
 function App() {
   const { isLoggedIn, user } = useContext(AuthContext);
@@ -25,18 +25,46 @@ function App() {
     <div className="App">
       <Navbar />
       <Routes>
-      <Route path="/" element={isLoggedIn ? <Navigate to={`/profile/${user._id}`} replace /> : <HomePage />} />
-        <Route path="/signup" element={isLoggedIn ? <Navigate to={`/profile/${user._id}`} replace /> : <SignupPage />} />
-        <Route path="/login" element={isLoggedIn ? <Navigate to={`/profile/${user._id}`} replace /> : <LoginPage />} />
+        <Route
+          path="/"
+          element={
+            isLoggedIn ? (
+              <Navigate to={`/profile/${user._id}`} replace />
+            ) : (
+              <HomePage />
+            )
+          }
+        />
+        <Route
+          path="/signup"
+          element={
+            isLoggedIn ? (
+              <Navigate to={`/profile/${user._id}`} replace />
+            ) : (
+              <SignupPage />
+            )
+          }
+        />
+        <Route
+          path="/login"
+          element={
+            isLoggedIn ? (
+              <Navigate to={`/profile/${user._id}`} replace />
+            ) : (
+              <LoginPage />
+            )
+          }
+        />
         <Route path="/profile/:userId" element={<ProfilePage />} />
         <Route path="/edit/:userId" element={<EditProfile />} />
         <Route path="/petProfile/:petId" element={<PetProfilePage />} />
         <Route path="/add-pet" element={<AddPet />} />
         <Route path="/edit-pet/:petId" element={<EditPetProfilePage />} />
         <Route path="/pet-profiles" element={<SearchPetProfiles />} />
-        <Route path="/favorites" element={<Favorites/>} />
+        <Route path="/favorites" element={<Favorites />} />
         <Route path="/sitters-profiles" element={<SearchPetSittersPage />} />
         <Route path="/bookings" element={<BookingsPage />} />
+        <Route path="/about" element={<AboutMe />} />
       </Routes>
       <Footer />
     </div>
