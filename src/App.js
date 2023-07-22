@@ -16,7 +16,7 @@ import SearchPetProfiles from "./pages/SearchPetProfiles";
 import Favorites from "./pages/Favorites";
 import SearchPetSittersPage from "./pages/SearchPetSittersPage";
 import BookingsPage from "./pages/BookingsPage";
-import AboutMe from "./pages/AboutMePage";
+import AboutUs from "./pages/AboutUsPage";
 
 function App() {
   const { isLoggedIn, user } = useContext(AuthContext);
@@ -64,7 +64,7 @@ function App() {
         <Route path="/favorites" element={<Favorites />} />
         <Route path="/sitters-profiles" element={<SearchPetSittersPage />} />
         <Route path="/bookings" element={<BookingsPage />} />
-        <Route path="/about" element={<AboutMe />} />
+        <Route path="/about" element={<AboutUs />} />
       </Routes>
       <Footer />
     </div>

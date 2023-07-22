@@ -12,7 +12,9 @@ function Footer() {
             </li>
 
             <li className="list-inline-item">
-              <Link to="/about">About Us</Link>
+              <Link to="/about" href="#top">
+                About Us
+              </Link>
             </li>
           </ul>
           <div className="social">
