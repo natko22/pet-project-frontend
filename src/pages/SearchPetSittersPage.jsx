@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import { API_URL } from "../config/config.index";
+import placeholder from "../assets/placeholder.png"
 
 function SearchSittersPage() {
   const [sitters, setSitters] = useState([]);
@@ -9,6 +10,8 @@ function SearchSittersPage() {
   const [error, setError] = useState(null);
   const [searchQuery, setSearchQuery] = useState("");
   const [postalCodeQuery, setPostalCodeQuery] = useState("");
+  const [postalCodeRange, setPostalCodeRange] = useState(3);
+
 
   useEffect(() => {
     fetchSitters();
@@ -28,7 +31,11 @@ function SearchSittersPage() {
     setSearchQuery(value);
     setPostalCodeQuery(value);
   };
-
+  const isInRange = (postalCode, queryPostalCode, range) => {
+    const numPostalCode = parseInt(postalCode, 10);
+    const numQueryPostalCode = parseInt(queryPostalCode, 10);
+    return Math.abs(numPostalCode - numQueryPostalCode) <= range;
+  };
   const filteredSitters = sitters.filter((sitter) => {
     const sitterName = sitter.username && sitter.username.toLowerCase();
     const sitterPostalCode =
@@ -38,10 +45,13 @@ function SearchSittersPage() {
 
     return (
       (sitterName && sitterName.includes(searchQueryLower)) ||
-      (sitterPostalCode && sitterPostalCode.includes(postalCodeQueryLower)) ||
+      // (sitterPostalCode && sitterPostalCode.includes(postalCodeQueryLower)) 
       (postalCodeQueryLower &&
         sitterPostalCode &&
-        sitterPostalCode.startsWith(postalCodeQueryLower))
+        sitterPostalCode.startsWith(postalCodeQueryLower))||
+      (postalCodeQueryLower &&
+        sitterPostalCode &&
+        isInRange(sitter.postalCode, postalCodeQueryLower, postalCodeRange))
     );
   });
 
@@ -77,7 +87,7 @@ function SearchSittersPage() {
               className="sitter-card-link"
             >
                 <img
-                  src={sitter.img}
+                  src={sitter.img?sitter.img:placeholder}
                   alt={sitter.name}
                   className="sitter-card-img"
                 />
