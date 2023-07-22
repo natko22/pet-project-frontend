@@ -6,12 +6,10 @@ import reportWebVitals from "./reportWebVitals";
 import { BrowserRouter } from "react-router-dom";
 import { AuthProviderWrapper } from "./context/auth.context";
 // Fonts
-import "./Fonts/LmsThisFontIsForTheDogs-7PnR.ttf";
 import "./Fonts/Pet Shop.otf";
 import "./Fonts/Animal Paws.otf";
-import "./Fonts/BabyPanda-p79q1.otf";
-import "./Fonts/Doggie.otf"
-import "./Fonts/Poppins-ExtraLight.ttf"
+import "./Fonts/Doggie.otf";
+import "./Fonts/Poppins-ExtraLight.ttf";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(

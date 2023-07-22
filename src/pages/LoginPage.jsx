@@ -27,9 +27,14 @@ const LoginPage = () => {
 
     try {
       const response = await axios.post(`${API_URL}/auth/login`, requestBody);
+      console.log("Server response:", response.data);
       console.log("JWT token", response.data.authToken);
+      localStorage.setItem("authToken", response.data.authToken);
 
-      storeToken(response.data.authToken);
+      if (response.data.authToken) {
+        console.log("Token stored");
+        storeToken(response.data.authToken);
+      }
 
       authenticateUser();
       setIsLoading(false);
@@ -82,9 +87,9 @@ const LoginPage = () => {
           Login
         </button>
       </form>
-      <button onClick={handleGoogleAuth}>
+      <button className="login-button" onClick={handleGoogleAuth}>
         <img src="" alt="" />
-        <span>Sign in with Google</span>
+        <span> Log in with Google</span>
       </button>
       {errorMessage && <p className="error-message">{errorMessage}</p>}
     </div>

@@ -10,7 +10,7 @@ import MyPetsBox from "../components/MyPetsBox";
 import Calendar from "react-calendar";
 import BookingsPage from "./BookingsPage";
 import { API_URL } from "../config/config.index";
-import remove from "../assets/remove.png"
+import remove from "../assets/remove.png";
 
 function ProfilePage() {
   const { userId } = useParams();
@@ -300,31 +300,33 @@ function ProfilePage() {
       <div>
         <MyPetsBox pets={currentUser.pets} />
       </div>
-      {userId === user._id && currentUser.isSitter && <BookingsPage bookings={currentUser.bookings} />}
+      {userId === user._id && currentUser.isSitter && (
+        <BookingsPage bookings={currentUser.bookings} />
+      )}
 
-      {userId === user._id && currentUser.isSitter &&(
+      {userId === user._id && currentUser.isSitter && (
         <>
           <div className="pet-box">
-          <h2>Set your availability</h2>
+            <h2>Set your availability</h2>
             <div className="available-dates">
-          <Calendar
-            onChange={handleAvailableDateChange}
-            value={[startAvailableDate, endAvailableDate]}
-            selectRange={true}
-            tileContent={renderTileContent} // Custom tile content function
-          />
-          <span className="indicator-red">🟥already booked dates</span>
-          <span className="indicator-green">🟩available dates</span>
-          <button
-            className="available-date-btn"
-            onClick={handleAvailableDatesSubmit}
-          >
-            Add Available Dates
-          </button>
-        </div>
-        </div>
+              <Calendar
+                onChange={handleAvailableDateChange}
+                value={[startAvailableDate, endAvailableDate]}
+                selectRange={true}
+                tileContent={renderTileContent} // Custom tile content function
+              />
+              <span className="indicator-red">🟥 Already booked dates</span>
+              <span className="indicator-green">🟩 Available dates</span>
+              <button
+                className="available-date-btn"
+                onClick={handleAvailableDatesSubmit}
+              >
+                Add Available Dates
+              </button>
+            </div>
+          </div>
           <div className="pet-box">
-          <h2>My available Dates</h2>
+            <h2>My available Dates</h2>
             <div className="available-dates">
               <div className="all-pets">
                 {currentUser.availability &&
@@ -332,20 +334,26 @@ function ProfilePage() {
                   currentUser.availability.map((booking) => (
                     <div key={booking._id} className="each-pet-box">
                       <p>
-                        Start Date:{" "}
-                        {new Date(booking.startDate).toLocaleDateString(
-                          "de-DE"
-                        )}
+                        <span className="doggie-font"> Start Date : </span>
+                        <span className="poppins">
+                          {new Date(booking.startDate).toLocaleDateString(
+                            "de-DE"
+                          )}
+                        </span>
                       </p>
                       <p>
-                        End Date:{" "}
-                        {new Date(booking.endDate).toLocaleDateString("de-DE")}
+                        <span className="doggie-font"> End Date : </span>
+                        <span className="poppins">
+                          {new Date(booking.endDate).toLocaleDateString(
+                            "de-DE"
+                          )}
+                        </span>
                       </p>
                       <button
                         className="delete-dates"
                         onClick={() => handleRemoveAvailability(booking._id)}
                       >
-                      <img src={remove} alt="delete"></img>
+                        <img src={remove} alt="delete"></img>
                       </button>
                     </div>
                   ))
@@ -355,19 +363,18 @@ function ProfilePage() {
               </div>
             </div>{" "}
           </div>
-
         </>
       )}
       {/*Add React Calendar*/}
       {userId !== user._id && currentUser.isSitter && (
-        <div>
+        <div className="pet-box">
           <h2 className="text-center">Book a service</h2>
           <div className="calendar-container">
             <Calendar
               onChange={handleDateChange}
               value={[startDate, endDate]}
               selectRange={true}
-              tileContent={renderTileContent} // Custom tile content function
+              tileContent={renderTileContent}
             />
             <div className="text-center">
               {startDate && endDate ? (
@@ -376,19 +383,21 @@ function ProfilePage() {
                   {endDate.toDateString()}
                 </p>
               ) : (
-                <p>
+                <p className="calendar-container-p">
                   <span>Default selected date:</span> {date.toDateString()}
                 </p>
               )}
             </div>
             <div className="direction-column text-center">
-              <span className="indicator-red">🟥already booked dates</span>
-              <span className="indicator-green">🟩available dates</span>
+              <span className="indicator-red">🟥 Already booked dates</span>
+              <span className="indicator-green">🟩 Available dates</span>
             </div>
 
             <div className="contact-btns">
               <Link>Chat with me</Link>
-              <button onClick={handleBookingSubmit}>Book</button>
+              <button className="book-btn" onClick={handleBookingSubmit}>
+                Book
+              </button>
             </div>
 
             {bookingError && <p className="error-message">{bookingError}</p>}

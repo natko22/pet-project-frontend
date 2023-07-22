@@ -73,11 +73,23 @@ function PetProfilePage() {
             alt={pet.gender === "Female" ? "female" : "male"}
           />
         </p>
-        <p>{pet.type}</p>
-        <p>{pet.race}</p>
+        <p className="doggie-font-edit-pet"> {pet.type}</p>
+        <p>
+          <span className="doggie-font-edit-pet"> Race : </span>
+          <span className="poppins-edit-pet"> {pet.race}</span>
+        </p>
 
-        <p>Age: {pet.age} years old</p>
-        <p>Castrated: {pet.castrated ? "⭕" : "❌"}</p>
+        <p>
+          <span className="doggie-font-edit-pet">Age : </span>
+          <span className="poppins-edit-pet">{pet.age} years old</span>
+        </p>
+        <p>
+          <span className="doggie-font-edit-pet"> Castrated : </span>
+          <span className="poppins-edit-pet">
+            {" "}
+            {pet.castrated ? "⭕" : "❌"}
+          </span>
+        </p>
         <div className="aboutme-box">
           <h2>How to take care of me?</h2>
           <h3>Instruction</h3>

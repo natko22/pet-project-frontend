@@ -1,6 +1,12 @@
+@font-face {
+  font-family: "Poppins";
+  src: local("Poppins"),
+    url("../src/Fonts/Poppins-ExtraLight.ttf") format("truetype");
+}
+
 body {
   margin: 0;
-  /* font-family: "Poppins"; */
+  font-family: "Poppins";
   /* font-family: "Times New Roman", Times, serif; */
   background: #fefdfc;
 }

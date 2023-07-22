@@ -32,8 +32,18 @@ function EachBooking({ ownerId, startDate, endDate }) {
       />
       <h3>{owner.username}</h3>
 
-      <p>Start Date: {new Date(startDate).toLocaleDateString("de-DE")}</p>
-      <p>End Date: {new Date(endDate).toLocaleDateString("de-DE")}</p>
+      <p>
+        <span className="doggie-font"> Start Date : </span>
+        <span className="poppins">
+          {new Date(startDate).toLocaleDateString("de-DE")}
+        </span>
+      </p>
+      <p>
+        <span className="doggie-font"> End Date : </span>
+        <span className="poppins">
+          {new Date(endDate).toLocaleDateString("de-DE")}
+        </span>
+      </p>
     </div>
   );
 }
