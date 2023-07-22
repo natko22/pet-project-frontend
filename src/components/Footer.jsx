@@ -12,7 +12,7 @@ function Footer() {
             </li>
 
             <li className="list-inline-item">
-              <Link to="/about" href="#top">
+              <Link to="/about" target="_top">
                 About Us
               </Link>
             </li>
