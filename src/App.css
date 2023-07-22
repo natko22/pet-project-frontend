@@ -16,10 +16,16 @@
   display: flex;
   flex-direction: column;
 }
+
 h1 {
   font-family: "Doggie", "Times New Roman";
-  margin: 0px;
 }
+.center-box{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+  
 h2 {
   font-family: "Doggie", "Times New Roman";
   margin: 0px;
@@ -670,6 +676,13 @@ textarea {
   align-items: center;
 }
 /* Reviews-box */
+.edit-form{
+  padding-top: 20px;
+}
+
+.edit-form label{
+  padding: 5px;
+}
 
 .review-box {
   background-color: #cb997e;
@@ -990,6 +1003,7 @@ label {
 }
 
 .add-pet {
+  border: none;
   text-decoration: none;
   color: black;
   font-size: 20px;
@@ -997,7 +1011,7 @@ label {
   flex-direction: column;
   align-items: center;
   background-color: #f9efe8;
-  width: 150px;
+  width:200px;
   margin: 40px auto;
   padding: 20px;
   border-radius: 5px;

@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import imgPlaceholder from "../assets/placeholder.png";
 import { AuthContext } from "../context/auth.context";
 import { API_URL } from "../config/config.index";
+import remove from "../assets/remove.png"
 
 function Favorites() {
   const [favorites, setFavorites] = useState([]);
@@ -24,6 +25,22 @@ function Favorites() {
     fetchFavorites();
   }, [user]);
 
+  const handleRemoveFromFavorites = async (userIdToRemove) => {
+    try {
+      console.log(user._id)
+      await axios.put(
+        `${API_URL}/api/favorites/${userIdToRemove}`,
+        { userIdToRemove:user._id }
+      );
+      setFavorites((prevFavorites) =>
+        prevFavorites.filter((fav) => fav._id !== userIdToRemove)
+      );
+    } catch (err) {
+      console.log("remove from favorites error", err);
+    }
+  };
+
+
   return (
     <div className="fav-page">
       <h1>My Favorites</h1>
@@ -39,6 +56,11 @@ function Favorites() {
                 />
                 <h2>{favorite.username}</h2>
               </Link>
+              <button
+                className="delete-dates"
+                onClick={() => handleRemoveFromFavorites(favorite._id)}
+              >
+<img src={remove} alt="delete"></img>              </button>
             </div>
           ))}
         </div>

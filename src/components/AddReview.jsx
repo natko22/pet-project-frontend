@@ -47,7 +47,7 @@ function AddReview({ onClose, setAddReviews }) {
       setError(null);
       setSuccess(true);
       setAddReviews(response);
-      onClose(); // Fetch updated currentUserData
+      onClose(); 
     } catch (error) {
       console.error(error);
     }
