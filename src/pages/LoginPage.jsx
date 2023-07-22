@@ -51,7 +51,10 @@ const LoginPage = () => {
   }
 
   // Google Login
-  const handleGoogleAuth = () => {
+  const handleGoogleAuth = async(e) => {
+    e.preventDefault();
+  
+    // Redirect the user to the Google Authentication route on your server
     window.location.href = `${API_URL}/auth/google/callback`;
   };
 

@@ -27,6 +27,29 @@ function ProfilePage() {
   const [availableDates, setAvailableDates] = useState([]);
   const [startAvailableDate, setStartAvailableDate] = useState(null);
   const [endAvailableDate, setEndAvailableDate] = useState(null);
+  const { storeToken, authenticateUser } = useContext(AuthContext);
+useEffect(()=>{  
+  const getUrlParameter = (name) => {
+    name = name.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]');
+    const regex = new RegExp('[\\?&]' + name + '=([^&#]*)');
+    const results = regex.exec(window.location.search);
+    return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
+  };
+  const authToken = getUrlParameter('token');
+  if(authToken){ 
+  
+  // Get the authToken from URL
+  
+  // Store the token
+  localStorage.setItem("authToken", authToken);
+  if (authToken) {
+    console.log("Token stored");
+    storeToken(authToken);
+  }
+  authenticateUser();
+}
+ 
+},[])
 
   useEffect(() => {
     fetchCurrentUserData();
