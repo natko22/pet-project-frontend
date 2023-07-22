@@ -1,70 +1,78 @@
-# Getting Started with Create React App
+# Petopia
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Description
 
-## Available Scripts
+Petopia is a MERN (MongoDB, Express, React, Node.js) stack application dedicated to connecting pet owners with loving caretakers and helping animals in need. It provides a seamless experience for pet owners and pet sitters to connect and build a community that cherishes all types of animals.
 
-In the project directory, you can run:
+## Features
 
-### `npm start`
+- Sign up and log in with email or Google account
+- User profiles with reviews, bookings, and pets
+- Availability management to display available dates
+- Search for pets and pet sitters
+- Add pet sitters' profiles to favorites
+- Edit user profiles to update information
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Technologies Used
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+- Frontend: React (with React Router)
+- Backend: Node.js with Express
+- Database: MongoDB (with Mongoose)
+- Authentication: JWT (JSON Web Tokens) for email/password authentication
+- Styling: CSS (with Flexbox/Grid)
+- Hosting: Frontend on Netlify, Backend on Adaptable
 
-### `npm test`
+## How to Run Locally
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+1. Clone the repository:
 
-### `npm run build`
+git clone https://github.com/your-username/petopia.git
+2.Navigate to the project folder:
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+cd petopia
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+3. Install dependencies for both frontend and backend:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+ # Install frontend dependencies
+cd frontend
+npm install
 
-### `npm run eject`
+# Install backend dependencies
+cd ../backend
+npm install
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+4. Create a .env file in the root of the backend folder with the following environment variables:
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+ PORT=5000
+MONGODB_URI=your-mongodb-connection-string
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+5. Run the backend server:
+# Make sure you are in the backend folder
+cd backend
+npm start
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+6. Run the frontend development server:
+# Make sure you are in the frontend folder
+cd frontend
+npm start
 
-## Learn More
+7.Open your browser and go to http://localhost:3000 to access Petopia locally.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+Deployment
+Frontend: The frontend is deployed on Netlify and will automatically deploy when changes are pushed to the main branch.
+Backend: The backend is hosted on Heroku and will automatically deploy when changes are pushed to the main branch.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+Contributing
+We welcome contributions from the community! If you find any bugs or have ideas for new features, please open an issue or submit a pull request.
 
-### Code Splitting
+License
+MIT License
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+Contact
+For any questions or inquiries, please contact [Natassa Tsapanidou-Kornilaki](https://github.com/natko22)and [Yo-Chia Chen](https://github.com/Yo-Jia)https://github.com/Yo-Jia).
 
-### Analyzing the Bundle Size
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
 
-### Making a Progressive Web App
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
 
-### Advanced Configuration
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
