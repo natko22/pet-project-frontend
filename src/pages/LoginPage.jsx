@@ -27,9 +27,14 @@ const LoginPage = () => {
 
     try {
       const response = await axios.post(`${API_URL}/auth/login`, requestBody);
+      console.log("Server response:", response.data);
       console.log("JWT token", response.data.authToken);
+      localStorage.setItem("authToken", response.data.authToken);
 
-      storeToken(response.data.authToken);
+      if (response.data.authToken) {
+        console.log("Token stored");
+        storeToken(response.data.authToken);
+      }
 
       authenticateUser();
       setIsLoading(false);
