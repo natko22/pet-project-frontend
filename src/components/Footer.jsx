@@ -24,11 +24,14 @@ function Footer() {
             </li>
           </ul>
           <div className="social">
-            <Link to="#">
+            <Link
+              to="https://github.com/natko22/pet-project-frontend"
+              target="_blank"
+            >
               <img className="icon" alt="github" src={githubIcon} />
             </Link>
           </div>
-          <p className="copyright">Name © 2023</p>
+          <p className="copyright">Petopia © 2023</p>
         </footer>
       </div>
     </div>
