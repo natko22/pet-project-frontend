@@ -412,16 +412,16 @@ function ProfilePage() {
                 </p>
               )}
             </div>
-            <div className="direction-column text-center">
+            <div className="direction-column-text-center">
               <span className="indicator-red">🟥 Already booked dates</span>
               <span className="indicator-green">🟩 Available dates</span>
             </div>
 
             <div className="contact-btns">
-              <Link>Chat with me</Link>
               <button className="book-btn" onClick={handleBookingSubmit}>
                 Book
               </button>
+              <button className="chat-btn">Chat with me</button>
             </div>
 
             {bookingError && <p className="error-message">{bookingError}</p>}
