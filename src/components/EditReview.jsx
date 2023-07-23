@@ -54,7 +54,7 @@ function EditReview({ onClose, reviewId, fetchCurrentUserDate }) {
       <button className="close-btn" onClick={onClose}>
         X
       </button>
-      <label className="edit-review">
+      <label>
         Stars:
         <div
           className="star-rating"

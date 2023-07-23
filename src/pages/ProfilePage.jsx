@@ -28,6 +28,7 @@ function ProfilePage() {
   const [startAvailableDate, setStartAvailableDate] = useState(null);
   const [endAvailableDate, setEndAvailableDate] = useState(null);
   const { storeToken, authenticateUser } = useContext(AuthContext);
+
   useEffect(() => {
     const getUrlParameter = (name) => {
       name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
@@ -338,7 +339,10 @@ function ProfilePage() {
                 value={[startAvailableDate, endAvailableDate]}
                 selectRange={true}
                 tileContent={renderTileContent} // Custom tile content function
-              />
+              />{" "}
+              <div className="text-center">
+                <span>Default selected date:</span> {date.toDateString()}
+              </div>
               <span className="indicator-red">🟥 Already booked dates</span>
               <span className="indicator-green">🟩 Available dates</span>
               <button
@@ -412,7 +416,7 @@ function ProfilePage() {
                 </p>
               )}
             </div>
-            <div className="direction-column-text-center">
+            <div className="direction-column text-center">
               <span className="indicator-red">🟥 Already booked dates</span>
               <span className="indicator-green">🟩 Available dates</span>
             </div>

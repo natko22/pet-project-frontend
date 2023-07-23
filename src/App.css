@@ -712,11 +712,6 @@ textarea {
 .edit-form label {
   padding: 5px;
 }
-.edit-review {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
 
 .review-box {
   background-color: #cb997e;
