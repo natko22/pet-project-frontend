@@ -1,3 +1,5 @@
+<p align="center"><img src="./src/assets/dog-logo.jpg" width="250px" /></p>
+
 # Petopia
 
 ## Description
