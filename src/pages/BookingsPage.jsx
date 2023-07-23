@@ -5,13 +5,14 @@ function BookingsPage({ bookings }) {
   return (
     <div>
       <div className="pet-box">
-      <h2 className="pet-box-h2">Bookings</h2>
+        <h2 className="pet-box-h2">Bookings</h2>
         <div className="all-pets">
           {bookings && bookings.length > 0 ? (
             bookings.map((booking) => (
               <Link
                 className="pet-link"
                 to={`/profile/${booking.ownerId}`}
+                target="_top"
                 key={booking._id}
               >
                 <EachBooking

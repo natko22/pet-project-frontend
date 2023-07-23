@@ -47,7 +47,7 @@ function AddReview({ onClose, setAddReviews }) {
       setError(null);
       setSuccess(true);
       setAddReviews(response);
-      onClose(); 
+      onClose();
     } catch (error) {
       console.error(error);
     }
@@ -65,7 +65,7 @@ function AddReview({ onClose, setAddReviews }) {
             type="text"
             value={review}
             onChange={(e) => setReview(e.target.value)}
-            placeholder="Leave your review here"
+            placeholder="Leave your review here..."
           />
         </label>
         <label>
