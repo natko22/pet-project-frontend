@@ -83,7 +83,7 @@ function SearchSittersPage() {
       ) : (
         <div className="pet-profiles-container">
           {filteredSitters.map((sitter) => (
-            <div className="card">
+            <div className="card" key={sitter._id}>
               <Link
                 to={`/profile/${sitter._id}`}
                 key={sitter._id}
