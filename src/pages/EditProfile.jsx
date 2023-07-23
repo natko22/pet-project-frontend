@@ -108,7 +108,7 @@ const EditProfile = () => {
   }, []);
 
   if (loading) {
-    return <div>Loading...</div>;
+    return <div className="center-loading">Loading...</div>;
   }
 
   const handleUsernameChange = (e) => {
@@ -185,25 +185,30 @@ const EditProfile = () => {
       <h2 className="edit-pet-heading">Edit Pet Profile</h2>
       {!showUploadForm && (
         <div className="container-parent">
-        <div className="profileImg-container">
-          <img
-            className="profileImg"
-            src={!userImg ? imgPlaceholder : userImg}
-            alt={username}
-          />
-          <button className="photo-edit-btn" onClick={handleEditPhoto}>
-            Edit
-          </button>
-        </div>
+          <div className="profileImg-container">
+            <img
+              className="profileImg"
+              src={!userImg ? imgPlaceholder : userImg}
+              alt={username}
+            />
+            <button className="photo-edit-btn" onClick={handleEditPhoto}>
+              Edit
+            </button>
+          </div>
         </div>
       )}
 
       {showUploadForm && (
         <div>
-        <div className="upload-form-container">
+          <div className="upload-form-container">
             <div className="upload-form">
-            <h2 className="add-image-header">Add image</h2>
-            <div className="close-btn" onClick={() => setShowUploadForm(false)}>x</div>
+              <h2 className="add-image-header">Add image</h2>
+              <div
+                className="close-btn"
+                onClick={() => setShowUploadForm(false)}
+              >
+                x
+              </div>
               <form onSubmit={uploadImage}>
                 <label className="file-upload-label">
                   Choose Photo
@@ -301,7 +306,7 @@ const EditProfile = () => {
             placeholder="Share your pet journey... Whether you're a pet owner or sitter, tell us your story!"
           />
         </label>
-        
+
         <label>
           Pet Owner:
           <input

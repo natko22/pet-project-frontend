@@ -44,7 +44,7 @@ const LoginPage = () => {
     }
   };
   if (isLoading) {
-    return "laoding";
+    return <p className="center-loading">Loading...</p>;
   }
   if (!isLoading && user) {
     navigate(`/profile/${user._id}`);

@@ -125,7 +125,7 @@ function ProfilePage() {
   };
 
   if (!currentUser) {
-    return "loading";
+    return <p className="center-loading">Loading user's profile....</p>;
   }
 
   // handle date changes
@@ -278,7 +278,7 @@ function ProfilePage() {
   };
 
   if (!user) {
-    return "Loading...";
+    return <p className="center-loading">Loading...</p>;
   }
 
   return (

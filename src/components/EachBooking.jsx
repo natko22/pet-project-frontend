@@ -21,7 +21,7 @@ function EachBooking({ ownerId, startDate, endDate }) {
   }, [ownerId]);
 
   if (!owner) {
-    return "loading";
+    return <p className="center-loading">Loading...</p>;
   }
   return (
     <div className="each-pet-box">

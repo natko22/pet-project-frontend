@@ -59,11 +59,11 @@ function SearchSittersPage() {
     .filter((sitter) => sitter._id !== user._id);
 
   if (loading) {
-    return <p>Loading...</p>;
+    return <p className="center-loading">Loading pet sitters...</p>;
   }
 
   if (error) {
-    return <p>Error: {error}</p>;
+    return <p className="center-loading">Error: {error}</p>;
   }
 
   return (

@@ -1,11 +1,11 @@
-import React, { useState, useContext  } from "react";
+import React, { useState, useContext } from "react";
 import { useEffect } from "react";
 import axios from "axios";
 import imgPlaceholder from "../assets/placeholder.png";
 import { API_URL } from "../config/config.index";
 import { AuthContext } from "../context/auth.context";
 import EditReview from "./EditReview";
-function Review({ commenter, review, stars, reviewId,fetchCurrentUserDate }) {
+function Review({ commenter, review, stars, reviewId, fetchCurrentUserDate }) {
   const { user } = useContext(AuthContext);
   const [showEditReview, setShowEditReview] = useState(false);
   const [currentCommenter, setCurrentCommenter] = useState();
@@ -33,7 +33,7 @@ function Review({ commenter, review, stars, reviewId,fetchCurrentUserDate }) {
   };
 
   if (!currentCommenter) {
-    return "loading";
+    return <p className="center-loading">Loading...</p>;
   }
   return (
     <div className="each-review-box">
@@ -46,16 +46,21 @@ function Review({ commenter, review, stars, reviewId,fetchCurrentUserDate }) {
         />
         <h3>{currentCommenter.username}</h3>
       </div>
-      {!showEditReview && (<>
-      <p>
-        {filled}
-        {unfilled}
-      </p>
-      <p>{review}</p></>)}
+      {!showEditReview && (
+        <>
+          <p>
+            {filled}
+            {unfilled}
+          </p>
+          <p>{review}</p>
+        </>
+      )}
       {user._id === commenter && (
         <>
           {!showEditReview && (
-            <button onClick={handleEditReviewClick} className="add-new-pet-btn">Edit review</button>
+            <button onClick={handleEditReviewClick} className="add-new-pet-btn">
+              Edit review
+            </button>
           )}
           {showEditReview && (
             <EditReview
@@ -66,7 +71,6 @@ function Review({ commenter, review, stars, reviewId,fetchCurrentUserDate }) {
           )}
         </>
       )}
-
     </div>
   );
 }

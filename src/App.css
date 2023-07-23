@@ -977,6 +977,21 @@ textarea {
 
 /* add new pet */
 
+.creating-pet-msg {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+}
+
+.center-loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 40vh;
+  font-family: "Doggie", "Times New Roman", Times, serif;
+  font-size: 40px;
+}
+
 .add-new-pet {
   display: flex;
   flex-direction: column;
