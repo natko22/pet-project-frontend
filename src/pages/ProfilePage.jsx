@@ -351,7 +351,6 @@ function ProfilePage() {
           </div>
           <div className="pet-box">
             <h2>My available Dates</h2>
-            <div className="available-dates">
               <div className="all-pets">
                 {currentUser.availability &&
                 currentUser.availability.length > 0 ? (
@@ -385,7 +384,6 @@ function ProfilePage() {
                   <p>No bookings found.</p>
                 )}
               </div>
-            </div>{" "}
           </div>
         </>
       )}
