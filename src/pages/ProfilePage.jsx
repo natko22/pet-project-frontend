@@ -305,7 +305,7 @@ function ProfilePage() {
           Edit Profile
         </Link>
       )}
-      <div className="aboutme-box">
+      <div className="pet-box">
         <h2>About me</h2>
         {!currentUser.description ? (
           <p>
@@ -360,6 +360,7 @@ function ProfilePage() {
                   .filter(booking => new Date(booking.endDate) > currentDate)
                   .sort((a, b) => new Date(a.startDate) - new Date(b.startDate))
                   .map((booking) => (
+                    <a>
                     <div key={booking._id} className="each-pet-box">
                       <p>
                         <span className="doggie-font"> Start Date : </span>
@@ -383,7 +384,7 @@ function ProfilePage() {
                       >
                         <img src={remove} alt="delete"></img>
                       </button>
-                    </div>
+                    </div></a>
                   ))
                 ) : (
                   <p>No bookings found.</p>
