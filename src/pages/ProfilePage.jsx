@@ -277,6 +277,8 @@ function ProfilePage() {
     return null;
   };
 
+  let currentDate = new Date();
+
   if (!user) {
     return "Loading...";
   }
@@ -354,7 +356,10 @@ function ProfilePage() {
               <div className="all-pets">
                 {currentUser.availability &&
                 currentUser.availability.length > 0 ? (
-                  currentUser.availability.map((booking) => (
+                  currentUser.availability
+                  .filter(booking => new Date(booking.endDate) > currentDate)
+                  .sort((a, b) => new Date(a.startDate) - new Date(b.startDate))
+                  .map((booking) => (
                     <div key={booking._id} className="each-pet-box">
                       <p>
                         <span className="doggie-font"> Start Date : </span>
