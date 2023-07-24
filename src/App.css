@@ -82,6 +82,8 @@ h3 {
 .signup-checkbox {
   transform: scale(1.5);
   margin-right: 10px;
+  position: absolute;
+  left:0
 }
 .signup-input {
   width: 100%;
@@ -542,6 +544,8 @@ textarea {
 .edit-form-checkbox {
   transform: scale(1.5);
   margin-right: 10px;
+  position: absolute;
+  left:0
 }
 
 .edit-profile-form button {
@@ -987,7 +991,6 @@ textarea,
 input {
   width: 100%;
   padding: 5px;
-  margin-bottom: 10px;
   border: 1px solid #ccc;
   border-radius: 4px;
   font-family: poppins;
@@ -1014,6 +1017,8 @@ label {
 
 .add-new-pet-checkbox {
   transform: scale(1.5);
+  position: absolute;
+  left:0
 }
 
 .add-new-pet-btn {
