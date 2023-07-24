@@ -149,6 +149,7 @@ function ProfilePage() {
     try {
       if (!startDate || !endDate) {
         setBookingError("Please select start and end dates.");
+        setBookingSuccess(false);
         return;
       }
 
@@ -172,6 +173,8 @@ function ProfilePage() {
 
       if (overlappingBookings.length > 0) {
         setBookingError("Selected dates overlap with existing bookings.");
+        setBookingSuccess(false);
+
         return;
       }
 

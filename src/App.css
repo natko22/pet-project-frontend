@@ -120,6 +120,7 @@ p.error-message {
   text-align: center;
   font-size: 25px;
   font-family: "Doggie", Times, serif;
+  padding: 20px;
 }
 
 /* Login page styling */
@@ -1626,6 +1627,7 @@ span {
 .success-message {
   font-family: "Doggie", "Times New Roman", Times, serif;
   font-size: 25px;
+  padding: 10px;
 }
 .booked-date-indicator {
   width: 100%;
