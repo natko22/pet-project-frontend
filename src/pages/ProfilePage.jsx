@@ -223,24 +223,47 @@ function ProfilePage() {
   // handle available dates submit
   const handleAvailableDatesSubmit = async (event) => {
     event.preventDefault();
-
+  
     try {
       if (!startAvailableDate || !endAvailableDate) {
         setBookingError("Please select start and end dates.");
         return;
       }
+  
+      // Check if the selected dates overlap with existing available dates
+      const overlappingAvailableDates = availableDates.filter((availableDate) => {
+        const availableStartDate = new Date(availableDate.start);
+        const availableEndDate = new Date(availableDate.end);
+        return (
+          (startAvailableDate >= availableStartDate &&
+            startAvailableDate <= availableEndDate) ||
+          (endAvailableDate >= availableStartDate &&
+            endAvailableDate <= availableEndDate) ||
+          (startAvailableDate <= availableStartDate &&
+            endAvailableDate >= availableEndDate)
+        );
+      });
+  
+      if (overlappingAvailableDates.length > 0) {
+        setBookingError("Selected dates are already set as available.");
+        setBookingSuccess(false)
 
+        return;
+      }
+  
       const availableDatesPayload = {
         userId: userId,
         startDate: startAvailableDate,
         endDate: endAvailableDate,
       };
-
+  
       const response = await axios.post(
         `${API_URL}/api/availableDates`,
         availableDatesPayload
       );
       console.log("Available dates set:", response.data);
+      setBookingError(null)
+      setBookingSuccess(true)
       fetchCurrentUserData();
     } catch (error) {
       console.log("Setting available dates error:", error.response.data);
@@ -297,6 +320,8 @@ function ProfilePage() {
       <h1>{currentUser.username}</h1>
       {currentUser.postalCode && <p>{currentUser.postalCode}</p>}
       {userId !== user._id && (
+      <Link className="contact-me-btn" to={`mailto:${currentUser.email}`}>Contact me</Link>)}
+      {userId !== user._id && (
         <img
           className={favorite ? "coloredHeart" : "blackHeart"}
           src={heart}
@@ -351,11 +376,15 @@ function ProfilePage() {
               <span className="indicator-red">🟥 Already booked dates</span>
               <span className="indicator-green">🟩 Available dates</span>
               <button
-                className="available-date-btn"
-                onClick={handleAvailableDatesSubmit}
-              >
-                Add Available Dates
-              </button>
+  className="available-date-btn"
+  onClick={handleAvailableDatesSubmit}
+>
+  Add Available Dates
+</button>
+{bookingError && <p className="error-message">{bookingError}</p>}
+{bookingSuccess && (
+              <p className="success-message">Available Dates created successfully!</p>
+            )}
             </div>
           </div>
           <div className="pet-box">
@@ -432,7 +461,7 @@ function ProfilePage() {
               <button className="book-btn" onClick={handleBookingSubmit}>
                 Book
               </button>
-              <button className="chat-btn">Chat with me</button>
+              {/* <button className="chat-btn">Chat with me</button> */}
             </div>
 
             {bookingError && <p className="error-message">{bookingError}</p>}
