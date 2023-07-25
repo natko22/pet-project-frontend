@@ -48,7 +48,7 @@ function PetProfilePage() {
   };
 
   if (!pet) {
-    return "loading";
+    return <p className="center-loading">Loading...</p>;
   }
 
   return (

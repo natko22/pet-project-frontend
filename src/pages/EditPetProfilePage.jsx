@@ -70,7 +70,7 @@ const EditPet = () => {
     fetchPetforImg();
   }, []);
   if (loading) {
-    return <div>Loading...</div>;
+    return <div className="center-loading">Loading...</div>;
   }
 
   const handleNameChange = (e) => {

@@ -1,8 +1,9 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import { API_URL } from "../config/config.index";
-import placeholder from "../assets/placeholder.png"
+import placeholder from "../assets/placeholder.png";
+import { AuthContext } from "../context/auth.context";
 
 function SearchSittersPage() {
   const [sitters, setSitters] = useState([]);
@@ -11,7 +12,7 @@ function SearchSittersPage() {
   const [searchQuery, setSearchQuery] = useState("");
   const [postalCodeQuery, setPostalCodeQuery] = useState("");
   const [postalCodeRange, setPostalCodeRange] = useState(3);
-
+  const { user } = useContext(AuthContext);
 
   useEffect(() => {
     fetchSitters();
@@ -36,31 +37,33 @@ function SearchSittersPage() {
     const numQueryPostalCode = parseInt(queryPostalCode, 10);
     return Math.abs(numPostalCode - numQueryPostalCode) <= range;
   };
-  const filteredSitters = sitters.filter((sitter) => {
-    const sitterName = sitter.username && sitter.username.toLowerCase();
-    const sitterPostalCode =
-      sitter.postalCode && sitter.postalCode.toString().toLowerCase();
-    const searchQueryLower = searchQuery.toLowerCase();
-    const postalCodeQueryLower = postalCodeQuery.toLowerCase();
+  const filteredSitters = sitters
+    .filter((sitter) => {
+      const sitterName = sitter.username && sitter.username.toLowerCase();
+      const sitterPostalCode =
+        sitter.postalCode && sitter.postalCode.toString().toLowerCase();
+      const searchQueryLower = searchQuery.toLowerCase();
+      const postalCodeQueryLower = postalCodeQuery.toLowerCase();
 
-    return (
-      (sitterName && sitterName.includes(searchQueryLower)) ||
-      // (sitterPostalCode && sitterPostalCode.includes(postalCodeQueryLower)) 
-      (postalCodeQueryLower &&
-        sitterPostalCode &&
-        sitterPostalCode.startsWith(postalCodeQueryLower))||
-      (postalCodeQueryLower &&
-        sitterPostalCode &&
-        isInRange(sitter.postalCode, postalCodeQueryLower, postalCodeRange))
-    );
-  });
+      return (
+        (sitterName && sitterName.includes(searchQueryLower)) ||
+        // (sitterPostalCode && sitterPostalCode.includes(postalCodeQueryLower))
+        (postalCodeQueryLower &&
+          sitterPostalCode &&
+          sitterPostalCode.startsWith(postalCodeQueryLower)) ||
+        (postalCodeQueryLower &&
+          sitterPostalCode &&
+          isInRange(sitter.postalCode, postalCodeQueryLower, postalCodeRange))
+      );
+    })
+    .filter((sitter) => sitter._id !== user._id);
 
   if (loading) {
-    return <p>Loading...</p>;
+    return <p className="center-loading">Loading pet sitters...</p>;
   }
 
   if (error) {
-    return <p>Error: {error}</p>;
+    return <p className="center-loading">Error: {error}</p>;
   }
 
   return (
@@ -80,14 +83,14 @@ function SearchSittersPage() {
       ) : (
         <div className="pet-profiles-container">
           {filteredSitters.map((sitter) => (
-            <div className="card">
+            <div className="card" key={sitter._id}>
               <Link
                 to={`/profile/${sitter._id}`}
                 key={sitter._id}
                 className="sitter-card-link"
               >
                 <img
-                  src={sitter.img?sitter.img:placeholder}
+                  src={sitter.img ? sitter.img : placeholder}
                   alt={sitter.name}
                   className="sitter-card-img"
                 />

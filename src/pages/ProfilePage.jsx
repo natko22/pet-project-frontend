@@ -28,6 +28,7 @@ function ProfilePage() {
   const [startAvailableDate, setStartAvailableDate] = useState(null);
   const [endAvailableDate, setEndAvailableDate] = useState(null);
   const { storeToken, authenticateUser } = useContext(AuthContext);
+
   useEffect(() => {
     const getUrlParameter = (name) => {
       name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
@@ -125,7 +126,7 @@ function ProfilePage() {
   };
 
   if (!currentUser) {
-    return "loading";
+    return <p className="center-loading">Loading user's profile....</p>;
   }
 
   // handle date changes
@@ -148,6 +149,7 @@ function ProfilePage() {
     try {
       if (!startDate || !endDate) {
         setBookingError("Please select start and end dates.");
+        setBookingSuccess(false);
         return;
       }
 
@@ -171,6 +173,8 @@ function ProfilePage() {
 
       if (overlappingBookings.length > 0) {
         setBookingError("Selected dates overlap with existing bookings.");
+        setBookingSuccess(false);
+
         return;
       }
 
@@ -278,7 +282,7 @@ function ProfilePage() {
   };
 
   if (!user) {
-    return "Loading...";
+    return <p className="center-loading">Loading...</p>;
   }
 
   return (
@@ -338,7 +342,10 @@ function ProfilePage() {
                 value={[startAvailableDate, endAvailableDate]}
                 selectRange={true}
                 tileContent={renderTileContent} // Custom tile content function
-              />
+              />{" "}
+              <div className="text-center">
+                <span>Default selected date:</span> {date.toDateString()}
+              </div>
               <span className="indicator-red">🟥 Already booked dates</span>
               <span className="indicator-green">🟩 Available dates</span>
               <button
@@ -416,10 +423,10 @@ function ProfilePage() {
             </div>
 
             <div className="contact-btns">
-              <Link>Chat with me</Link>
               <button className="book-btn" onClick={handleBookingSubmit}>
                 Book
               </button>
+              <button className="chat-btn">Chat with me</button>
             </div>
 
             {bookingError && <p className="error-message">{bookingError}</p>}

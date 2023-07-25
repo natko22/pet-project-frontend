@@ -9,7 +9,6 @@ import AvatarEditor from "react-avatar-editor";
 import { API_URL } from "../config/config.index";
 import imgPlaceholder from "../assets/placeholder.png";
 
-
 function AddPet() {
   const [name, setName] = useState("");
   const [race, setRace] = useState("");
@@ -31,7 +30,6 @@ function AddPet() {
   const [loading, setLoading] = useState(false);
   const [showUploadForm, setShowUploadForm] = useState(false);
   const [userImg, setUserImg] = useState("");
-
 
   const [imagePreview, setImagePreview] = useState(null);
   const [scale, setScale] = useState(1);
@@ -135,71 +133,74 @@ function AddPet() {
               )}
             </div>
           </label> */}
-     
       <h1 className="add-new-pet-heading">Add a New Pet</h1>
-      {loading && <h1>Creating Pet...</h1>}
+      {loading && <h1 className="creating-pet-msg">Creating Pet...</h1>}
 
       {!loading && (
         <form onSubmit={handleSubmit} className="add-new-pet">
-        {!showUploadForm && (
-        <div className="container-parent">
-        <div className="profileImg-container">
-          <img
-            className="profileImg"
-            src={!userImg ? imgPlaceholder : userImg}
-            alt="pet-img"
-          />
-          <button className="photo-edit-btn" onClick={handleEditPhoto}>
-            Edit
-          </button>
-        </div>
-        </div>
-      )}
-
-      {showUploadForm && (
-        <div>
-        <div className="upload-form-container">
-            <div className="upload-form">
-            <h2 className="add-image-header">Add image</h2>
-            <div className="close-btn" onClick={() => setShowUploadForm(false)}>x</div>
-                <label className="file-upload-label">
-                  Choose Photo
-                  <input
-                    className="upload-input"
-                    type="file"
-                    accept="image/png, image/jpeg, image/jpg"
-                    name="image"
-                    onChange={handleImgChange}
-                  />
-                </label>
-                <div className="profile-photo">
-                  {imagePreview && (
-                    <div className="avatar-editor">
-                      <AvatarEditor
-                        image={imagePreview}
-                        width={150}
-                        height={150}
-                        border={50}
-                        borderRadius={125}
-                        color={[255, 255, 255, 0.6]}
-                        scale={scale}
-                      />
-                      <input
-                        type="range"
-                        min={0.1}
-                        max={2}
-                        step={0.1}
-                        value={scale}
-                        onChange={(e) => setScale(parseFloat(e.target.value))}
-                      />
-                    </div>
-                  )}
-                </div>
-                
+          {!showUploadForm && (
+            <div className="container-parent">
+              <div className="profileImg-container">
+                <img
+                  className="profileImg"
+                  src={!userImg ? imgPlaceholder : userImg}
+                  alt="pet-img"
+                />
+                <button className="photo-edit-btn" onClick={handleEditPhoto}>
+                  Edit
+                </button>
+              </div>
             </div>
-          </div>
-        </div>
-      )}
+          )}
+
+          {showUploadForm && (
+            <div>
+              <div className="upload-form-container">
+                <div className="upload-form">
+                  <h2 className="add-image-header">Add image</h2>
+                  <div
+                    className="close-btn"
+                    onClick={() => setShowUploadForm(false)}
+                  >
+                    x
+                  </div>
+                  <label className="file-upload-label">
+                    Choose Photo
+                    <input
+                      className="upload-input"
+                      type="file"
+                      accept="image/png, image/jpeg, image/jpg"
+                      name="image"
+                      onChange={handleImgChange}
+                    />
+                  </label>
+                  <div className="profile-photo">
+                    {imagePreview && (
+                      <div className="avatar-editor">
+                        <AvatarEditor
+                          image={imagePreview}
+                          width={150}
+                          height={150}
+                          border={50}
+                          borderRadius={125}
+                          color={[255, 255, 255, 0.6]}
+                          scale={scale}
+                        />
+                        <input
+                          type="range"
+                          min={0.1}
+                          max={2}
+                          step={0.1}
+                          value={scale}
+                          onChange={(e) => setScale(parseFloat(e.target.value))}
+                        />
+                      </div>
+                    )}
+                  </div>
+                </div>
+              </div>
+            </div>
+          )}
           <label>
             Name:
             <input
@@ -284,7 +285,6 @@ function AddPet() {
               placeholder="E.g., Walk twice a day"
             />
           </label>
-         
           <button type="submit" className="add-new-pet-btn">
             Add Pet
           </button>

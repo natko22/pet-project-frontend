@@ -41,7 +41,7 @@ const SearchPetProfiles = () => {
   });
 
   if (loading) {
-    return <div>Loading pet profiles...</div>;
+    return <div className="center-loading">Loading pet profiles...</div>;
   }
 
   return (

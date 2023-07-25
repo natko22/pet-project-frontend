@@ -9,7 +9,7 @@ function MyPetsBox({ pets }) {
   return (
     <>
       <div className="pet-box">
-      <h2 className="pet-box-h2">My Pets</h2>
+        <h2 className="pet-box-h2">My Pets</h2>
         <div className="all-pets">
           {/* add pets here because an error when logging in.Now the pets are
   defined when map function is called.*/}
@@ -18,6 +18,7 @@ function MyPetsBox({ pets }) {
               <Link
                 className="pet-link"
                 to={`/petProfile/${pet._id}`}
+                target="_top"
                 key={pet._id}
               >
                 <MyPet

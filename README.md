@@ -1,3 +1,5 @@
+<p align="center"><img src="./src/assets/dog-logo.jpg" width="250px" /></p>
+
 # Petopia
 
 ## Description
@@ -35,7 +37,7 @@ Petopia is a MERN (MongoDB, Express, React, Node.js) stack application dedicated
 ### Searching for Pets and Pet Sitters
 
 - Use the search feature to find pets available for sitting or pet sitters in your area.
-- Filter your search by pet type, location, availability, and other criteria.
+- Filter your search by pet type, location, and other criteria.
 - Browse through the search results to view detailed profiles of pets and pet sitters.
 
 ### Adding Pet Sitters to Favorites
@@ -57,7 +59,7 @@ Petopia is a MERN (MongoDB, Express, React, Node.js) stack application dedicated
 ### Managing Bookings
 
 - As a pet sitter, you can manage your bookings through your user profile.
-- View upcoming bookings, accepted bookings, and completed bookings.
+- View upcoming bookings, and add available dates.
 - Communicate with pet owners to coordinate pet sitting services.
 
 ### Logging Out
@@ -74,6 +76,9 @@ We hope you enjoy using Petopia and have a pawsome time caring for pets and conn
 - Authentication: JWT (JSON Web Tokens) for email/password authentication
 - Styling: CSS (with Flexbox/Grid)
 - Hosting: Frontend on Netlify, Backend on Adaptable
+- React Calendar
+- React Avatar Editor
+- Cloudinary
 
 ## Installation
 
@@ -114,3 +119,5 @@ MIT License
 ## Contact
 
 For any questions or inquiries, please contact [Natassa Tsapanidou-Kornilaki](https://github.com/natko22) and [Yo-Chia Chen](https://github.com/Yo-Jia).
+
+## Go to [Petopia Backend](https://github.com/natko22/pet-project-backend)
