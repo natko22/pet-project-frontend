@@ -51,9 +51,6 @@ function EditReview({ onClose, reviewId, fetchCurrentUserDate }) {
       className="center-box direction-column edit-form"
       onSubmit={handleSubmit}
     >
-      <button className="close-btn" onClick={onClose}>
-        X
-      </button>
       <label>
         Stars:
         <div

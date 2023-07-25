@@ -782,6 +782,14 @@ textarea {
   box-sizing: border-box;
 }
 
+.each-review-box .add-new-pet-btn {
+  margin-top: 0;
+}
+
+.each-review-box textarea {
+  margin-top: 10px;
+}
+
 .each-review-box p {
   margin: 10px;
   width: 180px;
