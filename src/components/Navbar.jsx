@@ -1,13 +1,27 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { AuthContext } from "../context/auth.context";
 
 function Navbar() {
   const { isLoggedIn, logOutUser, user } = useContext(AuthContext);
+  const [isMobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const handleMobileMenuToggle = () => {
+    setMobileMenuOpen(!isMobileMenuOpen);
+  };
+
+  const handleMobileMenuLinkClick = () => {
+    setMobileMenuOpen(false);
+  };
+
   return (
     <div className="nav">
-      <input type="checkbox" id="nav-check" />
+      <input
+        type="checkbox"
+        id="nav-check"
+        checked={isMobileMenuOpen}
+        onChange={handleMobileMenuToggle}
+      />
       <div className="nav-header">
         <Link to="/">
           <div className="nav-title">Petopia</div>
@@ -24,18 +38,30 @@ function Navbar() {
       {console.log("logedin check", isLoggedIn)}
       {isLoggedIn ? (
         <div className="nav-links">
-          <Link to={`/profile/${user._id}`}>Profile</Link>
-          <Link to={"/favorites"}>Favorites</Link>
-          <Link to={"pet-profiles"}>Search Pets</Link>
-          <Link to={"sitters-profiles"}>Search Pet Sitters</Link>
+          <Link to={`/profile/${user._id}`} onClick={handleMobileMenuLinkClick}>
+            Profile
+          </Link>
+          <Link to={"/favorites"} onClick={handleMobileMenuLinkClick}>
+            Favorites
+          </Link>
+          <Link to={"pet-profiles"} onClick={handleMobileMenuLinkClick}>
+            Search Pets
+          </Link>
+          <Link to={"sitters-profiles"} onClick={handleMobileMenuLinkClick}>
+            Search Pet Sitters
+          </Link>
           <Link to="/" onClick={logOutUser}>
             Logout
           </Link>
         </div>
       ) : (
         <div className="nav-links">
-          <Link to="/login">Login</Link>
-          <Link to="/signup">Singup</Link>
+          <Link to="/login" onClick={handleMobileMenuLinkClick}>
+            Login{" "}
+          </Link>
+          <Link to="/signup" onClick={handleMobileMenuLinkClick}>
+            Singup
+          </Link>
         </div>
       )}
     </div>
