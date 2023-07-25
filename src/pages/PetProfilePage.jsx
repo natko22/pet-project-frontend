@@ -53,9 +53,15 @@ function PetProfilePage() {
 
   return (
     <div>
+
       {pet.owner === user._id && (
         <Link className="edit-pet-btn" to={`/edit-pet/${petId}`}>
           Edit Pet Profile
+        </Link>
+      )}
+      {pet.owner !== user._id && (
+        <Link className="edit-pet-btn" to={`/profile/${pet.owner}`}>
+          Owner's Page
         </Link>
       )}
 
