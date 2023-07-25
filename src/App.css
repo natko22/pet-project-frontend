@@ -1281,8 +1281,9 @@ label {
 }
 
 .animal-type-select {
+  margin-top: 10px;
   border-radius: 15px;
-  padding: 5px;
+  padding: 3px;
   width: 150px;
   height: 25px;
   font-family: "Doggie", "Times New Roman", Times, serif;
