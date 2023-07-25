@@ -46,6 +46,7 @@ h3 {
   position: absolute;
   top: 90px;
   left: 8px;
+  z-index: 0;
   padding: 10px;
   margin: 20px;
   background-color: #cb997e;
@@ -186,6 +187,22 @@ p.error-message {
   font-size: 18px;
   font-family: "Doggie", "Times New Roman";
 }
+.login-container form{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+@media (max-width: 500px) {
+.input-field{
+  width: 80vw;
+}
+.login-button{
+  width: 60vw;
+}
+}
+
+
 
 /* for nav bar */
 .nav {
@@ -257,12 +274,13 @@ p.error-message {
   display: none;
 }
 
-@media (max-width: 600px) {
+@media (max-width: 840px) {
+
   .nav > .nav-btn {
     display: inline-block;
     position: absolute;
     right: 0px;
-    top: 0px;
+    top: 18px;
   }
   .nav > .nav-btn > label {
     display: inline-block;
@@ -275,7 +293,7 @@ p.error-message {
     display: block;
     width: 25px;
     height: 10px;
-    border-top: 2px solid #797878;
+    border-top: 2px solid #ffffff;
   }
   .nav > .nav-links {
     position: absolute;
@@ -285,12 +303,14 @@ p.error-message {
     height: 0px;
     transition: all 0.3s ease-in;
     overflow-y: hidden;
-    top: 50px;
+    top: 90px;
     left: 0px;
+    z-index: 1;
   }
   .nav > .nav-links > a {
     display: block;
     width: 100%;
+    color:#000
   }
   .nav > #nav-check:not(:checked) ~ .nav-links {
     height: 0px;
@@ -405,7 +425,7 @@ p.error-message {
 .button {
   width: 100%;
   padding: 15px;
-  margin: 20px;
+  margin: 20px 0;
   background-color: #cb997e;
   color: #000000;
   font-size: 20px;
@@ -414,7 +434,11 @@ p.error-message {
   border-radius: 10px;
   cursor: pointer;
 }
-
+@media (max-width: 500px) {
+  .header-left {
+    width:80%
+  }
+}
 /* edit -profile -form */
 .upload-form {
   position: relative; /* Add this property */
@@ -951,6 +975,13 @@ textarea {
   height: 500px;
 }
 
+@media (max-width: 840px) {
+  .aboutme-box,
+  .review-box,
+  .pet-box {
+    width: 90vw;
+  }
+}
 /* pet profile page */
 
 .pet-profile-img {

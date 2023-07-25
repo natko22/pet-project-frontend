@@ -89,7 +89,7 @@ function PetProfilePage() {
             {pet.castrated ? "⭕" : "❌"}
           </span>
         </p>
-        <div className="aboutme-box">
+        <div className="pet-box">
           <h2 className="pet-profile-h2">How to take care of me?</h2>
           <h3 className="pet-profile-h3">Instructions</h3>
           {!pet.instruction ? (

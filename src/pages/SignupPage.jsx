@@ -64,13 +64,13 @@ function SignupPage() {
     window.location.href = `${API_URL}/auth/google/callback`;
   };
   return (
-    <div className="signup-container">
+    <div className="login-container">
       <h2>Sign Up</h2>
       <form className="signup" onSubmit={handleSignupSubmit}>
         <label>
           Username:
           <input
-            className="signup-input"
+            className="input-field"
             type="text"
             value={username}
             onChange={handleUsernameChange}
@@ -80,7 +80,7 @@ function SignupPage() {
         <label>
           Email:
           <input
-            className="signup-input"
+            className="input-field"
             type="email"
             value={email}
             onChange={handleEmailChange}
@@ -90,7 +90,7 @@ function SignupPage() {
         <label>
           Password:
           <input
-            className="signup-input"
+            className="input-field"
             type="password"
             value={password}
             onChange={handlePasswordChange}
@@ -99,7 +99,7 @@ function SignupPage() {
         <label>
           Postal Code:
           <input
-            className="signup-input"
+            className="input-field"
             type="postalCode"
             value={postalCode}
             onChange={handlePostalCodeChange}
@@ -126,11 +126,11 @@ function SignupPage() {
           Pet Sitter :
         </label>
 
-        <button type="submit" className="signup-button">
+        <button type="submit" className="login-button">
           Sign Up
         </button>
       </form>
-      <button className="signup-button" onClick={handleGoogleSignUp}>
+      <button className="login-button" onClick={handleGoogleSignUp}>
         <img src="" alt="" />
         <span>Sign up with Google</span>
       </button>
