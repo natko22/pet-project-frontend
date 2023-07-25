@@ -118,6 +118,6 @@ MIT License
 
 ## Contact
 
-For any questions or inquiries, please contact [Natassa Tsapanidou-Kornilaki](https://github.com/natko22) and [Yo-Chia Chen](https://github.com/Yo-Jia).
+For any questions or inquiries, please contact [Natassa Tsapanidou-Kornilaki](https://github.com/natko22) and [Yo-Jia Chen](https://github.com/Yo-Jia).
 
 ## Go to [Petopia Backend](https://github.com/natko22/pet-project-backend)
