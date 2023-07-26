@@ -65,6 +65,7 @@ function AddPet() {
       return;
     }
     setLoading(true);
+    setError(false);
     const handleEditPhoto = () => {
       setShowUploadForm(true);
     };

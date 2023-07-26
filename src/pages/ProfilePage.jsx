@@ -358,7 +358,7 @@ function ProfilePage() {
         />
       </div>
       <div>
-        <MyPetsBox pets={currentUser.pets} />
+        <MyPetsBox pets={currentUser.pets} key={currentUser.pets._id} />
       </div>
       {userId === user._id && currentUser.isSitter && (
         <BookingsPage bookings={currentUser.bookings} />

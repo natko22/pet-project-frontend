@@ -52,7 +52,7 @@ function PetProfilePage() {
   }
 
   if (!user) {
-    return <p className="center-loading">Loading...</p>;
+    return <p className="center-loading">Loading pet's profile....</p>;
   }
 
   return (
