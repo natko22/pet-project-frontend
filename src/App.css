@@ -1031,6 +1031,9 @@ textarea {
   align-items: center;
   display: flex;
   justify-content: center;
+  height: 40vh;
+  font-family: "Doggie", "Times New Roman", Times, serif;
+  font-size: 40px;
 }
 
 .center-loading {

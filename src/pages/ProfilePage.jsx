@@ -431,7 +431,7 @@ function ProfilePage() {
                     </a>
                   ))
               ) : (
-                <p>No bookings found.</p>
+                <p>No available dates found.</p>
               )}
             </div>
           </div>
