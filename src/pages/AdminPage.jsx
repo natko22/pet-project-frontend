@@ -60,7 +60,7 @@ function AdminPage() {
       ) : (
         <div className="pet-profiles-container">
           {sitters.map((sitter) => {
-            if (sitter._id === user._id) {
+            if (user && sitter._id === user._id) {
               return null;
             }
 
