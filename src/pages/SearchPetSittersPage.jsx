@@ -56,7 +56,7 @@ function SearchSittersPage() {
           isInRange(sitter.postalCode, postalCodeQueryLower, postalCodeRange))
       );
     })
-    .filter((sitter) => sitter._id !== user._id);
+    .filter((sitter) => user && sitter._id !== user._id);
 
   if (loading) {
     return <p className="center-loading">Loading pet sitters...</p>;
