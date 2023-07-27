@@ -13,7 +13,7 @@ function PetProfilePage() {
   const { petId } = useParams();
   const [pet, setPet] = useState(null);
   const navigate = useNavigate();
-  const { user } = useContext(AuthContext);
+  const { isLoggedIn, user, logoutUser } = useContext(AuthContext);
 
   useEffect(() => {
     const fetchPetData = async () => {
@@ -48,12 +48,15 @@ function PetProfilePage() {
   };
 
   if (!pet) {
-    return <p className="center-loading">Loading...</p>;
+    return <p className="center-loading">Loading pet's profile....</p>;
+  }
+
+  if (!user) {
+    return <p className="center-loading">Loading pet's profile....</p>;
   }
 
   return (
     <div>
-
       {pet.owner === user._id && (
         <Link className="edit-pet-btn" to={`/edit-pet/${petId}`}>
           Edit Pet Profile

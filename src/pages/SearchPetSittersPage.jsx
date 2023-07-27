@@ -79,7 +79,7 @@ function SearchSittersPage() {
       />
 
       {filteredSitters.length === 0 ? (
-        <p>No matching sitters found.</p>
+        <p className="center-loading">No matching sitters found.</p>
       ) : (
         <div className="pet-profiles-container">
           {filteredSitters.map((sitter) => (

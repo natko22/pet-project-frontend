@@ -10,6 +10,10 @@ body {
   font-family: "Poppins", "Times New Roman", Times, serif;
   background: #fefdfc;
 }
+a {
+  text-decoration: none;
+  color: black;
+}
 
 /* code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
