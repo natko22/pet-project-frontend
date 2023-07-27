@@ -403,7 +403,7 @@ function ProfilePage() {
                   .filter((booking) => new Date(booking.endDate) > currentDate)
                   .sort((a, b) => new Date(a.startDate) - new Date(b.startDate))
                   .map((booking) => (
-                    <a>
+                    <Link>
                       <div key={booking._id} className="each-pet-box">
                         <p>
                           <span className="doggie-font"> Start Date : </span>
@@ -428,7 +428,7 @@ function ProfilePage() {
                           <img src={remove} alt="delete"></img>
                         </button>
                       </div>
-                    </a>
+                    </Link>
                   ))
               ) : (
                 <p>No available dates found.</p>
