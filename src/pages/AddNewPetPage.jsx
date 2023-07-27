@@ -99,7 +99,7 @@ function AddPet() {
 
   return (
     <div>
-      <Link className="back-to-user-link" to={`/profile/${user._id}`}>
+      <Link className="back-to-user-link" to={`/profile/${user && user._id}`}>
         Back to User's Profile
       </Link>
       {/* <label>
