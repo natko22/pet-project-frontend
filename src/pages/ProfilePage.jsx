@@ -351,11 +351,13 @@ function ProfilePage() {
         )}
       </div>
       <div>
-        <ReviewBox
-          reviews={currentUser.reviews}
-          setAddReviews={setAddReviews}
-          fetchCurrentUserDate={fetchCurrentUserData}
-        />
+
+          <ReviewBox
+            reviews={currentUser.reviews}
+            setAddReviews={setAddReviews}
+            fetchCurrentUserDate={fetchCurrentUserData}
+          />
+
       </div>
       <div>
         <MyPetsBox pets={currentUser.pets} key={currentUser.pets._id} />
@@ -403,6 +405,7 @@ function ProfilePage() {
                   .filter((booking) => new Date(booking.endDate) > currentDate)
                   .sort((a, b) => new Date(a.startDate) - new Date(b.startDate))
                   .map((booking) => (
+
                     <Link>
                       <div key={booking._id} className="each-pet-box">
                         <p>
@@ -428,6 +431,7 @@ function ProfilePage() {
                           <img src={remove} alt="delete"></img>
                         </button>
                       </div>
+
                     </Link>
                   ))
               ) : (

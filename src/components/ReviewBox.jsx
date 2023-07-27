@@ -23,6 +23,9 @@ function ReviewBox({ reviews, setAddReviews, fetchCurrentUserDate }) {
     <>
       <div className="review-box">
         <h2 className="review-box-h2">Reviews</h2>
+        {reviews.length < 1 ? (
+          "Be the first to leave a twinkle with your thoughts! 💌✨"
+        ) : (
         <div className="all-reviews">
           {reviews.map((review) => (
             <Review
@@ -34,7 +37,7 @@ function ReviewBox({ reviews, setAddReviews, fetchCurrentUserDate }) {
               fetchCurrentUserDate={fetchCurrentUserDate}
             />
           ))}
-        </div>
+        </div>)}
         {!showAddReview && userId !== user._id && (
           <button className="review-btn" onClick={handleAddReviewClick}>
             Leave a review

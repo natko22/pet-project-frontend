@@ -36,6 +36,7 @@ function Review({ commenter, review, stars, reviewId, fetchCurrentUserDate }) {
     return <p className="center-loading">Loading...</p>;
   }
   return (
+  <a>
     <div className="each-review-box">
       {" "}
       <div>
@@ -72,6 +73,7 @@ function Review({ commenter, review, stars, reviewId, fetchCurrentUserDate }) {
         </>
       )}
     </div>
+    </a>
   );
 }
 
