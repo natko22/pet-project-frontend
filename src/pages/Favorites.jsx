@@ -47,12 +47,11 @@ function Favorites() {
           <div className="favorites-message">
             <p>
               Oops! It looks like your favorite button got shy and hide all your
-              favorites.
-              <p>
-                {" "}
-                Don't worry, you can charm it back by clicking some hearts on
-                cool profiles!
-              </p>
+              favorites.{" "}
+            </p>
+            <p>
+              Don't worry, you can charm it back by clicking some hearts on cool
+              profiles!
             </p>
           </div>
         ) : (

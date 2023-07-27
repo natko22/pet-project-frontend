@@ -223,47 +223,49 @@ function ProfilePage() {
   // handle available dates submit
   const handleAvailableDatesSubmit = async (event) => {
     event.preventDefault();
-  
+
     try {
       if (!startAvailableDate || !endAvailableDate) {
         setBookingError("Please select start and end dates.");
         return;
       }
-  
+
       // Check if the selected dates overlap with existing available dates
-      const overlappingAvailableDates = availableDates.filter((availableDate) => {
-        const availableStartDate = new Date(availableDate.start);
-        const availableEndDate = new Date(availableDate.end);
-        return (
-          (startAvailableDate >= availableStartDate &&
-            startAvailableDate <= availableEndDate) ||
-          (endAvailableDate >= availableStartDate &&
-            endAvailableDate <= availableEndDate) ||
-          (startAvailableDate <= availableStartDate &&
-            endAvailableDate >= availableEndDate)
-        );
-      });
-  
+      const overlappingAvailableDates = availableDates.filter(
+        (availableDate) => {
+          const availableStartDate = new Date(availableDate.start);
+          const availableEndDate = new Date(availableDate.end);
+          return (
+            (startAvailableDate >= availableStartDate &&
+              startAvailableDate <= availableEndDate) ||
+            (endAvailableDate >= availableStartDate &&
+              endAvailableDate <= availableEndDate) ||
+            (startAvailableDate <= availableStartDate &&
+              endAvailableDate >= availableEndDate)
+          );
+        }
+      );
+
       if (overlappingAvailableDates.length > 0) {
         setBookingError("Selected dates are already set as available.");
-        setBookingSuccess(false)
+        setBookingSuccess(false);
 
         return;
       }
-  
+
       const availableDatesPayload = {
         userId: userId,
         startDate: startAvailableDate,
         endDate: endAvailableDate,
       };
-  
+
       const response = await axios.post(
         `${API_URL}/api/availableDates`,
         availableDatesPayload
       );
       console.log("Available dates set:", response.data);
-      setBookingError(null)
-      setBookingSuccess(true)
+      setBookingError(null);
+      setBookingSuccess(true);
       fetchCurrentUserData();
     } catch (error) {
       console.log("Setting available dates error:", error.response.data);
@@ -320,7 +322,10 @@ function ProfilePage() {
       <h1>{currentUser.username}</h1>
       {currentUser.postalCode && <p>{currentUser.postalCode}</p>}
       {userId !== user._id && (
-      <Link className="contact-me-btn" to={`mailto:${currentUser.email}`}>Contact me</Link>)}
+        <Link className="contact-me-btn" to={`mailto:${currentUser.email}`}>
+          Contact me
+        </Link>
+      )}
       {userId !== user._id && (
         <img
           className={favorite ? "coloredHeart" : "blackHeart"}
@@ -353,7 +358,7 @@ function ProfilePage() {
         />
       </div>
       <div>
-        <MyPetsBox pets={currentUser.pets} />
+        <MyPetsBox pets={currentUser.pets} key={currentUser.pets._id} />
       </div>
       {userId === user._id && currentUser.isSitter && (
         <BookingsPage bookings={currentUser.bookings} />
@@ -376,56 +381,59 @@ function ProfilePage() {
               <span className="indicator-red">🟥 Already booked dates</span>
               <span className="indicator-green">🟩 Available dates</span>
               <button
-  className="available-date-btn"
-  onClick={handleAvailableDatesSubmit}
->
-  Add Available Dates
-</button>
-{bookingError && <p className="error-message">{bookingError}</p>}
-{bookingSuccess && (
-              <p className="success-message">Available Dates created successfully!</p>
-            )}
+                className="available-date-btn"
+                onClick={handleAvailableDatesSubmit}
+              >
+                Add Available Dates
+              </button>
+              {bookingError && <p className="error-message">{bookingError}</p>}
+              {bookingSuccess && (
+                <p className="success-message">
+                  Available Dates created successfully!
+                </p>
+              )}
             </div>
           </div>
           <div className="pet-box">
             <h2>My available Dates</h2>
-              <div className="all-pets">
-                {currentUser.availability &&
-                currentUser.availability.length > 0 ? (
-                  currentUser.availability
-                  .filter(booking => new Date(booking.endDate) > currentDate)
+            <div className="all-pets">
+              {currentUser.availability &&
+              currentUser.availability.length > 0 ? (
+                currentUser.availability
+                  .filter((booking) => new Date(booking.endDate) > currentDate)
                   .sort((a, b) => new Date(a.startDate) - new Date(b.startDate))
                   .map((booking) => (
-                    <a>
-                    <div key={booking._id} className="each-pet-box">
-                      <p>
-                        <span className="doggie-font"> Start Date : </span>
-                        <span className="poppins">
-                          {new Date(booking.startDate).toLocaleDateString(
-                            "de-DE"
-                          )}
-                        </span>
-                      </p>
-                      <p>
-                        <span className="doggie-font"> End Date : </span>
-                        <span className="poppins">
-                          {new Date(booking.endDate).toLocaleDateString(
-                            "de-DE"
-                          )}
-                        </span>
-                      </p>
-                      <button
-                        className="delete-dates"
-                        onClick={() => handleRemoveAvailability(booking._id)}
-                      >
-                        <img src={remove} alt="delete"></img>
-                      </button>
-                    </div></a>
+                    <Link>
+                      <div key={booking._id} className="each-pet-box">
+                        <p>
+                          <span className="doggie-font"> Start Date : </span>
+                          <span className="poppins">
+                            {new Date(booking.startDate).toLocaleDateString(
+                              "de-DE"
+                            )}
+                          </span>
+                        </p>
+                        <p>
+                          <span className="doggie-font"> End Date : </span>
+                          <span className="poppins">
+                            {new Date(booking.endDate).toLocaleDateString(
+                              "de-DE"
+                            )}
+                          </span>
+                        </p>
+                        <button
+                          className="delete-dates"
+                          onClick={() => handleRemoveAvailability(booking._id)}
+                        >
+                          <img src={remove} alt="delete"></img>
+                        </button>
+                      </div>
+                    </Link>
                   ))
-                ) : (
-                  <p>No bookings found.</p>
-                )}
-              </div>
+              ) : (
+                <p>No available dates found.</p>
+              )}
+            </div>
           </div>
         </>
       )}
