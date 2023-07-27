@@ -10,7 +10,7 @@ function MyPetsBox({ pets }) {
     <>
       <div className="pet-box">
         <h2 className="pet-box-h2">My Pets</h2>
-        <div className="all-pets">
+        {pets.length<1?"We can't find any furry, feathered, or scaled friends in this area right now. ":(        <div className="all-pets">
           {/* add pets here because an error when logging in.Now the pets are
   defined when map function is called.*/}
           {pets &&
@@ -30,7 +30,8 @@ function MyPetsBox({ pets }) {
                 />
               </Link>
             ))}
-        </div>
+        </div>)}
+
         {userId === user._id && (
           <Link className="add-pet" to="/add-pet">
             Add A New Pet
