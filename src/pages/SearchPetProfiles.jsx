@@ -85,7 +85,7 @@ const SearchPetProfiles = () => {
 
       <div className="pet-profiles-container">
         {filteredPetProfiles.length === 0 ? (
-          <div>No matching pet profiles found.</div>
+          <div className="center-loading">No matching pet profiles found.</div>
         ) : (
           filteredPetProfiles.map((pet) => (
             <div key={pet._id} className="card">

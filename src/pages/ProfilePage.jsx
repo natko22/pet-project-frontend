@@ -360,7 +360,7 @@ function ProfilePage() {
 
       </div>
       <div>
-        <MyPetsBox pets={currentUser.pets} />
+        <MyPetsBox pets={currentUser.pets} key={currentUser.pets._id} />
       </div>
       {userId === user._id && currentUser.isSitter && (
         <BookingsPage bookings={currentUser.bookings} />
@@ -405,7 +405,8 @@ function ProfilePage() {
                   .filter((booking) => new Date(booking.endDate) > currentDate)
                   .sort((a, b) => new Date(a.startDate) - new Date(b.startDate))
                   .map((booking) => (
-                    <a>
+
+                    <Link>
                       <div key={booking._id} className="each-pet-box">
                         <p>
                           <span className="doggie-font"> Start Date : </span>
@@ -430,10 +431,11 @@ function ProfilePage() {
                           <img src={remove} alt="delete"></img>
                         </button>
                       </div>
-                    </a>
+
+                    </Link>
                   ))
               ) : (
-                <p >No available dates found.</p>
+                <p>No available dates found.</p>
               )}
             </div>
           </div>

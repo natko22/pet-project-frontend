@@ -90,7 +90,7 @@ h3 {
   transform: scale(1.5);
   margin-right: 10px;
   position: absolute;
-  left:0
+  left: 0;
 }
 .signup-input {
   width: 100%;
@@ -187,22 +187,20 @@ p.error-message {
   font-size: 18px;
   font-family: "Doggie", "Times New Roman";
 }
-.login-container form{
+.login-container form {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
 @media (max-width: 500px) {
-.input-field{
-  width: 80vw;
+  .input-field {
+    width: 80vw;
+  }
+  .login-button {
+    width: 60vw;
+  }
 }
-.login-button{
-  width: 60vw;
-}
-}
-
-
 
 /* for nav bar */
 .nav {
@@ -275,7 +273,6 @@ p.error-message {
 }
 
 @media (max-width: 840px) {
-
   .nav > .nav-btn {
     display: inline-block;
     position: absolute;
@@ -310,7 +307,7 @@ p.error-message {
   .nav > .nav-links > a {
     display: block;
     width: 100%;
-    color:#000
+    color: #000;
   }
   .nav > #nav-check:not(:checked) ~ .nav-links {
     height: 0px;
@@ -436,7 +433,7 @@ p.error-message {
 }
 @media (max-width: 500px) {
   .header-left {
-    width:80%
+    width: 80%;
   }
 }
 /* edit -profile -form */
@@ -576,7 +573,7 @@ textarea {
   transform: scale(1.5);
   margin-right: 10px;
   position: absolute;
-  left:0
+  left: 0;
 }
 
 .edit-profile-form button {
@@ -693,7 +690,7 @@ textarea {
 
 /* profilepage */
 
-.contact-me-btn{
+.contact-me-btn {
   width: 80px;
   margin: 20px;
   padding: 15px;
@@ -1017,7 +1014,6 @@ textarea {
 }
 /* pet profile page */
 
-
 .pet-profile-img {
   border-radius: 50%;
   width: 100px;
@@ -1053,6 +1049,9 @@ textarea {
   align-items: center;
   display: flex;
   justify-content: center;
+  height: 40vh;
+  font-family: "Doggie", "Times New Roman", Times, serif;
+  font-size: 40px;
 }
 
 .center-loading {
@@ -1108,7 +1107,7 @@ label {
 .add-new-pet-checkbox {
   transform: scale(1.5);
   position: absolute;
-  left:0
+  left: 0;
 }
 
 .add-new-pet-btn {
@@ -1828,4 +1827,21 @@ span {
   color: black;
   font-family: "Doggie", "Times New Roman", Times, serif;
   font-size: 20px;
+}
+
+.admin-delete-btn {
+  border: none;
+  text-decoration: none;
+  color: black;
+  font-size: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #f9efe8;
+  width: 150px;
+  margin: 40px auto;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 3px 8px rgba(4, 15, 10, 0.601);
+  font-family: "Doggie", "Times New Roman";
 }

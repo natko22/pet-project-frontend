@@ -13,6 +13,8 @@ function Navbar() {
   const handleMobileMenuLinkClick = () => {
     setMobileMenuOpen(false);
   };
+  console.log("isLoggedIn", isLoggedIn);
+  console.log("user", user);
 
   return (
     <div className="nav">
@@ -50,6 +52,11 @@ function Navbar() {
           <Link to={"sitters-profiles"} onClick={handleMobileMenuLinkClick}>
             Search Pet Sitters
           </Link>
+          {user.isAdmin && (
+            <Link to="/admin" onClick={handleMobileMenuLinkClick}>
+              Admin
+            </Link>
+          )}
           <Link to="/" onClick={logOutUser}>
             Logout
           </Link>

@@ -17,6 +17,7 @@ import Favorites from "./pages/Favorites";
 import SearchPetSittersPage from "./pages/SearchPetSittersPage";
 import BookingsPage from "./pages/BookingsPage";
 import AboutUs from "./pages/AboutUsPage";
+import AdminPage from "./pages/AdminPage";
 
 function App() {
   const { isLoggedIn, user } = useContext(AuthContext);
@@ -65,6 +66,7 @@ function App() {
         <Route path="/sitters-profiles" element={<SearchPetSittersPage />} />
         <Route path="/bookings" element={<BookingsPage />} />
         <Route path="/about" element={<AboutUs />} />
+        <Route path="/admin" element={<AdminPage />} />
       </Routes>
       <Footer />
     </div>
