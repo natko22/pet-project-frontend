@@ -3,12 +3,17 @@ import { AuthContext } from "../context/auth.context";
 import Review from "./Review";
 import { useParams } from "react-router-dom";
 import AddReview from "./AddReview";
-import  { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 
 function ReviewBox({ reviews, setAddReviews, fetchCurrentUserDate }) {
   const { userId } = useParams();
   const { user } = useContext(AuthContext);
 
+  useEffect(() => {
+    if(userId === user._id){
+      setShowAddReview(false);
+    }
+  }, [userId,user._id]);
   const [showAddReview, setShowAddReview] = useState(false);
 
   const handleAddReviewClick = () => {
@@ -26,18 +31,19 @@ function ReviewBox({ reviews, setAddReviews, fetchCurrentUserDate }) {
         {reviews.length < 1 ? (
           "Be the first to leave a twinkle with your thoughts! 💌✨"
         ) : (
-        <div className="all-reviews">
-          {reviews.map((review) => (
-            <Review
-              key={review._id}
-              reviewId={review._id}
-              commenter={review.commenter}
-              review={review.review}
-              stars={review.stars}
-              fetchCurrentUserDate={fetchCurrentUserDate}
-            />
-          ))}
-        </div>)}
+          <div className="all-reviews">
+            {reviews.map((review) => (
+              <Review
+                key={review._id}
+                reviewId={review._id}
+                commenter={review.commenter}
+                review={review.review}
+                stars={review.stars}
+                fetchCurrentUserDate={fetchCurrentUserDate}
+              />
+            ))}
+          </div>
+        )}
         {!showAddReview && userId !== user._id && (
           <button className="review-btn" onClick={handleAddReviewClick}>
             Leave a review
