@@ -819,7 +819,7 @@ textarea {
   align-items: center;
   flex-direction: column;
   width: 250px;
-  height: 400px;
+  height: 350px;
   overflow: scroll;
   box-sizing: border-box;
 }
@@ -840,9 +840,7 @@ textarea {
 .each-review-box::-webkit-scrollbar-track {
   background: #f9efe8;
 }
-.each-review-box .add-new-pet-btn {
-  margin: 0;
-}
+
 
 .each-review-box textarea {
   margin-top: 10px;
@@ -1113,7 +1111,7 @@ label {
 .add-new-pet-btn {
   width: 90%;
   padding: 15px;
-  margin: 20px;
+  margin-top: 20px;
   background-color: #cb997e;
   color: #000000;
   font-size: 20px;
