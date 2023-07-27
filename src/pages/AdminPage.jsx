@@ -43,7 +43,7 @@ function AdminPage() {
     navigate("/admin");
   };
 
-  if (loading) {
+  if (!sitters) {
     return <p className="center-loading">Loading pet sitters...</p>;
   }
 
