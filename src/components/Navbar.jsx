@@ -25,7 +25,7 @@ function Navbar() {
         onChange={handleMobileMenuToggle}
       />
       <div className="nav-header">
-        <Link to="/">
+        <Link to="/" onClick={handleMobileMenuLinkClick}>
           <div className="nav-title">Petopia</div>
         </Link>
       </div>
