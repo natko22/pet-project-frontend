@@ -71,6 +71,7 @@ function AdminPage() {
                   to={`/profile/${sitter._id}`}
                   key={sitter._id}
                   className="sitter-card-link"
+                  target="_top"
                 >
                   <img
                     src={sitter.img ? sitter.img : placeholder}
