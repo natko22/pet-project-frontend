@@ -286,7 +286,7 @@ function AddPet() {
               placeholder="E.g., Walk twice a day"
             />
           </label>
-          <button type="submit" className="add-new-pet-btn">
+          <button type="submit" className="add-new-pet-btn" target="_top">
             Add Pet
           </button>
         </form>
