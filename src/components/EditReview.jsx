@@ -82,7 +82,7 @@ function EditReview({ onClose, reviewId, fetchCurrentUserDate }) {
           placeholder="Leave your review here"
         />
       </label>
-      <button type="submit" className="add-new-pet-btn">
+      <button type="submit" className="save-review">
         Save changes
       </button>
     </form>

@@ -36,43 +36,43 @@ function Review({ commenter, review, stars, reviewId, fetchCurrentUserDate }) {
     return <p className="center-loading">Loading...</p>;
   }
   return (
-  <a>
-    <div className="each-review-box">
-      {" "}
-      <div>
-        <img
-          className="profileImg commenterImg"
-          src={!currentCommenter.img ? imgPlaceholder : currentCommenter.img}
-          alt={currentCommenter.username}
-        />
-        <h3>{currentCommenter.username}</h3>
+    <a>
+      <div className="each-review-box">
+        {" "}
+        <div>
+          <img
+            className="profileImg commenterImg"
+            src={!currentCommenter.img ? imgPlaceholder : currentCommenter.img}
+            alt={currentCommenter.username}
+          />
+          <h3>{currentCommenter.username}</h3>
+        </div>
+        {!showEditReview && (
+          <>
+            <p>
+              {filled}
+              {unfilled}
+            </p>
+            <p>{review}</p>
+          </>
+        )}
+        {user._id === commenter && (
+          <>
+            {!showEditReview && (
+              <button onClick={handleEditReviewClick} className="edit-review">
+                Edit review
+              </button>
+            )}
+            {showEditReview && (
+              <EditReview
+                onClose={handleEditReviewClose}
+                reviewId={reviewId}
+                fetchCurrentUserDate={fetchCurrentUserDate}
+              />
+            )}
+          </>
+        )}
       </div>
-      {!showEditReview && (
-        <>
-          <p>
-            {filled}
-            {unfilled}
-          </p>
-          <p>{review}</p>
-        </>
-      )}
-      {user._id === commenter && (
-        <>
-          {!showEditReview && (
-            <button onClick={handleEditReviewClick} className="add-new-pet-btn">
-              Edit review
-            </button>
-          )}
-          {showEditReview && (
-            <EditReview
-              onClose={handleEditReviewClose}
-              reviewId={reviewId}
-              fetchCurrentUserDate={fetchCurrentUserDate}
-            />
-          )}
-        </>
-      )}
-    </div>
     </a>
   );
 }

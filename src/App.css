@@ -780,6 +780,33 @@ textarea {
   border: none;
 }
 
+.save-review {
+  width: 90%;
+  padding: 15px;
+  margin-top: 20px;
+  background-color: #cb997e;
+  color: #000000;
+  font-size: 20px;
+  font-family: "Doggie", "Times New Roman";
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.edit-review {
+  width: 90%;
+  padding: 15px;
+  margin-top: 20px;
+  margin-left: 10px;
+  background-color: #cb997e;
+  color: #000000;
+  font-size: 20px;
+  font-family: "Doggie", "Times New Roman";
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
 .all-reviews {
   display: flex;
   padding: 25px 0px;
@@ -840,7 +867,6 @@ textarea {
 .each-review-box::-webkit-scrollbar-track {
   background: #f9efe8;
 }
-
 
 .each-review-box textarea {
   margin-top: 10px;
@@ -1112,6 +1138,7 @@ label {
   width: 90%;
   padding: 15px;
   margin-top: 20px;
+  margin-left: 25px;
   background-color: #cb997e;
   color: #000000;
   font-size: 20px;
@@ -1344,7 +1371,7 @@ label {
   text-align: center;
   box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
 }
-.card-admin{
+.card-admin {
   height: 480px;
 }
 
