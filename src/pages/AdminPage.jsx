@@ -37,10 +37,10 @@ function AdminPage() {
       setSitters((prevSitters) =>
         prevSitters.filter((sitter) => sitter._id !== userId)
       );
+      navigate("/admin");
     } catch (error) {
       setError("An error occurred while deleting the user.");
     }
-    navigate("/admin");
   };
 
   if (!sitters) {
@@ -95,13 +95,13 @@ function AdminPage() {
                       <span className="poppins">{sitter.description}</span>
                     </p>
                   </div>
-                  <button
-                    className="admin-delete-btn"
-                    onClick={() => handleDeleteUser(sitter._id)}
-                  >
-                    Delete User
-                  </button>
                 </Link>
+                <button
+                  className="admin-delete-btn"
+                  onClick={() => handleDeleteUser(sitter._id)}
+                >
+                  Delete User
+                </button>
               </div>
             );
           })}
