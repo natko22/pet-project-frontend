@@ -1,9 +1,8 @@
-
-
-
-
-  [[redirects]]
-  from = "/api/*"
-  to = "https://petprojectbackend.up.railway.app/:splat"
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
   status = 200
-  force = true
+
+
+
+  
