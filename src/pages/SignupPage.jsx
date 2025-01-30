@@ -61,7 +61,7 @@ function SignupPage() {
   };
 
   const handleGoogleSignUp = () => {
-    window.location.href = `${API_URL}/auth/google/callback`;
+    window.location.href = `${API_URL}/auth/google/`;
   };
   return (
     <div className="login-container">
