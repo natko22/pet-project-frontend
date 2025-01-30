@@ -55,7 +55,7 @@ const LoginPage = () => {
     e.preventDefault();
 
     // Redirect the user to the Google Authentication route on your server
-    window.location.href = `${API_URL}/auth/google/callback`;
+    window.location.href = `${API_URL}/auth/google/`;
   };
 
   return (
